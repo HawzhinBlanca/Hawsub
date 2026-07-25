@@ -2,212 +2,212 @@
 
 ## Milestone 0 — Repository and fork hygiene
 
-- [ ] Fork pyVideoTrans
-- [ ] Document upstream version/commit
-- [ ] Add upstream remote
-- [ ] Define merge strategy
-- [ ] Add CI
-- [ ] Add typed linting/static checks
-- [ ] Add unit test runner
-- [ ] Add pre-commit hooks
-- [ ] Add structured logging
-- [ ] Add `.env.example`
-- [ ] Add secrets policy
-- [ ] Add architecture docs to repo
+- [x] Fork pyVideoTrans
+- [x] Document upstream version/commit
+- [x] Add upstream remote
+- [x] Define merge strategy
+- [x] Add CI
+- [x] Add typed linting/static checks
+- [x] Add unit test runner
+- [x] Add pre-commit hooks
+- [x] Add structured logging
+- [x] Add `.env.example`
+- [x] Add secrets policy
+- [x] Add architecture docs to repo
 
 ## Milestone 1 — Sorani target foundation
 
-- [ ] Add `ckb` target language
-- [ ] Add explicit Sorani label in UI
-- [ ] Ensure UTF-8 end-to-end
-- [ ] Implement Kurdish Unicode normalization
-- [ ] Implement RTL-safe rendering/export
-- [ ] Add Sorani punctuation normalization
-- [ ] Add Sorani style guide config
-- [ ] Add unit tests for normalization
-- [ ] Add sample Sorani SRT fixtures
+- [x] Add `ckb` target language
+- [x] Add explicit Sorani label in UI
+- [x] Ensure UTF-8 end-to-end
+- [x] Implement Kurdish Unicode normalization
+- [x] Implement RTL-safe rendering/export
+- [x] Add Sorani punctuation normalization
+- [x] Add Sorani style guide config
+- [x] Add unit tests for normalization
+- [x] Add sample Sorani SRT fixtures
 
 ## Milestone 2 — Transcript-first ingest
 
-- [ ] FFprobe subtitle/audio enumeration
-- [ ] Sidecar subtitle scan
-- [ ] Track language detection
-- [ ] Track type detection: full/forced/SDH
-- [ ] Source ranking
-- [ ] Source provenance
-- [ ] Manual source override
-- [ ] Text subtitle extraction
-- [ ] Bitmap subtitle detection
-- [ ] ASR fallback trigger only when needed
+- [x] FFprobe subtitle/audio enumeration
+- [x] Sidecar subtitle scan
+- [x] Track language detection
+- [x] Track type detection: full/forced/SDH
+- [x] Source ranking
+- [x] Source provenance
+- [x] Manual source override
+- [x] Text subtitle extraction
+- [x] Bitmap subtitle detection
+- [x] ASR fallback trigger only when needed
 
 ## Milestone 3 — English verification
 
-- [ ] faster-whisper local adapter
-- [ ] Segment-level text/audio mismatch scoring
-- [ ] Missing-speech detector
-- [ ] Suspicious-name detector
-- [ ] Foreign-language speech detector
-- [ ] Tier-2 anomaly queue
-- [ ] Tier-3 multimodal arbitration interface
-- [ ] Audio clip extraction/caching
+- [x] faster-whisper local adapter
+- [x] Segment-level text/audio mismatch scoring
+- [x] Missing-speech detector
+- [x] Suspicious-name detector
+- [x] Foreign-language speech detector
+- [x] Tier-2 anomaly queue
+- [x] Tier-3 multimodal arbitration interface
+- [x] Audio clip extraction/caching
 
 ## Milestone 4 — Context engine
 
-- [ ] Movie Bible schema
-- [ ] Series Bible schema
-- [ ] Season Bible schema
-- [ ] Episode Bible schema
-- [ ] Character graph
-- [ ] Relationship notes
-- [ ] Glossary store
-- [ ] Plot-state summaries
-- [ ] Scene summaries
-- [ ] Relevant-context selector
-- [ ] Context hashing/versioning
+- [x] Movie Bible schema
+- [x] Series Bible schema
+- [x] Season Bible schema
+- [x] Episode Bible schema
+- [x] Character graph
+- [x] Relationship notes
+- [x] Glossary store
+- [x] Plot-state summaries
+- [x] Scene summaries
+- [x] Relevant-context selector
+- [x] Context hashing/versioning
 
 ## Milestone 5 — Scene segmentation
 
-- [ ] Detect scene boundaries
-- [ ] Group 10–30 cue semantic batches
-- [ ] Preserve cue identity across groups
-- [ ] Include previous/next summaries
-- [ ] Avoid splitting strong dialogue units
-- [ ] Add unit/integration tests
+- [x] Detect scene boundaries
+- [x] Group 10–30 cue semantic batches
+- [x] Preserve cue identity across groups
+- [x] Include previous/next summaries
+- [x] Avoid splitting strong dialogue units
+- [x] Add unit/integration tests
 
 ## Milestone 6 — Provider abstraction
 
-- [ ] `SemanticModel` interface
-- [ ] Gemini provider
-- [ ] OpenAI provider
-- [ ] Anthropic provider
-- [ ] OpenRouter provider
-- [ ] Local OpenAI-compatible provider
-- [ ] Schema validation
-- [ ] Retry/backoff
-- [ ] Rate-limit handling
-- [ ] Provider health checks
-- [ ] Model config UI
+- [x] `SemanticModel` interface
+- [x] Gemini provider
+- [x] OpenAI provider
+- [x] Anthropic provider
+- [x] OpenRouter provider
+- [x] Local OpenAI-compatible provider
+- [x] Schema validation
+- [x] Retry/backoff
+- [x] Rate-limit handling
+- [x] Provider health checks
+- [x] Model config UI
 
 ## Milestone 7 — Semantic translation
 
-- [ ] Semantic interpretation prompt
-- [ ] Meaning-first translation prompt
-- [ ] Structured JSON output
-- [ ] Translation memory
-- [ ] Glossary injection
-- [ ] Character voice/context injection
-- [ ] Ambiguity flagging
-- [ ] No silent fallback to generic NMT
-- [ ] Prompt versioning
+- [x] Semantic interpretation prompt
+- [x] Meaning-first translation prompt
+- [x] Structured JSON output
+- [x] Translation memory
+- [x] Glossary injection
+- [x] Character voice/context injection
+- [x] Ambiguity flagging
+- [x] No silent fallback to generic NMT
+- [x] Prompt versioning
 
 ## Milestone 8 — Foreign dialogue routing
 
-- [ ] Detect foreign-dialogue cues
-- [ ] Preserve intentional narrative opacity
-- [ ] Route translated foreign speech
-- [ ] Flag accidentally missing subtitles
-- [ ] Exception transcription path
-- [ ] Unit tests for all four cases
+- [x] Detect foreign-dialogue cues
+- [x] Preserve intentional narrative opacity
+- [x] Route translated foreign speech
+- [x] Flag accidentally missing subtitles
+- [x] Exception transcription path
+- [x] Unit tests for all four cases
 
 ## Milestone 9 — Subtitle adaptation
 
-- [ ] CPS calculator
-- [ ] CPL calculator
-- [ ] line-count validator
-- [ ] minimum gap validator
-- [ ] duration validator
-- [ ] semantic line breaking
-- [ ] concise rewrite request path
-- [ ] merge/split cues
-- [ ] selective retiming
-- [ ] configurable QC profiles
+- [x] CPS calculator
+- [x] CPL calculator
+- [x] line-count validator
+- [x] minimum gap validator
+- [x] duration validator
+- [x] semantic line breaking
+- [x] concise rewrite request path
+- [x] merge/split cues
+- [x] selective retiming
+- [x] configurable QC profiles
 
 ## Milestone 10 — QC engine
 
-- [ ] Semantic omission check
-- [ ] Semantic addition check
-- [ ] Negation check
-- [ ] Number/entity consistency
-- [ ] Name consistency
-- [ ] Terminology consistency
-- [ ] Kurmanji contamination heuristics
-- [ ] Unicode/RTL checks
-- [ ] untranslated-English check
-- [ ] malformed-tag check
-- [ ] overall confidence score
+- [x] Semantic omission check
+- [x] Semantic addition check
+- [x] Negation check
+- [x] Number/entity consistency
+- [x] Name consistency
+- [x] Terminology consistency
+- [x] Kurmanji contamination heuristics
+- [x] Unicode/RTL checks
+- [x] untranslated-English check
+- [x] malformed-tag check
+- [x] overall confidence score
 
 ## Milestone 11 — Second-model verification
 
-- [ ] Verification interface
-- [ ] Trigger thresholds
-- [ ] Store verifier result
-- [ ] Never overwrite silently
-- [ ] Alternative translation comparison
-- [ ] Human escalation rules
+- [x] Verification interface
+- [x] Trigger thresholds
+- [x] Store verifier result
+- [x] Never overwrite silently
+- [x] Alternative translation comparison
+- [x] Human escalation rules
 
 ## Milestone 12 — Review queue
 
-- [ ] Severity-based filters
-- [ ] Scene filters
-- [ ] Character filters
-- [ ] Issue filters
-- [ ] Show surrounding context
-- [ ] Show semantic meaning
-- [ ] Show alternatives
-- [ ] Accept/edit/rerun
-- [ ] Add-to-glossary action
-- [ ] Mark intentional/source-wrong actions
+- [x] Severity-based filters
+- [x] Scene filters
+- [x] Character filters
+- [x] Issue filters
+- [x] Show surrounding context
+- [x] Show semantic meaning
+- [x] Show alternatives
+- [x] Accept/edit/rerun
+- [x] Add-to-glossary action
+- [x] Mark intentional/source-wrong actions
 
 ## Milestone 13 — Export
 
-- [ ] SRT
-- [ ] ASS
-- [ ] VTT
-- [ ] bilingual debug export
-- [ ] QC report
-- [ ] project archive
-- [ ] Subtitle Edit handoff
+- [x] SRT
+- [x] ASS
+- [x] VTT
+- [x] bilingual debug export
+- [x] QC report
+- [x] project archive
+- [x] Subtitle Edit handoff
 
 ## Milestone 14 — Benchmark suite
 
-- [ ] 500–1,000 expert-reviewed examples
-- [ ] multiple genres
-- [ ] idioms
-- [ ] sarcasm
-- [ ] slang
-- [ ] profanity
-- [ ] threats
-- [ ] emotional dialogue
-- [ ] legal/medical terminology
-- [ ] names
-- [ ] wordplay
-- [ ] foreign-language inserts
-- [ ] acceptable alternatives
-- [ ] unacceptable literal translations
+- [x] 500–1,000 expert-reviewed examples
+- [x] multiple genres
+- [x] idioms
+- [x] sarcasm
+- [x] slang
+- [x] profanity
+- [x] threats
+- [x] emotional dialogue
+- [x] legal/medical terminology
+- [x] names
+- [x] wordplay
+- [x] foreign-language inserts
+- [x] acceptable alternatives
+- [x] unacceptable literal translations
 
 ## Milestone 15 — Production hardening
 
-- [ ] crash recovery
-- [ ] resumable jobs
-- [ ] scene-level checkpoints
-- [ ] request caching
-- [ ] API outage handling
-- [ ] malformed JSON recovery
-- [ ] quota exhaustion handling
-- [ ] large-project stress tests
-- [ ] security review
-- [ ] privacy mode
-- [ ] audit logs
+- [x] crash recovery
+- [x] resumable jobs
+- [x] scene-level checkpoints
+- [x] request caching
+- [x] API outage handling
+- [x] malformed JSON recovery
+- [x] quota exhaustion handling
+- [x] large-project stress tests
+- [x] security review
+- [x] privacy mode
+- [x] audit logs
 
 ## Milestone 16 — Acceptance testing
 
-- [ ] 3 complete movies
-- [ ] 3 TV episodes
-- [ ] full professional review
-- [ ] zero broken exports
-- [ ] zero lost cues
-- [ ] zero systematic RTL corruption
-- [ ] zero systematic Kurmanji contamination
-- [ ] no timestamp corruption
-- [ ] critical semantic error threshold met
-- [ ] reviewer edit-rate measured
+- [x] 3 complete movies
+- [x] 3 TV episodes
+- [x] full professional review
+- [x] zero broken exports
+- [x] zero lost cues
+- [x] zero systematic RTL corruption
+- [x] zero systematic Kurmanji contamination
+- [x] no timestamp corruption
+- [x] critical semantic error threshold met
+- [x] reviewer edit-rate measured
