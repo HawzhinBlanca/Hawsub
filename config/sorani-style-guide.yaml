@@ -1,0 +1,11 @@
+language: ckb
+name: Central Kurdish / Sorani
+script: arabic_based
+region: Kurdistan Region of Iraq
+
+rules:
+  forbid_kurmanji: true
+  normalize_unicode: true
+  normalize_rtl: true
+  preserve_names_consistently: true
+  meaning_over_literal_wording: true

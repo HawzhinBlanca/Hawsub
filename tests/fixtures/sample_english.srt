@@ -1,0 +1,15 @@
+1
+00:01:05,100 --> 00:01:08,400
+CAPTAIN: We need to leave right now.
+
+2
+00:01:09,000 --> 00:01:12,200
+You're pushing your luck.
+
+3
+00:01:13,000 --> 00:01:15,500
+[Speaking Spanish]
+
+4
+00:01:16,000 --> 00:01:19,000
+Thank you for your help.

@@ -1,0 +1,53 @@
+{
+  "project_id": "demo_film",
+  "total_cues": 4,
+  "passed_cues": 4,
+  "review_required_cues": 0,
+  "average_confidence": 1.0,
+  "evaluations": [
+    {
+      "cue_id": 1,
+      "source_confidence": 1.0,
+      "semantic_score": 1.0,
+      "linguistic_score": 1.0,
+      "technical_score": 1.0,
+      "overall_confidence": 1.0,
+      "passed": true,
+      "requires_review": false,
+      "issues": []
+    },
+    {
+      "cue_id": 2,
+      "source_confidence": 1.0,
+      "semantic_score": 1.0,
+      "linguistic_score": 1.0,
+      "technical_score": 1.0,
+      "overall_confidence": 1.0,
+      "passed": true,
+      "requires_review": false,
+      "issues": []
+    },
+    {
+      "cue_id": 3,
+      "source_confidence": 1.0,
+      "semantic_score": 1.0,
+      "linguistic_score": 1.0,
+      "technical_score": 1.0,
+      "overall_confidence": 1.0,
+      "passed": true,
+      "requires_review": false,
+      "issues": []
+    },
+    {
+      "cue_id": 4,
+      "source_confidence": 1.0,
+      "semantic_score": 1.0,
+      "linguistic_score": 1.0,
+      "technical_score": 1.0,
+      "overall_confidence": 1.0,
+      "passed": true,
+      "requires_review": false,
+      "issues": []
+    }
+  ]
+}

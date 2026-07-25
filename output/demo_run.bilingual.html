@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hawsub Bilingual Debug Inspection</title>
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; margin: 20px; background: #f8f9fa; }
+        h1 { color: #212529; }
+        table { width: 100%; border-collapse: collapse; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        th, td { padding: 10px 12px; border: 1px solid #dee2e6; text-align: left; }
+        th { background: #e9ecef; }
+        tr:nth-child(even) { background: #f8f9fa; }
+    </style>
+</head>
+<body>
+    <h1>Hawsub — English to Sorani Subtitle Debug Inspection</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Timecode</th>
+                <th>English Source</th>
+                <th>Central Kurdish (Sorani)</th>
+                <th>Confidence</th>
+                <th>QC Issues</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td>1</td>
+                <td>00:01:24,000 --&gt; 00:01:26,000</td>
+                <td>I told you to stop.
+"""</td>
+                <td dir="rtl">پێم گوتیت بوەستە</td>
+                <td style="color: #28a745; font-weight: bold;">1.00</td>
+                <td style="font-size: 0.85em; color: #555;"></td>
+            </tr>
+            
+        </tbody>
+    </table>
+</body>
+</html>

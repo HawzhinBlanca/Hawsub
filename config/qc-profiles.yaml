@@ -1,0 +1,18 @@
+house_standard:
+  max_lines: 2
+  preferred_cps: 17
+  hard_max_cps: 20
+  preferred_cpl: 40
+  hard_max_cpl: 42
+  min_duration_ms: 800
+  min_gap_ms: 80
+
+master:
+  max_lines: 2
+  preferred_cps: 17
+  hard_max_cps: 20
+  preferred_cpl: 40
+  hard_max_cpl: 42
+  min_duration_ms: 800
+  min_gap_ms: 80
+  mandatory_human_review_for_critical_semantic_flags: true

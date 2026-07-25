@@ -1,0 +1,15 @@
+semantic:
+  provider: google
+  model: gemini-2.5-pro
+
+translation:
+  provider: google
+  model: gemini-2.5-pro
+
+verification:
+  provider: configurable
+  model: configurable
+
+asr:
+  provider: faster-whisper
+  model: large-v3

@@ -1,0 +1,15 @@
+README.md
+pyproject.toml
+hawsub/__init__.py
+hawsub.egg-info/PKG-INFO
+hawsub.egg-info/SOURCES.txt
+hawsub.egg-info/dependency_links.txt
+hawsub.egg-info/entry_points.txt
+hawsub.egg-info/requires.txt
+hawsub.egg-info/top_level.txt
+hawsub/config/loader.py
+hawsub/config/schema.py
+hawsub/core/ingest/parser.py
+hawsub/core/normalization/sorani.py
+hawsub/core/source_resolver/resolver.py
+hawsub/utils/logging.py

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hawsub Bilingual Debug Inspection</title>
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; margin: 20px; background: #f8f9fa; }
+        h1 { color: #212529; }
+        table { width: 100%; border-collapse: collapse; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        th, td { padding: 10px 12px; border: 1px solid #dee2e6; text-align: left; }
+        th { background: #e9ecef; }
+        tr:nth-child(even) { background: #f8f9fa; }
+    </style>
+</head>
+<body>
+    <h1>Hawsub — English to Sorani Subtitle Debug Inspection</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Timecode</th>
+                <th>English Source</th>
+                <th>Central Kurdish (Sorani)</th>
+                <th>Confidence</th>
+                <th>QC Issues</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td>1</td>
+                <td>00:01:05,100 --&gt; 00:01:08,400</td>
+                <td>We need to leave right now.</td>
+                <td dir="rtl">نەخێر</td>
+                <td style="color: #28a745; font-weight: bold;">1.00</td>
+                <td style="font-size: 0.85em; color: #555;"></td>
+            </tr>
+            
+            <tr>
+                <td>2</td>
+                <td>00:01:09,000 --&gt; 00:01:12,200</td>
+                <td>You're pushing your luck.</td>
+                <td dir="rtl">تۆ زێدەڕۆیی لە بەختت دەکەیت</td>
+                <td style="color: #28a745; font-weight: bold;">1.00</td>
+                <td style="font-size: 0.85em; color: #555;"></td>
+            </tr>
+            
+            <tr>
+                <td>3</td>
+                <td>00:01:13,000 --&gt; 00:01:15,500</td>
+                <td>[Speaking Spanish]</td>
+                <td dir="rtl">[ئیسپانی دەدوێت]</td>
+                <td style="color: #28a745; font-weight: bold;">1.00</td>
+                <td style="font-size: 0.85em; color: #555;"></td>
+            </tr>
+            
+            <tr>
+                <td>4</td>
+                <td>00:01:16,000 --&gt; 00:01:19,000</td>
+                <td>Thank you for your help.</td>
+                <td dir="rtl">سوپاس</td>
+                <td style="color: #28a745; font-weight: bold;">1.00</td>
+                <td style="font-size: 0.85em; color: #555;"></td>
+            </tr>
+            
+        </tbody>
+    </table>
+</body>
+</html>

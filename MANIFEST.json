@@ -1,0 +1,30 @@
+{
+  "project": "Hawsub",
+  "generated_files": [
+    ".env.example",
+    "ADR/0001-transcript-first.md",
+    "ADR/0002-model-independence.md",
+    "ADR/0003-preserve-timing-first.md",
+    "ADR/0004-structured-llm-output.md",
+    "ADR/0005-exception-based-review.md",
+    "ARCHITECTURE.md",
+    "BENCHMARK_SPEC.md",
+    "BLUEPRINT.md",
+    "CONFIG_SPEC.md",
+    "DATA_MODEL.md",
+    "DEV_SETUP.md",
+    "PROMPTS.md",
+    "QA_SPEC.md",
+    "README.md",
+    "RELEASE_CHECKLIST.md",
+    "RELIABILITY_SECURITY.md",
+    "ROADMAP.md",
+    "SORANI_STYLE_GUIDE.md",
+    "TASKS.md",
+    "config/providers.example.yaml",
+    "config/qc-profiles.yaml",
+    "config/sorani-style-guide.yaml",
+    "docs/IMPLEMENTATION_NOTES.md"
+  ],
+  "purpose": "Engineering handoff package for English→Sorani cinematic subtitle localization system"
+}

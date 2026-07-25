@@ -1,0 +1,2 @@
+[console_scripts]
+hawsub = hawsub.cli.main:cli

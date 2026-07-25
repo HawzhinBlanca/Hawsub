@@ -1,0 +1,70 @@
+Metadata-Version: 2.4
+Name: hawsub
+Version: 1.0.0
+Summary: Production-oriented English -> Central Kurdish (Sorani, ckb) cinematic subtitle localization system
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: pydantic>=2.0.0
+Requires-Dist: pyyaml>=6.0
+Requires-Dist: click>=8.0.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0.0; extra == "dev"
+Requires-Dist: pytest-cov>=4.0.0; extra == "dev"
+
+# Hawsub
+
+**Hawsub** is a production-oriented English → Central Kurdish (Sorani, `ckb`) cinematic subtitle localization system.
+
+Its purpose is not generic machine translation. It is designed to produce high-quality Sorani subtitles for Hollywood films and English-language TV/streaming series by combining:
+
+- transcript-first ingest;
+- English audio verification only where needed;
+- scene-level context;
+- meaning-first semantic translation;
+- Sorani orthographic normalization;
+- subtitle-specific adaptation and QC;
+- exception-based human review.
+
+## Core strategy
+
+1. Prefer existing professional English subtitles/transcripts.
+2. Preserve source timing whenever valid.
+3. Use English ASR only as a fallback or verifier.
+4. Build movie/episode/series context before translating.
+5. Translate meaning, not words.
+6. Keep LLMs away from deterministic subtitle structure.
+7. Normalize Sorani orthography in code.
+8. Retiming/resegmentation happens only when readability requires it.
+9. Route uncertainty to a second model or human reviewer.
+10. Benchmark every model change on an expert-scored English → Sorani cinematic test set.
+
+## Recommended base
+
+- Core application: **pyVideoTrans** fork
+- Media handling: **FFmpeg / FFprobe**
+- Local English ASR fallback: **faster-whisper large-v3**
+- Initial semantic model: **Gemini 2.5 Pro** via provider adapter
+- Professional review: **Subtitle Edit**
+- Architectural reference: `rockbenben/subtitle-translator`
+- Target language: **Central Kurdish / Sorani (`ckb`)**
+
+## Important model policy
+
+The semantic model must be configurable. No production logic may depend directly on one vendor/model.
+
+## Documentation map
+
+- `BLUEPRINT.md` — full product blueprint
+- `ARCHITECTURE.md` — technical architecture and module boundaries
+- `DATA_MODEL.md` — project entities and schemas
+- `TASKS.md` — implementation backlog and milestone order
+- `QA_SPEC.md` — quality gates and acceptance criteria
+- `BENCHMARK_SPEC.md` — expert evaluation framework
+- `PROMPTS.md` — prompt contracts
+- `SORANI_STYLE_GUIDE.md` — language and orthographic standards
+- `CONFIG_SPEC.md` — runtime configuration schema
+- `RELIABILITY_SECURITY.md` — resumability, privacy, logging, secrets
+- `DEV_SETUP.md` — repository/dev setup guidance
+- `RELEASE_CHECKLIST.md` — definition of done for production release
+- `ROADMAP.md` — staged delivery plan
+- `ADR/` — architectural decisions

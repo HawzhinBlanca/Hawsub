@@ -1,0 +1,77 @@
+[
+  {
+    "id": 1,
+    "source": "You're pushing your luck.",
+    "context": "Crime drama scene. A detective warns a suspect who is being confrontational.",
+    "intended_meaning": "You are taking increasingly dangerous risks and are being warned to stop.",
+    "gold_sorani": "تۆ زێدەڕۆیی لە بەختت دەکەیت.",
+    "acceptable_alternatives": [
+      "تۆ یاری بە بەختی خۆت دەکەیت.",
+      "بەختت تاقیمەکەره‌وە."
+    ],
+    "unacceptable_literal_examples": [
+      "تۆ پاڵ بە بەختتەوە دەنێیت."
+    ],
+    "notes": "Idiomatic expression warning against escalating risk."
+  },
+  {
+    "id": 2,
+    "source": "Bite your tongue!",
+    "context": "Family drama. An elder reprimands a young family member for disrespectful speech.",
+    "intended_meaning": "Stop talking immediately and do not say such disrespectful things.",
+    "gold_sorani": "زمانت بگرە!",
+    "acceptable_alternatives": [
+      "دەمت بگرە!",
+      "دەنگت بڕە!"
+    ],
+    "unacceptable_literal_examples": [
+      "گازت لە زمانت بگرە!"
+    ],
+    "notes": "Idiom commanding silence."
+  },
+  {
+    "id": 3,
+    "source": "Break a leg!",
+    "context": "Backstage before a theater performance.",
+    "intended_meaning": "Good luck on your performance.",
+    "gold_sorani": "بەختی باشت هەبێت!",
+    "acceptable_alternatives": [
+      "سەرکەوتوو بێت!",
+      "بەختێکی باش!"
+    ],
+    "unacceptable_literal_examples": [
+      "قاچێک بشکێنە!"
+    ],
+    "notes": "Classic theatrical idiom meaning good luck."
+  },
+  {
+    "id": 4,
+    "source": "I am in over my head.",
+    "context": "Suspense thriller. Protagonist realizes a conspiracy is far larger than anticipated.",
+    "intended_meaning": "I am involved in a situation that is far too difficult for me to handle.",
+    "gold_sorani": "من لە سەرتاپای ئەم بابەتەدا نوقم بووم.",
+    "acceptable_alternatives": [
+      "ئەم بابەتە لە توانای من بەدەرە.",
+      "تێوەگلاوم لە کارێک کە لە من بەدەرە."
+    ],
+    "unacceptable_literal_examples": [
+      "من لە سەرەوەی سەرمدا."
+    ],
+    "notes": "Overwhelmed by circumstances idiom."
+  },
+  {
+    "id": 5,
+    "source": "Over my dead body!",
+    "context": "Action conflict. Father refuses to allow villain to take his children.",
+    "intended_meaning": "I will never permit this to happen under any circumstances.",
+    "gold_sorani": "تەنها بەسەر تەرمەکەمدا!",
+    "acceptable_alternatives": [
+      "مەگەر بەسەر تەرمی مندا تێپەڕیت!",
+      "ڕێگە نادەم تا زیندووم!"
+    ],
+    "unacceptable_literal_examples": [
+      "لە سەر لاشەی مردووم!"
+    ],
+    "notes": "Extreme refusal expression."
+  }
+]
