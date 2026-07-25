@@ -1,5 +1,5 @@
 """
-Hawsub CLI Application.
+Hawsub CLI & GUI Application Entry Point.
 """
 
 import click
@@ -72,6 +72,14 @@ def normalize(text: str):
     res = norm.normalize(text)
     click.echo(f"Input     : {text}")
     click.echo(f"Normalized: {res}")
+
+
+@cli.command()
+@click.option("--port", default=8080, help="Port to run Hawsub GUI Workstation application server.")
+def gui(port: int):
+    """Launch interactive Hawsub Subtitle Localization GUI Application."""
+    from hawsub.ui.server import start_gui
+    start_gui(port=port)
 
 
 if __name__ == "__main__":
