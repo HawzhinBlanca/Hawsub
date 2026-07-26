@@ -26,6 +26,9 @@ from hawsub.utils.logging import setup_logger
 
 logger = setup_logger("hawsub.orchestrator")
 
+# Maximum file size (10 MB) to prevent memory issues
+MAX_INPUT_FILE_SIZE = 10 * 1024 * 1024
+
 
 class DurablePipeline:
     """Orchestrates end-to-end Hawsub localization job with scene-level SQLite checkpoints."""
@@ -131,15 +134,27 @@ class DurablePipeline:
 
         Path(output_dir).mkdir(parents=True, exist_ok=True)
 
-        # 1. Ingest
-        with open(input_subtitle_path, "r", encoding="utf-8") as f:
+        # 1. Ingest — with input validation
+        input_path = Path(input_subtitle_path)
+        if not input_path.exists():
+            raise FileNotFoundError(f"Input file not found: {input_subtitle_path}")
+        
+        file_size = input_path.stat().st_size
+        if file_size == 0:
+            raise ValueError(f"Input file is empty: {input_subtitle_path}")
+        if file_size > MAX_INPUT_FILE_SIZE:
+            raise ValueError(f"Input file too large ({file_size} bytes, max {MAX_INPUT_FILE_SIZE}): {input_subtitle_path}")
+
+        with open(input_subtitle_path, "r", encoding="utf-8-sig") as f:
             content = f.read()
 
-        ext = os.path.splitext(input_subtitle_path)[1].lower()
-        if ext == ".vtt":
-            cues = SubtitleParser.parse_vtt(content)
-        else:
-            cues = SubtitleParser.parse_srt(content)
+        if not content.strip():
+            raise ValueError(f"Input file contains no content: {input_subtitle_path}")
+
+        cues = SubtitleParser.parse_auto(content, input_subtitle_path)
+
+        if not cues:
+            raise ValueError(f"No subtitle cues parsed from: {input_subtitle_path}")
 
         logger.info(f"Ingested {len(cues)} subtitle cues from {input_subtitle_path}")
         self.set_stage_status("INGEST", "completed")
@@ -156,77 +171,93 @@ class DurablePipeline:
         all_qc_results: List[QCEvaluationResult] = []
 
         for batch in scene_batches:
-            checkpoint = self.get_scene_checkpoint(batch.scene_id)
-            if checkpoint:
-                logger.info(f"Resuming scene {batch.scene_id} from durable checkpoint")
-                # Restore checkpoint target text
-                tr_map = {item["cue_id"]: item["translation"] for item in checkpoint["translations"]}
+            try:
+                checkpoint = self.get_scene_checkpoint(batch.scene_id)
+                if checkpoint:
+                    logger.info(f"Resuming scene {batch.scene_id} from durable checkpoint")
+                    tr_map = {item["cue_id"]: item["translation"] for item in checkpoint["translations"]}
+                    for cue in batch.cues:
+                        if cue.id in tr_map:
+                            cue.target_text = tr_map[cue.id]
+                    all_qc_results.extend([QCEvaluationResult(**r) for r in checkpoint["qc_results"]])
+                    continue
+
+                # Foreign dialogue routing
                 for cue in batch.cues:
-                    if cue.id in tr_map:
-                        cue.target_text = tr_map[cue.id]
-                all_qc_results.extend([QCEvaluationResult(**r) for r in checkpoint["qc_results"]])
-                continue
+                    route = self.foreign_router.route_cue(cue)
+                    if route.case_type == "B" and route.sorani_indicator:
+                        cue.target_text = route.sorani_indicator
 
-            # Process scene
-            cues_data = [
-                {"id": c.id, "source_text": c.clean_source_text, "start_ms": c.start_ms, "end_ms": c.end_ms}
-                for c in batch.cues
-            ]
-            
-            # Check foreign dialogue routing
-            for cue in batch.cues:
-                route = self.foreign_router.route_cue(cue)
-                if route.case_type == "B" and route.sorani_indicator:
-                    cue.target_text = route.sorani_indicator
+                # Semantic interpretation pass
+                from hawsub.core.semantic.interpreter import SemanticInterpreter
+                interpreter = SemanticInterpreter(self.provider)
+                interp_result = interpreter.analyze_batch(batch.scene_id, batch.cues, batch.context)
 
-            # Translate unrouted cues
-            untranslated_cues = [c for c in batch.cues if not c.target_text]
-            if untranslated_cues:
-                untr_data = [
-                    {"id": c.id, "source_text": c.clean_source_text} for c in untranslated_cues
-                ]
-                tr_resp = self.provider.translate_scene(
+                # Translate unrouted cues
+                untranslated_cues = [c for c in batch.cues if not c.target_text]
+                if untranslated_cues:
+                    untr_data = [{"id": c.id, "source_text": c.clean_source_text} for c in untranslated_cues]
+                    tr_resp = self.provider.translate_scene(
+                        scene_id=batch.scene_id,
+                        cues_data=untr_data,
+                        interpretations=interp_result.items if interp_result else None,
+                        context_data=batch.context.model_dump(),
+                    )
+                    tr_dict = {item.cue_ids[0]: item.translation for item in tr_resp.translations if item.cue_ids}
+                    for cue in untranslated_cues:
+                        if cue.id in tr_dict:
+                            cue.target_text = tr_dict[cue.id]
+
+                # Adaptation, QC & Verification
+                scene_qc_results = []
+                scene_translations_data = []
+
+                for idx, cue in enumerate(batch.cues):
+                    next_c = batch.cues[idx + 1] if idx < len(batch.cues) - 1 else None
+                    cue = self.adaptation_engine.apply_selective_retiming(cue, next_c)
+
+                    if cue.target_text:
+                        cue.target_text = self.adaptation_engine.format_semantic_line_breaks(cue.target_text)
+
+                    qc_res = self.qc_engine.evaluate_cue(cue, next_c)
+                    scene_qc_results.append(qc_res)
+                    all_qc_results.append(qc_res)
+
+                    meaning_summary = ""
+                    interp_items = interp_result.items if interp_result else []
+                    for interp in interp_items:
+                        if cue.id in interp.cue_ids:
+                            meaning_summary = interp.intended_meaning
+                            break
+
+                    audit = self.verifier.verify_cue_if_needed(
+                        cue, qc_res, meaning_summary=meaning_summary, context_data=batch.context.model_dump()
+                    )
+
+                    if qc_res.requires_review or audit.escalated_to_human:
+                        self.review_queue.add_cue_for_review(cue, qc_res, batch.scene_id, audit)
+
+                    scene_translations_data.append({"cue_id": cue.id, "translation": cue.target_text or ""})
+
+                self.save_scene_checkpoint(
                     scene_id=batch.scene_id,
-                    cues_data=untr_data,
-                    interpretations=None,
-                    context_data=batch.context.model_dump(),
+                    translations=scene_translations_data,
+                    qc_results=[r.model_dump() for r in scene_qc_results],
                 )
-                tr_dict = {item.cue_ids[0]: item.translation for item in tr_resp.translations if item.cue_ids}
-                for cue in untranslated_cues:
-                    if cue.id in tr_dict:
-                        cue.target_text = tr_dict[cue.id]
+                logger.info(f"Completed and checkpointed scene {batch.scene_id}")
 
-            # Selective retiming & Adaptation
-            scene_qc_results = []
-            scene_translations_data = []
-
-            for idx, cue in enumerate(batch.cues):
-                next_c = batch.cues[idx + 1] if idx < len(batch.cues) - 1 else None
-                cue = self.adaptation_engine.apply_selective_retiming(cue, next_c)
-
-                # Format line breaks if needed
-                if cue.target_text:
-                    cue.target_text = self.adaptation_engine.format_semantic_line_breaks(cue.target_text)
-
-                qc_res = self.qc_engine.evaluate_cue(cue, next_c)
-                scene_qc_results.append(qc_res)
-                all_qc_results.append(qc_res)
-
-                # Second model verification if needed
-                audit = self.verifier.verify_cue_if_needed(cue, qc_res, meaning_summary="", context_data=batch.context.model_dump())
-                
-                if qc_res.requires_review or audit.escalated_to_human:
-                    self.review_queue.add_cue_for_review(cue, qc_res, batch.scene_id, audit)
-
-                scene_translations_data.append({"cue_id": cue.id, "translation": cue.target_text or ""})
-
-            # Checkpoint completed scene
-            self.save_scene_checkpoint(
-                scene_id=batch.scene_id,
-                translations=scene_translations_data,
-                qc_results=[r.model_dump() for r in scene_qc_results],
-            )
-            logger.info(f"Completed and checkpointed scene {batch.scene_id}")
+            except Exception as e:
+                logger.error(f"Scene {batch.scene_id} failed: {e}. Continuing with next scene.")
+                self.set_stage_status(f"SCENE_{batch.scene_id}", "failed")
+                # Generate placeholder QC results for failed scene cues
+                for cue in batch.cues:
+                    all_qc_results.append(QCEvaluationResult(
+                        cue_id=cue.id,
+                        overall_confidence=0.0,
+                        passed=False,
+                        requires_review=True,
+                    ))
+                continue
 
         self.set_stage_status("TRANSLATION_QC", "completed")
 

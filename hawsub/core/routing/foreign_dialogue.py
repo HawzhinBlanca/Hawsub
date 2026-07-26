@@ -88,6 +88,20 @@ class ForeignDialogueRouter:
             "turkish": "تورکی",
             "japanese": "ژاپۆنی",
             "chinese": "چینی",
+            "korean": "کۆری",
+            "portuguese": "پورتوگالی",
+            "hindi": "هیندی",
+            "persian": "فارسی",
+            "hebrew": "عیبری",
+            "dutch": "هۆڵەندی",
+            "swedish": "سویدی",
+            "polish": "پۆلەندی",
+            "greek": "یۆنانی",
+            "thai": "تایلەندی",
+            "vietnamese": "ڤیەتنامی",
+            "latin": "لاتینی",
+            "mandarin": "چینی ماندارین",
+            "cantonese": "چینی کانتۆنی",
         }
-        sorani_lang = lang_map.get(language.lower(), language)
+        sorani_lang = lang_map.get(language.lower().strip(), language)
         return self.normalizer.normalize(f"[{sorani_lang} دەدوێت]")

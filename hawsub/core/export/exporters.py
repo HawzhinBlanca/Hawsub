@@ -4,6 +4,7 @@ Export Module: SRT, ASS, VTT, Bilingual Debug HTML, and QC Audit Reports.
 
 import json
 import os
+import html as html_mod
 from typing import List, Optional, Dict, Any
 from hawsub.core.ingest.parser import SubtitleCueModel, SubtitleParser, format_timestamp_srt
 from hawsub.core.qc.engine import QCEvaluationResult
@@ -95,14 +96,16 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             qc = qc_map.get(cue.id)
             conf = f"{qc.overall_confidence:.2f}" if qc else "N/A"
             status_color = "#28a745" if (qc and qc.passed) else "#dc3545"
-            issues_str = ", ".join([i.message for i in qc.issues]) if qc else ""
+            issues_str = html_mod.escape(", ".join([i.message for i in qc.issues])) if qc else ""
+            source_escaped = html_mod.escape(cue.clean_source_text)
+            target_escaped = html_mod.escape(cue.target_text or '')
 
             rows.append(f"""
             <tr>
                 <td>{cue.id}</td>
                 <td>{format_timestamp_srt(cue.start_ms)} --&gt; {format_timestamp_srt(cue.end_ms)}</td>
-                <td>{cue.clean_source_text}</td>
-                <td dir="rtl">{cue.target_text or ''}</td>
+                <td>{source_escaped}</td>
+                <td dir="rtl">{target_escaped}</td>
                 <td style="color: {status_color}; font-weight: bold;">{conf}</td>
                 <td style="font-size: 0.85em; color: #555;">{issues_str}</td>
             </tr>

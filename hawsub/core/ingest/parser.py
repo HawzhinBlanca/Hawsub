@@ -73,11 +73,15 @@ def parse_timestamp_vtt(ts_str: str) -> int:
 
     sec_parts = sec_milli.split(".")
     seconds = int(sec_parts[0])
-    millis = int(sec_parts[1]) if len(sec_parts) > 1 else 0
-    if len(sec_parts[1]) == 2:
-        millis *= 10
-    elif len(sec_parts[1]) == 1:
-        millis *= 100
+    millis = 0
+    if len(sec_parts) > 1 and sec_parts[1]:
+        frac = sec_parts[1]
+        if len(frac) == 1:
+            millis = int(frac) * 100
+        elif len(frac) == 2:
+            millis = int(frac) * 10
+        else:
+            millis = int(frac[:3])
 
     return (int(hours) * 3600 + int(minutes) * 60 + seconds) * 1000 + millis
 
@@ -87,6 +91,9 @@ class SubtitleParser:
 
     @staticmethod
     def parse_srt(content: str) -> List[SubtitleCueModel]:
+        # Strip BOM if present
+        if content.startswith("\ufeff"):
+            content = content[1:]
         cues = []
         blocks = re.split(r"\n\s*\n", content.strip())
         
@@ -138,6 +145,9 @@ class SubtitleParser:
 
     @staticmethod
     def parse_vtt(content: str) -> List[SubtitleCueModel]:
+        # Strip BOM if present
+        if content.startswith("\ufeff"):
+            content = content[1:]
         lines = content.strip().split("\n")
         cues = []
         cue_idx = 1
@@ -184,3 +194,93 @@ class SubtitleParser:
             end_str = format_timestamp_srt(cue.end_ms)
             blocks.append(f"{idx}\n{start_str} --> {end_str}\n{text}")
         return "\n\n".join(blocks) + "\n"
+
+    @staticmethod
+    def parse_ass(content: str) -> List[SubtitleCueModel]:
+        """Parse ASS/SSA subtitle format."""
+        # Strip BOM if present
+        if content.startswith("\ufeff"):
+            content = content[1:]
+        cues = []
+        cue_idx = 1
+        in_events = False
+        format_fields: List[str] = []
+
+        for line in content.split("\n"):
+            line = line.strip()
+            if line.lower().startswith("[events]"):
+                in_events = True
+                continue
+            if line.startswith("[") and in_events:
+                break  # New section, stop
+
+            if in_events and line.lower().startswith("format:"):
+                fields_str = line.split(":", 1)[1]
+                format_fields = [f.strip().lower() for f in fields_str.split(",")]
+                continue
+
+            if in_events and line.startswith("Dialogue:"):
+                values_str = line.split(":", 1)[1].strip()
+                # ASS dialogue: split only up to the number of format fields minus 1
+                # The last field (Text) may contain commas
+                parts = values_str.split(",", len(format_fields) - 1) if format_fields else values_str.split(",", 9)
+
+                if not format_fields:
+                    # Default ASS format
+                    format_fields = ["layer", "start", "end", "style", "name",
+                                     "marginl", "marginr", "marginv", "effect", "text"]
+
+                field_map = {}
+                for i, field in enumerate(format_fields):
+                    if i < len(parts):
+                        field_map[field] = parts[i].strip()
+
+                start_str = field_map.get("start", "0:00:00.00")
+                end_str = field_map.get("end", "0:00:00.00")
+                text = field_map.get("text", "")
+
+                # Convert ASS line breaks to newlines
+                text = text.replace("\\N", "\n").replace("\\n", "\n")
+                # Remove ASS formatting tags like {\b1}, {\i1}, {\pos(x,y)}, etc.
+                text = re.sub(r"\{[^}]*\}", "", text)
+                text = text.strip()
+
+                if not text:
+                    continue
+
+                start_ms = _parse_ass_timestamp(start_str)
+                end_ms = _parse_ass_timestamp(end_str)
+
+                cues.append(
+                    SubtitleCueModel(
+                        id=cue_idx,
+                        start_ms=start_ms,
+                        end_ms=end_ms,
+                        source_text=text,
+                    )
+                )
+                cue_idx += 1
+
+        return cues
+
+    @staticmethod
+    def parse_auto(content: str, filename: str) -> List[SubtitleCueModel]:
+        """Auto-detect format from filename extension and parse."""
+        ext = filename.rsplit(".", 1)[-1].lower() if "." in filename else ""
+        if ext == "vtt":
+            return SubtitleParser.parse_vtt(content)
+        elif ext in ("ass", "ssa"):
+            return SubtitleParser.parse_ass(content)
+        else:
+            return SubtitleParser.parse_srt(content)
+
+
+def _parse_ass_timestamp(ts_str: str) -> int:
+    """Parse ASS timestamp 'H:MM:SS.cs' (centiseconds) to milliseconds."""
+    ts_str = ts_str.strip()
+    match = re.match(r"(\d+):(\d+):(\d+)\.(\d+)", ts_str)
+    if not match:
+        return 0
+    hours, minutes, seconds, centiseconds = map(int, match.groups())
+    return (hours * 3600 + minutes * 60 + seconds) * 1000 + centiseconds * 10
+

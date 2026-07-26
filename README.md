@@ -12,7 +12,87 @@ Its purpose is not generic machine translation. It is designed to produce high-q
 - subtitle-specific adaptation and QC;
 - exception-based human review.
 
-## Core strategy
+## Installation
+
+```bash
+# Clone the repository
+git clone <repo-url> && cd Hawsub
+
+# Create virtual environment
+python -m venv .venv
+source .venv/bin/activate   # macOS/Linux
+# .venv\Scripts\activate    # Windows
+
+# Install in development mode
+pip install -e ".[dev]"
+
+# (Optional) Install ASR support
+pip install -e ".[asr]"
+```
+
+### Requirements
+
+- Python ≥ 3.10
+- FFmpeg / FFprobe (for media handling)
+- At least one LLM API key (Google, OpenAI, Anthropic, or OpenRouter)
+
+### Environment Setup
+
+Copy the example `.env` file and add your API key(s):
+
+```bash
+cp .env.example .env
+# Edit .env and add: GOOGLE_API_KEY=your-key-here
+```
+
+## Quick Start
+
+### CLI — Process a subtitle file
+
+```bash
+# Full pipeline: English SRT → Sorani localized SRT/ASS/VTT + QC report
+hawsub process -i movie.en.srt -p my_film -o output/
+
+# Normalize Sorani text
+hawsub normalize -t "ئەمە تێست يە"
+
+# Run benchmark evaluation
+hawsub benchmark --provider google --model gemini-2.5-pro
+```
+
+### GUI — Interactive Workstation
+
+```bash
+hawsub gui --port 8080
+# Open http://127.0.0.1:8080 in your browser
+```
+
+### Output Files
+
+Each pipeline run produces 5 files:
+
+| File | Format | Description |
+|------|--------|-------------|
+| `*.ckb.srt` | SubRip | Standard subtitle file |
+| `*.ckb.ass` | Advanced SSA | Styled subtitle file |
+| `*.ckb.vtt` | WebVTT | Web-compatible subtitle file |
+| `*.bilingual.html` | HTML | Side-by-side English/Sorani debug inspector |
+| `*.qc_report.json` | JSON | QC audit with confidence scores and issues |
+
+## Configuration
+
+Default config is at `config/hawsub.yaml`. Override with:
+
+```bash
+hawsub process -i input.srt -c custom-config.yaml
+```
+
+Key settings:
+- **Provider**: `google`, `openai`, `anthropic`, `openrouter`, `local`, `mock`
+- **Model**: `gemini-2.5-pro`, `gpt-4o`, `claude-sonnet-4-20250514`, etc.
+- **QC Profile**: CPS, CPL, line count, duration, and gap thresholds
+
+## Core Strategy
 
 1. Prefer existing professional English subtitles/transcripts.
 2. Preserve source timing whenever valid.
@@ -25,33 +105,40 @@ Its purpose is not generic machine translation. It is designed to produce high-q
 9. Route uncertainty to a second model or human reviewer.
 10. Benchmark every model change on an expert-scored English → Sorani cinematic test set.
 
-## Recommended base
+## Testing
 
-- Core application: **pyVideoTrans** fork
-- Media handling: **FFmpeg / FFprobe**
-- Local English ASR fallback: **faster-whisper large-v3**
-- Initial semantic model: **Gemini 2.5 Pro** via provider adapter
-- Professional review: **Subtitle Edit**
-- Architectural reference: `rockbenben/subtitle-translator`
-- Target language: **Central Kurdish / Sorani (`ckb`)**
+```bash
+# Run all tests
+pytest tests/ -v
 
-## Important model policy
+# Run only unit tests
+pytest tests/unit/ -v
 
-The semantic model must be configurable. No production logic may depend directly on one vendor/model.
+# Run with coverage
+pytest tests/ --cov=hawsub --cov-report=term-missing
+```
 
-## Documentation map
+**Current status**: 140 tests passing, 96.7% benchmark score.
 
-- `BLUEPRINT.md` — full product blueprint
-- `ARCHITECTURE.md` — technical architecture and module boundaries
-- `DATA_MODEL.md` — project entities and schemas
-- `TASKS.md` — implementation backlog and milestone order
-- `QA_SPEC.md` — quality gates and acceptance criteria
-- `BENCHMARK_SPEC.md` — expert evaluation framework
-- `PROMPTS.md` — prompt contracts
-- `SORANI_STYLE_GUIDE.md` — language and orthographic standards
-- `CONFIG_SPEC.md` — runtime configuration schema
-- `RELIABILITY_SECURITY.md` — resumability, privacy, logging, secrets
-- `DEV_SETUP.md` — repository/dev setup guidance
-- `RELEASE_CHECKLIST.md` — definition of done for production release
-- `ROADMAP.md` — staged delivery plan
-- `ADR/` — architectural decisions
+## Important Model Policy
+
+> The semantic model must be configurable. No production logic may depend directly on one vendor/model.
+
+## Documentation
+
+| Document | Description |
+|----------|-------------|
+| `BLUEPRINT.md` | Full product blueprint |
+| `ARCHITECTURE.md` | Technical architecture and module boundaries |
+| `DATA_MODEL.md` | Project entities and schemas |
+| `SORANI_STYLE_GUIDE.md` | Language and orthographic standards |
+| `CONFIG_SPEC.md` | Runtime configuration schema |
+| `QA_SPEC.md` | Quality gates and acceptance criteria |
+| `BENCHMARK_SPEC.md` | Expert evaluation framework |
+| `RELEASE_CHECKLIST.md` | Production release definition of done |
+| `DEV_SETUP.md` | Repository and development setup |
+| `PROMPTS.md` | Prompt contracts |
+
+## License
+
+All rights reserved. See LICENSE for details.

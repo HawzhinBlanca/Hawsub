@@ -1,0 +1,13 @@
+.git
+.gitignore
+.venv
+venv
+__pycache__
+*.pyc
+*.hawsub.db
+.hawsub_cache
+output
+tmp
+.pytest_cache
+htmlcov
+.coverage

@@ -127,8 +127,19 @@ class SoraniNormalizer:
 
     def detect_untranslated_english(self, text: str) -> List[str]:
         """Find English words embedded in target subtitle text."""
-        # Exclude common tags or special codes
+        # Allowlisted abbreviations and common subtitle markers
+        ALLOWED_WORDS = {
+            # HTML tags
+            "i", "b", "u", "font", "color", "size", "br", "div", "span",
+            # Common subtitle abbreviations
+            "ok", "tv", "dvd", "dna", "fbi", "cia", "ngo", "usa",
+            "sms", "gps", "atm", "vip", "dj", "cd", "pc", "wi", "fi",
+            # Units and common proper nouns that should not be translated
+            "km", "kg", "mg", "mm", "cm", "ml",
+            # Common borrowed words used internationally
+            "taxi", "internet", "video", "radio", "facebook", "google",
+            "email", "telegram", "whatsapp", "youtube",
+        }
+        # Find words of 2+ characters
         words = re.findall(r"\b[A-Za-z]{2,}\b", text)
-        # Filter out HTML tags like <i>, <b>, <u>, font, etc.
-        html_tags = {"i", "b", "u", "font", "color", "size"}
-        return [w for w in words if w.lower() not in html_tags]
+        return [w for w in words if w.lower() not in ALLOWED_WORDS]

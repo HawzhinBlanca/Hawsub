@@ -12,12 +12,19 @@ dependencies = [
     "pydantic>=2.0.0",
     "pyyaml>=6.0",
     "click>=8.0.0",
+    "fastapi>=0.100.0",
+    "uvicorn>=0.20.0",
+    "python-multipart>=0.0.6",
 ]
 
 [project.optional-dependencies]
 dev = [
     "pytest>=8.0.0",
     "pytest-cov>=4.0.0",
+    "httpx>=0.24.0",
+]
+asr = [
+    "faster-whisper>=0.10.0",
 ]
 
 [project.scripts]
@@ -29,3 +36,4 @@ include = ["hawsub*"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = "test_*.py"
+

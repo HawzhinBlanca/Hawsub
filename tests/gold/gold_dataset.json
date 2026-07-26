@@ -73,5 +73,230 @@
       "لە سەر لاشەی مردووم!"
     ],
     "notes": "Extreme refusal expression."
+  },
+  {
+    "id": 6,
+    "source": "It's raining cats and dogs.",
+    "context": "Romantic comedy. Character looks out the window during a dramatic downpour.",
+    "intended_meaning": "It is raining very heavily.",
+    "gold_sorani": "بارانی زۆر دێت.",
+    "acceptable_alternatives": [
+      "سەرو ئاسمان باران دێت.",
+      "بارانێکی زۆر دەبارێت."
+    ],
+    "unacceptable_literal_examples": [
+      "پشیلە و سەگ باران دەبارێت."
+    ],
+    "notes": "Weather idiom for heavy rain."
+  },
+  {
+    "id": 7,
+    "source": "You stabbed me in the back!",
+    "context": "Corporate thriller. CEO confronts a partner who secretly sold their shares.",
+    "intended_meaning": "You betrayed me when I trusted you.",
+    "gold_sorani": "تۆ خیانەتت لێکردم!",
+    "acceptable_alternatives": [
+      "پشتت پێکردم و خیانەتت کرد.",
+      "تۆ ژەنۆمت لێ دام."
+    ],
+    "unacceptable_literal_examples": [
+      "تۆ چەقۆت لە پشتمدا دا."
+    ],
+    "notes": "Betrayal idiom — must not be translated literally as stabbing."
+  },
+  {
+    "id": 8,
+    "source": "Hold your horses!",
+    "context": "Adventure film. Team leader stops an impatient member from charging ahead.",
+    "intended_meaning": "Wait, be patient, slow down.",
+    "gold_sorani": "هێمن بە! چاوەڕوان بە!",
+    "acceptable_alternatives": [
+      "پەلە مەکە!",
+      "وەستە!"
+    ],
+    "unacceptable_literal_examples": [
+      "ئەسپەکانت بگرە!"
+    ],
+    "notes": "Patience idiom."
+  },
+  {
+    "id": 9,
+    "source": "Don't let the cat out of the bag.",
+    "context": "Spy thriller. Handler instructs agent not to reveal classified info.",
+    "intended_meaning": "Do not reveal the secret.",
+    "gold_sorani": "نهێنییەکە ئاشکرا مەکە.",
+    "acceptable_alternatives": [
+      "سڕی فاش مەکە.",
+      "بەکەسی مەڵێ."
+    ],
+    "unacceptable_literal_examples": [
+      "پشیلەکە لە جانتاکە دەرمەهێنە."
+    ],
+    "notes": "Secrecy idiom."
+  },
+  {
+    "id": 10,
+    "source": "I have bigger fish to fry.",
+    "context": "Police procedural. Detective dismisses a minor case to focus on a major investigation.",
+    "intended_meaning": "I have more important things to deal with.",
+    "gold_sorani": "کاری گرنگتر لەمە هەیە بۆ ئەنجامدان.",
+    "acceptable_alternatives": [
+      "کاری گەورەتر لەوە هەیە.",
+      "شتی گرنگتر هەیە."
+    ],
+    "unacceptable_literal_examples": [
+      "ماسیی گەورەتر هەیە بۆ سوڕکردن."
+    ],
+    "notes": "Priority idiom."
+  },
+  {
+    "id": 11,
+    "source": "Time to face the music.",
+    "context": "Legal drama. Lawyer tells client they must appear in court despite the risks.",
+    "intended_meaning": "It is time to accept responsibility and deal with the consequences.",
+    "gold_sorani": "کاتی ئەوەیە بەرگریت بکەیت و ئەنجامەکە قبوڵ بکەیت.",
+    "acceptable_alternatives": [
+      "دەبێت ڕووبەڕووی ئەنجامەکە ببیتەوە.",
+      "وەڵامی کارەکەت بدەیتەوە."
+    ],
+    "unacceptable_literal_examples": [
+      "کاتی ئەوەیە گوێ لە موسیقا بگریت."
+    ],
+    "notes": "Accountability idiom."
+  },
+  {
+    "id": 12,
+    "source": "Speak of the devil!",
+    "context": "Sitcom. Friends are talking about someone who suddenly walks in.",
+    "intended_meaning": "The person we were just talking about has arrived.",
+    "gold_sorani": "قسەی لێوە بوو!",
+    "acceptable_alternatives": [
+      "باسی دەکرد هات!",
+      "ناوی لێوەبوو هات!"
+    ],
+    "unacceptable_literal_examples": [
+      "قسە لە شەیتان بکە!"
+    ],
+    "notes": "Coincidence idiom."
+  },
+  {
+    "id": 13,
+    "source": "The ball is in your court.",
+    "context": "Negotiation scene. Business rival delivers final offer and waits for response.",
+    "intended_meaning": "It is now your decision to make.",
+    "gold_sorani": "ئێستا بڕیاردان لە دەستی تۆیە.",
+    "acceptable_alternatives": [
+      "نۆرەی تۆیە.",
+      "بڕیار بۆ تۆیە."
+    ],
+    "unacceptable_literal_examples": [
+      "تۆپەکە لە یاریگای تۆیە."
+    ],
+    "notes": "Decision responsibility idiom."
+  },
+  {
+    "id": 14,
+    "source": "He kicked the bucket.",
+    "context": "Dark comedy. Character casually reports the death of a disliked neighbor.",
+    "intended_meaning": "He died.",
+    "gold_sorani": "مرد.",
+    "acceptable_alternatives": [
+      "گیانی لێ چوو.",
+      "کۆچی دوایی کرد."
+    ],
+    "unacceptable_literal_examples": [
+      "شەپۆلەکەی پێ لێدا."
+    ],
+    "notes": "Death euphemism. Must be idiomatic, not literal."
+  },
+  {
+    "id": 15,
+    "source": "Keep your eyes peeled.",
+    "context": "War film. Sergeant warns soldiers to stay alert during a patrol.",
+    "intended_meaning": "Stay very alert and watch carefully.",
+    "gold_sorani": "ئاگادار بن و باش سەیر بکەن.",
+    "acceptable_alternatives": [
+      "چاوەکانتان لەسەر بێت.",
+      "وریا بن."
+    ],
+    "unacceptable_literal_examples": [
+      "چاوەکانتان بکەنەوە."
+    ],
+    "notes": "Alertness idiom in military context."
+  },
+  {
+    "id": 16,
+    "source": "Hit the nail on the head.",
+    "context": "Investigation scene. Detective identifies the exact motive behind the crime.",
+    "intended_meaning": "Described something with exact precision and correctness.",
+    "gold_sorani": "تەواو بە دروستی پێت گوت.",
+    "acceptable_alternatives": [
+      "تۆ دەستت خستە سەر ڕاستییەکە.",
+      "ڕێک بە ئامانجت پێکاوە."
+    ],
+    "unacceptable_literal_examples": [
+      "مێخەکەت بە سەریدا دا."
+    ],
+    "notes": "Accuracy idiom."
+  },
+  {
+    "id": 17,
+    "source": "I'm feeling under the weather.",
+    "context": "Drama. Main character declines a dinner invitation.",
+    "intended_meaning": "Feeling slightly ill or unwell.",
+    "gold_sorani": "کەمێک هەست بە نەخۆشی دەکەم.",
+    "acceptable_alternatives": [
+      "تەندروستیم باش نییە.",
+      "نەخۆشم."
+    ],
+    "unacceptable_literal_examples": [
+      "لە ژێر کەشوهەوادام."
+    ],
+    "notes": "Illness euphemism."
+  },
+  {
+    "id": 18,
+    "source": "Spill the beans!",
+    "context": "Comedy mystery. Friends demand a confession from someone keeping a secret.",
+    "intended_meaning": "Tell the truth or reveal the secret now.",
+    "gold_sorani": "سڕەکە ئاشکرا بکە!",
+    "acceptable_alternatives": [
+      "ڕاستییەکەم پێ بڵێ!",
+      "قسە بکە!"
+    ],
+    "unacceptable_literal_examples": [
+      "لۆبیاکە برێژە!"
+    ],
+    "notes": "Confession idiom."
+  },
+  {
+    "id": 19,
+    "source": "You're barking up the wrong tree.",
+    "context": "Thriller. Interrogated suspect warns detective they suspect the wrong person.",
+    "intended_meaning": "Following a completely mistaken line of thought or accusing the wrong person.",
+    "gold_sorani": "لە شوێنی هەڵەدا دەگەڕێیت.",
+    "acceptable_alternatives": [
+      "ئاراستەی هەڵەت گرتووە.",
+      "بە هەڵە گومانت لە من کردووە."
+    ],
+    "unacceptable_literal_examples": [
+      "وەڕین لە دارێکی هەڵە."
+    ],
+    "notes": "Misdirection idiom."
+  },
+  {
+    "id": 20,
+    "source": "I had to burn the midnight oil.",
+    "context": "Biopic. Researcher explains how they solved a difficult problem overnight.",
+    "intended_meaning": "Worked late into the night.",
+    "gold_sorani": "تا درەنگانی شەو کارم دەکرد.",
+    "acceptable_alternatives": [
+      "درەنگانی شەو خەریکی کار بووم.",
+      "شەونخوونیم کرد."
+    ],
+    "unacceptable_literal_examples": [
+      "ڕۆنی نیوەشەو بسوتێنە."
+    ],
+    "notes": "Late-night work idiom."
   }
 ]

@@ -4,7 +4,7 @@ Evaluates Semantic, Linguistic, and Technical quality dimensions for Hawsub.
 """
 
 import re
-from typing import List, Optional, Dict, Any
+from typing import List, Optional, Dict, Any, Tuple
 from pydantic import BaseModel, Field
 from hawsub.core.ingest.parser import SubtitleCueModel
 from hawsub.core.normalization.sorani import SoraniNormalizer
