@@ -82,5 +82,34 @@ def gui(port: int):
     start_gui(port=port)
 
 
+@cli.command()
+@click.option("--input", "-i", "input_path", required=True, type=click.Path(exists=True), help="Path to input subtitle file.")
+def inspect(input_path: str):
+    """Inspect and analyze subtitle file statistics (cue count, duration, words, CPS)."""
+    from hawsub.core.ingest.parser import SubtitleParser, format_timestamp_srt
+
+    with open(input_path, "r", encoding="utf-8-sig") as f:
+        content = f.read()
+
+    cues = SubtitleParser.parse_auto(content, input_path)
+    if not cues:
+        click.echo(click.style("Error: No subtitle cues parsed.", fg="red"))
+        return
+
+    total_cues = len(cues)
+    total_duration_sec = (cues[-1].end_ms - cues[0].start_ms) / 1000.0 if total_cues > 0 else 0
+    total_words = sum(len(c.clean_source_text.split()) for c in cues)
+    avg_cps = sum(len(c.clean_source_text) / max(0.1, c.duration_ms / 1000.0) for c in cues) / total_cues if total_cues > 0 else 0
+
+    click.echo("\n" + "=" * 50)
+    click.echo(click.style(f"Hawsub Subtitle Inspector — {os.path.basename(input_path)}", bold=True))
+    click.echo("=" * 50)
+    click.echo(f"Total Cues        : {total_cues}")
+    click.echo(f"Total Duration    : {total_duration_sec / 60.0:.2f} minutes ({format_timestamp_srt(cues[0].start_ms)} -> {format_timestamp_srt(cues[-1].end_ms)})")
+    click.echo(f"Total Word Count  : {total_words} words")
+    click.echo(f"Average Source CPS: {avg_cps:.1f} cps")
+    click.echo("=" * 50)
+
+
 if __name__ == "__main__":
     cli()

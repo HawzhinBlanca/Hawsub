@@ -28,6 +28,11 @@ class SoraniNormalizer:
     # Kurmanji Latin / Specific Character Set
     KURMANJI_SPECIFIC_CHARS = set("êîûşçÊÎÛŞÇ")
 
+    # Kurmanji specific Arabic script vocabulary markers
+    KURMANJI_ARABIC_MARKERS = {
+        "دکەت", "دکەن", "دبێت", "دبن", "ئەز", "تە", "وە", "وان", "هاتیە", "چوویە"
+    }
+
     def __init__(
         self,
         normalize_characters: bool = True,
@@ -39,11 +44,15 @@ class SoraniNormalizer:
         self.normalize_punctuation = normalize_punctuation
         self.convert_arabic_digits = convert_arabic_digits
         self.add_rtl_marks = add_rtl_marks
+        self._cache: Dict[str, str] = {}
 
     def normalize(self, text: str) -> str:
-        """Fully normalize Sorani Kurdish text."""
+        """Fully normalize Sorani Kurdish text with internal memoization for performance."""
         if not text:
             return ""
+
+        if text in self._cache:
+            return self._cache[text]
 
         result = text
 
@@ -58,6 +67,10 @@ class SoraniNormalizer:
 
         if self.add_rtl_marks:
             result = self.apply_rtl_safety(result)
+
+        # Cache up to 2000 entries
+        if len(self._cache) < 2000:
+            self._cache[text] = result
 
         return result
 
@@ -123,6 +136,13 @@ class SoraniNormalizer:
         for char in text:
             if char in self.KURMANJI_SPECIFIC_CHARS:
                 found.append(char)
+
+        # Check Arabic script Kurmanji markers
+        words = re.findall(r"[\u0600-\u06FF]+", text)
+        for w in words:
+            if w in self.KURMANJI_ARABIC_MARKERS:
+                found.append(w)
+
         return list(set(found))
 
     def detect_untranslated_english(self, text: str) -> List[str]:

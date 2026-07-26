@@ -445,6 +445,22 @@ def get_gui_index():
             showToast('Edit saved');
         }
 
+        window.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') {
+                e.preventDefault();
+                saveEdit();
+            } else if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                e.preventDefault();
+                approveCue();
+            } else if (e.altKey && e.key === 'ArrowRight') {
+                e.preventDefault();
+                nextCue();
+            } else if (e.altKey && e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevCue();
+            }
+        });
+
         async function triggerProcess() {
             if (!projectId) return;
             document.getElementById('progress-section').style.display = 'block';
