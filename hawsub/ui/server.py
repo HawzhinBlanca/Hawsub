@@ -32,6 +32,7 @@ def get_gui_index():
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hawsub — Production-grade English to Central Kurdish (Sorani, ckb) cinematic subtitle localization workstation.">
     <title>Hawsub — Sorani Subtitle Workstation</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -68,7 +69,7 @@ def get_gui_index():
             justify-content: space-between;
         }
         .logo { font-size: 1.25rem; font-weight: 700; color: var(--accent-blue); display: flex; align-items: center; gap: 8px; }
-        .badge { background: #0284c7; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; }
+        .badge { background: #0369a1; color: #ffffff; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; }
         .status-bar { display: flex; align-items: center; gap: 16px; font-size: 0.85rem; color: var(--text-muted); }
         .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
         .status-dot.ok { background: var(--accent-green); }
@@ -202,7 +203,7 @@ def get_gui_index():
         </div>
     </header>
 
-    <div class="workspace">
+    <main class="workspace">
         <!-- Left Sidebar: Cue List -->
         <div class="sidebar">
             <div class="section-header">
@@ -306,7 +307,7 @@ def get_gui_index():
             <button class="btn btn-secondary" style="width: 100%; justify-content: center;" onclick="exportFile('html')">Debug HTML</button>
             <button class="btn btn-secondary" style="width: 100%; justify-content: center;" onclick="exportFile('qc')">QC Report</button>
         </div>
-    </div>
+    </main>
 
     <script>
         let projectId = null;
