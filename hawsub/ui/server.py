@@ -586,6 +586,7 @@ async def api_process_project(project_id: str):
     """Run the full localization pipeline on a project."""
     from hawsub.core.ingest.parser import format_timestamp_srt
 
+    _validate_project_id(project_id)
     proj = active_projects.get(project_id)
     if not proj:
         raise HTTPException(status_code=404, detail="Project not found")
@@ -658,10 +659,20 @@ def api_list_projects():
     ]
 
 
+import re
+
+def _validate_project_id(project_id: str) -> str:
+    """Sanitize project_id to prevent path traversal or invalid characters."""
+    if not project_id or not re.match(r"^[a-zA-Z0-9_\-]+$", project_id):
+        raise HTTPException(status_code=400, detail="Invalid project ID format")
+    return project_id
+
+
 @app.get("/api/project/{project_id}")
 def api_get_project(project_id: str):
     """Retrieve details and formatted cues for a specific project."""
     from hawsub.core.ingest.parser import format_timestamp_srt
+    _validate_project_id(project_id)
     proj = active_projects.get(project_id)
     if not proj:
         raise HTTPException(status_code=404, detail="Project not found")
@@ -685,6 +696,7 @@ def api_get_project(project_id: str):
 
 @app.get("/api/export/{project_id}/{format}")
 def api_export(project_id: str, format: str):
+    _validate_project_id(project_id)
     proj = active_projects.get(project_id)
     if not proj:
         raise HTTPException(status_code=404, detail="Project not found")
