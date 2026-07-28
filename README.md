@@ -47,17 +47,20 @@ cp .env.example .env
 
 ## Quick Start
 
-### CLI — Process a subtitle file
+### CLI — Process, Inspect & Benchmark
 
 ```bash
 # Full pipeline: English SRT → Sorani localized SRT/ASS/VTT + QC report
 hawsub process -i movie.en.srt -p my_film -o output/
 
-# Normalize Sorani text
-hawsub normalize -t "ئەمە تێست يە"
+# Inspect subtitle statistics (cue count, duration, word count, reading speed)
+hawsub inspect -i movie.en.srt
 
-# Run benchmark evaluation
-hawsub benchmark --provider google --model gemini-2.5-pro
+# Normalize Sorani text to canonical Central Kurdish orthography
+hawsub normalize -t "سڵاو كوردستان"
+
+# Run gold benchmark evaluation suite
+hawsub benchmark --provider mock --model gemini-2.5-pro
 ```
 
 ### GUI — Interactive Workstation
@@ -67,14 +70,26 @@ hawsub gui --port 8080
 # Open http://127.0.0.1:8080 in your browser
 ```
 
+**GUI Keyboard Shortcuts**:
+- `Cmd + S` / `Ctrl + S`: Save cue edit
+- `Cmd + Enter` / `Ctrl + Enter`: Accept cue & advance
+- `Alt + Right` / `Alt + Left`: Next / Previous cue
+
+### Key System Engines
+
+- **SubtitleSyncEngine**: Timestamp offset shift, framerate conversion (23.976 → 25 fps), and 2-point linear regression drift correction.
+- **TranslationDiffEngine**: Word Error Rate (WER) and Character Error Rate (CER) calculation with inline HTML diffs between model output and human edits.
+- **SoraniCulturalComplianceEngine**: Cultural sensitivity and broadcast safety audit engine for Central Kurdish media standards.
+- **TranslationEnsembleEngine**: Dual-model semantic consensus verification across primary and secondary LLMs.
+
 ### Output Files
 
 Each pipeline run produces 5 files:
 
 | File | Format | Description |
 |------|--------|-------------|
-| `*.ckb.srt` | SubRip | Standard subtitle file |
-| `*.ckb.ass` | Advanced SSA | Styled subtitle file |
+| `*.ckb.srt` | SubRip | Standard Sorani subtitle file |
+| `*.ckb.ass` | Advanced SSA | Styled subtitle file with custom Kurdish fonts |
 | `*.ckb.vtt` | WebVTT | Web-compatible subtitle file |
 | `*.bilingual.html` | HTML | Side-by-side English/Sorani debug inspector |
 | `*.qc_report.json` | JSON | QC audit with confidence scores and issues |
