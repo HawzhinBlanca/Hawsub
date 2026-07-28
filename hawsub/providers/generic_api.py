@@ -116,14 +116,19 @@ class GenericAPIModel(SemanticModel):
 
     def _extract_content(self, response: Dict[str, Any]) -> str:
         """Extract text content from provider response regardless of format."""
+        if not response or not isinstance(response, dict):
+            return ""
+
         # OpenAI/OpenRouter/Local format
-        if "choices" in response:
-            return response["choices"][0]["message"]["content"]
+        if "choices" in response and isinstance(response["choices"], list) and len(response["choices"]) > 0:
+            choice = response["choices"][0]
+            if isinstance(choice, dict) and "message" in choice:
+                return choice["message"].get("content", "")
         # Anthropic format
-        if "content" in response and isinstance(response["content"], list):
+        if "content" in response and isinstance(response["content"], list) and len(response["content"]) > 0:
             return response["content"][0].get("text", "")
         # Google Gemini format
-        if "candidates" in response:
+        if "candidates" in response and isinstance(response["candidates"], list) and len(response["candidates"]) > 0:
             parts = response["candidates"][0].get("content", {}).get("parts", [])
             return parts[0].get("text", "") if parts else ""
         return ""
