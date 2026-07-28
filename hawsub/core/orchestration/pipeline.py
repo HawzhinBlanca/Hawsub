@@ -68,7 +68,8 @@ class DurablePipeline:
 
     def _init_sqlite(self) -> None:
         """Initialize project SQLite database schema for state checkpointing."""
-        with sqlite3.connect(self.db_path) as conn:
+        conn = sqlite3.connect(self.db_path)
+        try:
             cursor = conn.cursor()
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS project_state (
@@ -89,18 +90,24 @@ class DurablePipeline:
                 );
             """)
             conn.commit()
+        finally:
+            conn.close()
 
     def set_stage_status(self, stage: str, status: str) -> None:
-        with sqlite3.connect(self.db_path) as conn:
+        conn = sqlite3.connect(self.db_path)
+        try:
             cursor = conn.cursor()
             cursor.execute(
                 "INSERT OR REPLACE INTO project_state (project_id, status, current_stage) VALUES (?, ?, ?)",
                 (self.project_id, status, stage),
             )
             conn.commit()
+        finally:
+            conn.close()
 
     def get_scene_checkpoint(self, scene_id: str) -> Optional[Dict[str, Any]]:
-        with sqlite3.connect(self.db_path) as conn:
+        conn = sqlite3.connect(self.db_path)
+        try:
             cursor = conn.cursor()
             cursor.execute(
                 "SELECT status, translations_json, qc_results_json FROM scene_checkpoints WHERE scene_id = ?",
@@ -112,18 +119,23 @@ class DurablePipeline:
                     "translations": json.loads(row[1]),
                     "qc_results": json.loads(row[2]),
                 }
+        finally:
+            conn.close()
         return None
 
     def save_scene_checkpoint(
         self, scene_id: str, translations: List[Dict[str, Any]], qc_results: List[Dict[str, Any]]
     ) -> None:
-        with sqlite3.connect(self.db_path) as conn:
+        conn = sqlite3.connect(self.db_path)
+        try:
             cursor = conn.cursor()
             cursor.execute(
                 "INSERT OR REPLACE INTO scene_checkpoints (scene_id, project_id, status, translations_json, qc_results_json) VALUES (?, ?, 'completed', ?, ?)",
                 (scene_id, self.project_id, json.dumps(translations, ensure_ascii=False), json.dumps(qc_results, ensure_ascii=False)),
             )
             conn.commit()
+        finally:
+            conn.close()
 
     def process_file(
         self, input_subtitle_path: str, output_dir: str = "output"

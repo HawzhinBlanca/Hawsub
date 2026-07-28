@@ -26,7 +26,8 @@ class TranslationMemory:
         self._init_db()
 
     def _init_db(self) -> None:
-        with sqlite3.connect(self.db_path) as conn:
+        conn = sqlite3.connect(self.db_path)
+        try:
             cursor = conn.cursor()
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS translation_memory (
@@ -38,17 +39,22 @@ class TranslationMemory:
                 );
             """)
             conn.commit()
+        finally:
+            conn.close()
 
     def store_translation(self, source_text: str, target_text: str, context_notes: Optional[str] = None) -> None:
         if not source_text or not target_text:
             return
-        with sqlite3.connect(self.db_path) as conn:
+        conn = sqlite3.connect(self.db_path)
+        try:
             cursor = conn.cursor()
             cursor.execute(
                 "INSERT OR REPLACE INTO translation_memory (source_text, target_text, context_notes) VALUES (?, ?, ?)",
                 (source_text.strip(), target_text.strip(), context_notes),
             )
             conn.commit()
+        finally:
+            conn.close()
 
     def find_fuzzy_match(self, source_text: str, threshold: float = 0.85) -> Optional[TMEntry]:
         if not source_text:
@@ -56,10 +62,13 @@ class TranslationMemory:
         
         source_clean = source_text.strip().lower()
 
-        with sqlite3.connect(self.db_path) as conn:
+        conn = sqlite3.connect(self.db_path)
+        try:
             cursor = conn.cursor()
             cursor.execute("SELECT id, source_text, target_text, context_notes FROM translation_memory")
             rows = cursor.fetchall()
+        finally:
+            conn.close()
 
         best_entry = None
         best_ratio = 0.0
