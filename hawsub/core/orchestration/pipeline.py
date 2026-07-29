@@ -115,6 +115,21 @@ class DurablePipeline:
         finally:
             conn.close()
 
+    def get_stage_status(self, stage: str) -> Optional[str]:
+        """Get the current status of a pipeline stage."""
+        conn = sqlite3.connect(self.db_path)
+        try:
+            cursor = conn.cursor()
+            cursor.execute(
+                "SELECT status FROM project_state WHERE project_id = ? AND current_stage = ?",
+                (self.project_id, stage),
+            )
+            row = cursor.fetchone()
+            return row[0] if row else None
+        finally:
+            conn.close()
+
+
     def get_scene_checkpoint(self, scene_id: str) -> Optional[Dict[str, Any]]:
         conn = sqlite3.connect(self.db_path)
         try:
@@ -309,16 +324,62 @@ class DurablePipeline:
                 logger.info(f"Completed and checkpointed scene {batch.scene_id}")
 
             except Exception as e:
-                logger.error(f"Scene {batch.scene_id} failed: {e}. Continuing with next scene.")
-                self.set_stage_status(f"SCENE_{batch.scene_id}", "failed")
-                # Generate placeholder QC results for failed scene cues
-                for cue in batch.cues:
-                    all_qc_results.append(QCEvaluationResult(
-                        cue_id=cue.id,
-                        overall_confidence=0.0,
-                        passed=False,
-                        requires_review=True,
-                    ))
+                # Per-scene retry with exponential backoff
+                import time
+                MAX_SCENE_RETRIES = 2
+                retry_success = False
+
+                for retry_num in range(1, MAX_SCENE_RETRIES + 1):
+                    logger.warning(
+                        f"Scene {batch.scene_id} failed (attempt {retry_num}/{MAX_SCENE_RETRIES}): {e}"
+                    )
+                    backoff_seconds = 2 ** retry_num
+                    time.sleep(min(backoff_seconds, 10))
+
+                    try:
+                        # Re-attempt only the translation step for failed scene
+                        untranslated = [c for c in batch.cues if not c.target_text]
+                        if untranslated:
+                            untr_data = [{"id": c.id, "source_text": c.clean_source_text} for c in untranslated]
+                            tr_resp = self.provider.translate_scene(
+                                scene_id=batch.scene_id,
+                                cues_data=untr_data,
+                                interpretations=None,
+                                context_data={},
+                            )
+                            tr_dict = {item.cue_ids[0]: item.translation for item in tr_resp.translations if item.cue_ids}
+                            for cue in untranslated:
+                                if cue.id in tr_dict:
+                                    cue.target_text = tr_dict[cue.id]
+
+                        # Re-run QC on recovered cues
+                        for cue in batch.cues:
+                            qc_res = self.qc_engine.evaluate_cue(cue)
+                            all_qc_results.append(qc_res)
+
+                        self.save_scene_checkpoint(
+                            scene_id=batch.scene_id,
+                            translations=[{"cue_id": c.id, "translation": c.target_text or ""} for c in batch.cues],
+                            qc_results=[r.model_dump() for r in all_qc_results[-len(batch.cues):]],
+                        )
+                        logger.info(f"Scene {batch.scene_id} recovered on retry {retry_num}")
+                        retry_success = True
+                        break
+                    except Exception as retry_e:
+                        logger.error(f"Scene {batch.scene_id} retry {retry_num} also failed: {retry_e}")
+                        continue
+
+                if not retry_success:
+                    logger.error(f"Scene {batch.scene_id} failed after {MAX_SCENE_RETRIES} retries. Marking as failed.")
+                    self.set_stage_status(f"SCENE_{batch.scene_id}", "failed")
+                    # Generate placeholder QC results for failed scene cues
+                    for cue in batch.cues:
+                        all_qc_results.append(QCEvaluationResult(
+                            cue_id=cue.id,
+                            overall_confidence=0.0,
+                            passed=False,
+                            requires_review=True,
+                        ))
                 continue
 
         self.set_stage_status("TRANSLATION_QC", "completed")
@@ -342,6 +403,20 @@ class DurablePipeline:
         # Log TM hit-rate
         tm_hit_rate = round(self._tm_hits / self._tm_lookups * 100, 1) if self._tm_lookups > 0 else 0.0
         logger.info(f"TM hit rate: {self._tm_hits}/{self._tm_lookups} ({tm_hit_rate}%)")
+
+        # Compute quality summary
+        total_cues = len(all_qc_results)
+        passed_cues = sum(1 for r in all_qc_results if r.passed)
+        critical_issues = sum(1 for r in all_qc_results for i in r.issues if i.severity == "critical")
+        failed_scenes = sum(1 for batch in scene_batches if self.get_stage_status(f"SCENE_{batch.scene_id}") == "failed")
+        review_queue_size = len(self.review_queue.get_pending_items())
+
+        pass_rate = round(passed_cues / total_cues * 100, 1) if total_cues > 0 else 0.0
+        logger.info(
+            f"Quality summary: {passed_cues}/{total_cues} passed ({pass_rate}%), "
+            f"{critical_issues} critical issues, {failed_scenes} failed scenes, "
+            f"{review_queue_size} pending reviews"
+        )
         logger.info(f"Hawsub pipeline finished successfully for project {self.project_id}")
 
         return {
@@ -351,4 +426,13 @@ class DurablePipeline:
             "bilingual_html": html_path,
             "qc_report": qc_report_path,
             "tm_hit_rate": tm_hit_rate,
+            "quality_summary": {
+                "total_cues": total_cues,
+                "passed_cues": passed_cues,
+                "pass_rate": pass_rate,
+                "critical_issues": critical_issues,
+                "failed_scenes": failed_scenes,
+                "review_queue_size": review_queue_size,
+            },
         }
+
