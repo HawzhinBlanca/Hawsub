@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hawsub — Production-grade English to Central Kurdish (Sorani, ckb) cinematic subtitle localization workstation.">
+  <meta name="theme-color" content="#0a0f1a">
+  <title>Hawsub — Sorani Subtitle Workstation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <div class="logo">
+        <span class="logo-icon">◈</span>
+        <span>Hawsub</span>
+        <span class="version-badge">v1.0</span>
+      </div>
+    </div>
+    <div class="header-center">
+      <span class="project-name">No Project</span>
+    </div>
+    <div class="header-right">
+      <div class="status-indicator">
+        <span class="status-dot warn"></span>
+        <span class="status-text">Ready</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Workspace -->
+  <div class="workspace">
+    <!-- Sidebar: Cue List -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span class="sidebar-title">Subtitle Cues</span>
+        </div>
+        <div class="sidebar-stats">
+          <span class="stat-chip"><span class="count">0</span> total</span>
+        </div>
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" class="search-input" placeholder="Search cues..." aria-label="Search subtitle cues">
+        </div>
+      </div>
+      <div class="heatmap-bar" title="Translation confidence heatmap"></div>
+      <div class="cue-list" id="cueList">
+        <!-- Dynamically populated -->
+      </div>
+    </aside>
+
+    <!-- Editor Panel -->
+    <main class="editor-panel" id="editorPanel">
+      <!-- Populated by app.js -->
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-left">
+      <span>Hawsub Subtitle Workstation</span>
+    </div>
+    <div class="footer-right">
+      <span class="shortcut-hint">
+        <span class="shortcut-key">⌘S</span> Save
+        <span class="shortcut-key">⌘↵</span> Accept
+        <span class="shortcut-key">⌥→</span> Next
+        <span class="shortcut-key">⌥←</span> Prev
+        <span class="shortcut-key">⌘O</span> Open
+      </span>
+    </div>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

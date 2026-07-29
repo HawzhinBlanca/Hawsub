@@ -65,7 +65,7 @@ hawsub validate -i output/movie.ckb.srt
 # Normalize Sorani text to canonical Central Kurdish orthography
 hawsub normalize -t "سڵاو كوردستان"
 
-# Run gold benchmark evaluation suite
+# Run gold benchmark evaluation suite (200 items, 10 categories)
 hawsub benchmark --provider mock --model gemini-2.5-pro
 
 # Manage human correction feedback
@@ -143,7 +143,21 @@ pytest tests/unit/ -v
 pytest tests/ --cov=hawsub --cov-report=term-missing
 ```
 
-**Current status**: 288 tests passing, 96.7% benchmark score.
+**Current status**: 314 tests passing, 200-item gold benchmark across 10 cinematic categories.
+
+## Docker
+
+```bash
+# Build and run with Docker Compose
+docker compose up --build
+
+# Access the workstation at http://localhost:8080
+
+# With API authentication
+HAWSUB_GUI_TOKEN=your-secret-token docker compose up
+```
+
+The Docker image runs as a non-root user with health checks enabled.
 
 ## Important Model Policy
 

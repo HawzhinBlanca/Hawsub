@@ -22,6 +22,8 @@ dev = [
     "pytest>=8.0.0",
     "pytest-cov>=4.0.0",
     "httpx>=0.24.0",
+    "httpx2>=2.0.0",
+    "ruff>=0.5.0",
 ]
 asr = [
     "faster-whisper>=0.10.0",

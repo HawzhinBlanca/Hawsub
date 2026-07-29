@@ -1,302 +1,211 @@
 [
-  {
-    "id": 1,
-    "source": "You're pushing your luck.",
-    "context": "Crime drama scene. A detective warns a suspect who is being confrontational.",
-    "intended_meaning": "You are taking increasingly dangerous risks and are being warned to stop.",
-    "gold_sorani": "تۆ زێدەڕۆیی لە بەختت دەکەیت.",
-    "acceptable_alternatives": [
-      "تۆ یاری بە بەختی خۆت دەکەیت.",
-      "بەختت تاقیمەکەره‌وە."
-    ],
-    "unacceptable_literal_examples": [
-      "تۆ پاڵ بە بەختتەوە دەنێیت."
-    ],
-    "notes": "Idiomatic expression warning against escalating risk."
-  },
-  {
-    "id": 2,
-    "source": "Bite your tongue!",
-    "context": "Family drama. An elder reprimands a young family member for disrespectful speech.",
-    "intended_meaning": "Stop talking immediately and do not say such disrespectful things.",
-    "gold_sorani": "زمانت بگرە!",
-    "acceptable_alternatives": [
-      "دەمت بگرە!",
-      "دەنگت بڕە!"
-    ],
-    "unacceptable_literal_examples": [
-      "گازت لە زمانت بگرە!"
-    ],
-    "notes": "Idiom commanding silence."
-  },
-  {
-    "id": 3,
-    "source": "Break a leg!",
-    "context": "Backstage before a theater performance.",
-    "intended_meaning": "Good luck on your performance.",
-    "gold_sorani": "بەختی باشت هەبێت!",
-    "acceptable_alternatives": [
-      "سەرکەوتوو بێت!",
-      "بەختێکی باش!"
-    ],
-    "unacceptable_literal_examples": [
-      "قاچێک بشکێنە!"
-    ],
-    "notes": "Classic theatrical idiom meaning good luck."
-  },
-  {
-    "id": 4,
-    "source": "I am in over my head.",
-    "context": "Suspense thriller. Protagonist realizes a conspiracy is far larger than anticipated.",
-    "intended_meaning": "I am involved in a situation that is far too difficult for me to handle.",
-    "gold_sorani": "من لە سەرتاپای ئەم بابەتەدا نوقم بووم.",
-    "acceptable_alternatives": [
-      "ئەم بابەتە لە توانای من بەدەرە.",
-      "تێوەگلاوم لە کارێک کە لە من بەدەرە."
-    ],
-    "unacceptable_literal_examples": [
-      "من لە سەرەوەی سەرمدا."
-    ],
-    "notes": "Overwhelmed by circumstances idiom."
-  },
-  {
-    "id": 5,
-    "source": "Over my dead body!",
-    "context": "Action conflict. Father refuses to allow villain to take his children.",
-    "intended_meaning": "I will never permit this to happen under any circumstances.",
-    "gold_sorani": "تەنها بەسەر تەرمەکەمدا!",
-    "acceptable_alternatives": [
-      "مەگەر بەسەر تەرمی مندا تێپەڕیت!",
-      "ڕێگە نادەم تا زیندووم!"
-    ],
-    "unacceptable_literal_examples": [
-      "لە سەر لاشەی مردووم!"
-    ],
-    "notes": "Extreme refusal expression."
-  },
-  {
-    "id": 6,
-    "source": "It's raining cats and dogs.",
-    "context": "Romantic comedy. Character looks out the window during a dramatic downpour.",
-    "intended_meaning": "It is raining very heavily.",
-    "gold_sorani": "بارانی زۆر دێت.",
-    "acceptable_alternatives": [
-      "سەرو ئاسمان باران دێت.",
-      "بارانێکی زۆر دەبارێت."
-    ],
-    "unacceptable_literal_examples": [
-      "پشیلە و سەگ باران دەبارێت."
-    ],
-    "notes": "Weather idiom for heavy rain."
-  },
-  {
-    "id": 7,
-    "source": "You stabbed me in the back!",
-    "context": "Corporate thriller. CEO confronts a partner who secretly sold their shares.",
-    "intended_meaning": "You betrayed me when I trusted you.",
-    "gold_sorani": "تۆ خیانەتت لێکردم!",
-    "acceptable_alternatives": [
-      "پشتت پێکردم و خیانەتت کرد.",
-      "تۆ ژەنۆمت لێ دام."
-    ],
-    "unacceptable_literal_examples": [
-      "تۆ چەقۆت لە پشتمدا دا."
-    ],
-    "notes": "Betrayal idiom — must not be translated literally as stabbing."
-  },
-  {
-    "id": 8,
-    "source": "Hold your horses!",
-    "context": "Adventure film. Team leader stops an impatient member from charging ahead.",
-    "intended_meaning": "Wait, be patient, slow down.",
-    "gold_sorani": "هێمن بە! چاوەڕوان بە!",
-    "acceptable_alternatives": [
-      "پەلە مەکە!",
-      "وەستە!"
-    ],
-    "unacceptable_literal_examples": [
-      "ئەسپەکانت بگرە!"
-    ],
-    "notes": "Patience idiom."
-  },
-  {
-    "id": 9,
-    "source": "Don't let the cat out of the bag.",
-    "context": "Spy thriller. Handler instructs agent not to reveal classified info.",
-    "intended_meaning": "Do not reveal the secret.",
-    "gold_sorani": "نهێنییەکە ئاشکرا مەکە.",
-    "acceptable_alternatives": [
-      "سڕی فاش مەکە.",
-      "بەکەسی مەڵێ."
-    ],
-    "unacceptable_literal_examples": [
-      "پشیلەکە لە جانتاکە دەرمەهێنە."
-    ],
-    "notes": "Secrecy idiom."
-  },
-  {
-    "id": 10,
-    "source": "I have bigger fish to fry.",
-    "context": "Police procedural. Detective dismisses a minor case to focus on a major investigation.",
-    "intended_meaning": "I have more important things to deal with.",
-    "gold_sorani": "کاری گرنگتر لەمە هەیە بۆ ئەنجامدان.",
-    "acceptable_alternatives": [
-      "کاری گەورەتر لەوە هەیە.",
-      "شتی گرنگتر هەیە."
-    ],
-    "unacceptable_literal_examples": [
-      "ماسیی گەورەتر هەیە بۆ سوڕکردن."
-    ],
-    "notes": "Priority idiom."
-  },
-  {
-    "id": 11,
-    "source": "Time to face the music.",
-    "context": "Legal drama. Lawyer tells client they must appear in court despite the risks.",
-    "intended_meaning": "It is time to accept responsibility and deal with the consequences.",
-    "gold_sorani": "کاتی ئەوەیە بەرگریت بکەیت و ئەنجامەکە قبوڵ بکەیت.",
-    "acceptable_alternatives": [
-      "دەبێت ڕووبەڕووی ئەنجامەکە ببیتەوە.",
-      "وەڵامی کارەکەت بدەیتەوە."
-    ],
-    "unacceptable_literal_examples": [
-      "کاتی ئەوەیە گوێ لە موسیقا بگریت."
-    ],
-    "notes": "Accountability idiom."
-  },
-  {
-    "id": 12,
-    "source": "Speak of the devil!",
-    "context": "Sitcom. Friends are talking about someone who suddenly walks in.",
-    "intended_meaning": "The person we were just talking about has arrived.",
-    "gold_sorani": "قسەی لێوە بوو!",
-    "acceptable_alternatives": [
-      "باسی دەکرد هات!",
-      "ناوی لێوەبوو هات!"
-    ],
-    "unacceptable_literal_examples": [
-      "قسە لە شەیتان بکە!"
-    ],
-    "notes": "Coincidence idiom."
-  },
-  {
-    "id": 13,
-    "source": "The ball is in your court.",
-    "context": "Negotiation scene. Business rival delivers final offer and waits for response.",
-    "intended_meaning": "It is now your decision to make.",
-    "gold_sorani": "ئێستا بڕیاردان لە دەستی تۆیە.",
-    "acceptable_alternatives": [
-      "نۆرەی تۆیە.",
-      "بڕیار بۆ تۆیە."
-    ],
-    "unacceptable_literal_examples": [
-      "تۆپەکە لە یاریگای تۆیە."
-    ],
-    "notes": "Decision responsibility idiom."
-  },
-  {
-    "id": 14,
-    "source": "He kicked the bucket.",
-    "context": "Dark comedy. Character casually reports the death of a disliked neighbor.",
-    "intended_meaning": "He died.",
-    "gold_sorani": "مرد.",
-    "acceptable_alternatives": [
-      "گیانی لێ چوو.",
-      "کۆچی دوایی کرد."
-    ],
-    "unacceptable_literal_examples": [
-      "شەپۆلەکەی پێ لێدا."
-    ],
-    "notes": "Death euphemism. Must be idiomatic, not literal."
-  },
-  {
-    "id": 15,
-    "source": "Keep your eyes peeled.",
-    "context": "War film. Sergeant warns soldiers to stay alert during a patrol.",
-    "intended_meaning": "Stay very alert and watch carefully.",
-    "gold_sorani": "ئاگادار بن و باش سەیر بکەن.",
-    "acceptable_alternatives": [
-      "چاوەکانتان لەسەر بێت.",
-      "وریا بن."
-    ],
-    "unacceptable_literal_examples": [
-      "چاوەکانتان بکەنەوە."
-    ],
-    "notes": "Alertness idiom in military context."
-  },
-  {
-    "id": 16,
-    "source": "Hit the nail on the head.",
-    "context": "Investigation scene. Detective identifies the exact motive behind the crime.",
-    "intended_meaning": "Described something with exact precision and correctness.",
-    "gold_sorani": "تەواو بە دروستی پێت گوت.",
-    "acceptable_alternatives": [
-      "تۆ دەستت خستە سەر ڕاستییەکە.",
-      "ڕێک بە ئامانجت پێکاوە."
-    ],
-    "unacceptable_literal_examples": [
-      "مێخەکەت بە سەریدا دا."
-    ],
-    "notes": "Accuracy idiom."
-  },
-  {
-    "id": 17,
-    "source": "I'm feeling under the weather.",
-    "context": "Drama. Main character declines a dinner invitation.",
-    "intended_meaning": "Feeling slightly ill or unwell.",
-    "gold_sorani": "کەمێک هەست بە نەخۆشی دەکەم.",
-    "acceptable_alternatives": [
-      "تەندروستیم باش نییە.",
-      "نەخۆشم."
-    ],
-    "unacceptable_literal_examples": [
-      "لە ژێر کەشوهەوادام."
-    ],
-    "notes": "Illness euphemism."
-  },
-  {
-    "id": 18,
-    "source": "Spill the beans!",
-    "context": "Comedy mystery. Friends demand a confession from someone keeping a secret.",
-    "intended_meaning": "Tell the truth or reveal the secret now.",
-    "gold_sorani": "سڕەکە ئاشکرا بکە!",
-    "acceptable_alternatives": [
-      "ڕاستییەکەم پێ بڵێ!",
-      "قسە بکە!"
-    ],
-    "unacceptable_literal_examples": [
-      "لۆبیاکە برێژە!"
-    ],
-    "notes": "Confession idiom."
-  },
-  {
-    "id": 19,
-    "source": "You're barking up the wrong tree.",
-    "context": "Thriller. Interrogated suspect warns detective they suspect the wrong person.",
-    "intended_meaning": "Following a completely mistaken line of thought or accusing the wrong person.",
-    "gold_sorani": "لە شوێنی هەڵەدا دەگەڕێیت.",
-    "acceptable_alternatives": [
-      "ئاراستەی هەڵەت گرتووە.",
-      "بە هەڵە گومانت لە من کردووە."
-    ],
-    "unacceptable_literal_examples": [
-      "وەڕین لە دارێکی هەڵە."
-    ],
-    "notes": "Misdirection idiom."
-  },
-  {
-    "id": 20,
-    "source": "I had to burn the midnight oil.",
-    "context": "Biopic. Researcher explains how they solved a difficult problem overnight.",
-    "intended_meaning": "Worked late into the night.",
-    "gold_sorani": "تا درەنگانی شەو کارم دەکرد.",
-    "acceptable_alternatives": [
-      "درەنگانی شەو خەریکی کار بووم.",
-      "شەونخوونیم کرد."
-    ],
-    "unacceptable_literal_examples": [
-      "ڕۆنی نیوەشەو بسوتێنە."
-    ],
-    "notes": "Late-night work idiom."
-  }
+  {"id": 1, "category": "idioms", "source": "You're pushing your luck.", "context": "Crime drama scene. A detective warns a suspect who is being confrontational.", "intended_meaning": "You are taking increasingly dangerous risks and are being warned to stop.", "gold_sorani": "تۆ زێدەڕۆیی لە بەختت دەکەیت.", "acceptable_alternatives": ["تۆ یاری بە بەختی خۆت دەکەیت.", "بەختت تاقیمەکەره‌وە."], "unacceptable_literal_examples": ["تۆ پاڵ بە بەختتەوە دەنێیت."], "notes": "Idiomatic expression warning against escalating risk."},
+  {"id": 2, "category": "idioms", "source": "Bite your tongue!", "context": "Family drama. An elder reprimands a young family member for disrespectful speech.", "intended_meaning": "Stop talking immediately and do not say such disrespectful things.", "gold_sorani": "زمانت بگرە!", "acceptable_alternatives": ["دەمت بگرە!", "دەنگت بڕە!"], "unacceptable_literal_examples": ["گازت لە زمانت بگرە!"], "notes": "Idiom commanding silence."},
+  {"id": 3, "category": "idioms", "source": "Break a leg!", "context": "Backstage before a theater performance.", "intended_meaning": "Good luck on your performance.", "gold_sorani": "بەختی باشت هەبێت!", "acceptable_alternatives": ["سەرکەوتوو بێت!", "بەختێکی باش!"], "unacceptable_literal_examples": ["قاچێک بشکێنە!"], "notes": "Classic theatrical idiom meaning good luck."},
+  {"id": 4, "category": "idioms", "source": "I am in over my head.", "context": "Suspense thriller. Protagonist realizes a conspiracy is far larger than anticipated.", "intended_meaning": "The situation has become far too complex for me to handle.", "gold_sorani": "ئەمە لە توانای مندا نییە.", "acceptable_alternatives": ["لە ئاستمدا نییە.", "لە دەسەڵاتم دەربازە."], "unacceptable_literal_examples": ["سەرم لە ناو ئاودایە."], "notes": "Idiom about feeling overwhelmed."},
+  {"id": 5, "category": "idioms", "source": "Over my dead body!", "context": "Family argument about selling the family home.", "intended_meaning": "I will absolutely never allow this to happen.", "gold_sorani": "تەنها بەسەر تەرمەکەمدا!", "acceptable_alternatives": ["هەرگیز! تا زیندووم ئەوە نابێت!", "بەسەر تەرمەکەم!"], "unacceptable_literal_examples": ["لەسەر تەرمی مردووەکەم!"], "notes": "Emphatic refusal idiom."},
+  {"id": 6, "category": "idioms", "source": "It's raining cats and dogs.", "context": "Comedy. Characters stuck under an awning during a downpour.", "intended_meaning": "It is raining extremely heavily.", "gold_sorani": "بارانەکە زۆر بە توندی دەبارێت.", "acceptable_alternatives": ["لافاو هاتووە!", "بارانێکی تۆوفانە!"], "unacceptable_literal_examples": ["پشیلە و سەگ دەبارێت."], "notes": "Weather idiom."},
+  {"id": 7, "category": "idioms", "source": "You stabbed me in the back!", "context": "Betrayal scene in a political thriller.", "intended_meaning": "You betrayed me in the worst possible way.", "gold_sorani": "تۆ خیانەتت پێکردم!", "acceptable_alternatives": ["پشتت لێکردم!", "تۆ لەنامەردی خۆتەوە خەڵتانیت."], "unacceptable_literal_examples": ["چەقۆت لە پشتمدا دا."], "notes": "Betrayal idiom."},
+  {"id": 8, "category": "idioms", "source": "Hold your horses!", "context": "Action scene. Leader tells eager team to wait before storming.", "intended_meaning": "Slow down and wait, do not rush into this.", "gold_sorani": "هێواش! چاوەڕوان بکە!", "acceptable_alternatives": ["ئارام بگرە!", "پەلە مەکە!"], "unacceptable_literal_examples": ["ئەسپەکانت بگرە!"], "notes": "Idiom commanding patience."},
+  {"id": 9, "category": "idioms", "source": "Don't let the cat out of the bag.", "context": "Spy thriller. Agent told to keep a secret.", "intended_meaning": "Do not reveal the secret.", "gold_sorani": "نهێنییەکەت ئاشکرا مەکە.", "acceptable_alternatives": ["سڕت بپارێزە!", "ئافرەت مەخە!"], "unacceptable_literal_examples": ["پشیلەکە لە جانتاکە دەرمەهێنە."], "notes": "Secrecy idiom."},
+  {"id": 10, "category": "idioms", "source": "I have bigger fish to fry.", "context": "Police procedural. Detective dismisses minor case for a major one.", "intended_meaning": "I have more important things to deal with.", "gold_sorani": "کاری گرنگتر لەمە هەیە بۆ ئەنجامدان.", "acceptable_alternatives": ["شتی گرنگترم هەیە.", "ئەم بابەتە لەلام بچووکە."], "unacceptable_literal_examples": ["ماسییەکی گەورەترم هەیە بۆ سوڕکردن."], "notes": "Prioritization idiom."},
+  {"id": 11, "category": "idioms", "source": "Time to face the music.", "context": "Courtroom drama. Defendant about to hear the verdict.", "intended_meaning": "It is time to accept the consequences of your actions.", "gold_sorani": "کاتی ئەوەیە ئەنجامەکانی بەرەوڕوو بکەیتەوە.", "acceptable_alternatives": ["دەبێت ئاکامەکان وەربگریت.", "ئەنجامی کردەوەکەت دەبینیت."], "unacceptable_literal_examples": ["کاتی ئەوەیە موسیقاکە بگوێ بیت."], "notes": "Accountability idiom."},
+  {"id": 12, "category": "idioms", "source": "Speak of the devil!", "context": "Comedy. Someone walks in just as others were talking about them.", "intended_meaning": "The person we were just talking about has arrived.", "gold_sorani": "گوێ لە باس کە!", "acceptable_alternatives": ["با لێی بدوێ ئەوا هاتیش!", "قسەی لێبکەن دەچێتە دەر!"], "unacceptable_literal_examples": ["قسەی شەیتان بکە!"], "notes": "Coincidence idiom."},
+  {"id": 13, "category": "idioms", "source": "The ball is in your court.", "context": "Negotiation scene. One party waits for the other to decide.", "intended_meaning": "It is now your turn to make a decision or take action.", "gold_sorani": "ئێستا نۆرەی تۆیە.", "acceptable_alternatives": ["بڕیارەکە لەلای تۆیە.", "لەسەر تۆیە."], "unacceptable_literal_examples": ["تۆپەکە لە کۆرتەکەی تۆدایە."], "notes": "Decision-making idiom."},
+  {"id": 14, "category": "idioms", "source": "He kicked the bucket.", "context": "War drama. Soldier reports a casualty in crude slang.", "intended_meaning": "He died.", "gold_sorani": "مرد.", "acceptable_alternatives": ["چووە سەر ڕەحمەتی خوا.", "لە ئارادا نییە."], "unacceptable_literal_examples": ["لەقەی لە سەتڵەکەدا."], "notes": "Death euphemism idiom."},
+  {"id": 15, "category": "idioms", "source": "Keep your eyes peeled.", "context": "Horror film. Group exploring a dark house.", "intended_meaning": "Stay very alert and watch carefully for danger.", "gold_sorani": "چاوت لە هەموو شتێک بێت.", "acceptable_alternatives": ["ئاگاداربە!", "باش سەیر بکە!"], "unacceptable_literal_examples": ["چاوەکانت بکەرەوە."], "notes": "Vigilance idiom."},
+  {"id": 16, "category": "idioms", "source": "Hit the nail on the head.", "context": "Detective drama. Partner praises detective's accurate deduction.", "intended_meaning": "You identified exactly the right thing.", "gold_sorani": "ڕاستی لێدایت!", "acceptable_alternatives": ["درست گوتت!", "سەری بزمارەکەت لێدا!"], "unacceptable_literal_examples": ["لە سەری بزمارەکەدا دایت."], "notes": "Accuracy idiom."},
+  {"id": 17, "category": "idioms", "source": "I'm feeling under the weather.", "context": "Workplace drama. Character calls in sick.", "intended_meaning": "I am not feeling well, I am ill.", "gold_sorani": "حەزم باش نییە.", "acceptable_alternatives": ["نەخۆشم.", "حاڵم باش نییە."], "unacceptable_literal_examples": ["لەژێر کەشوهەوادام."], "notes": "Illness idiom."},
+  {"id": 18, "category": "idioms", "source": "Spill the beans!", "context": "Comedy. Friends prying a secret from someone.", "intended_meaning": "Tell us the secret, reveal everything.", "gold_sorani": "نهێنییەکەت بڵێ!", "acceptable_alternatives": ["هەموو شتێک بڵێ!", "سڕەکەت ئاشکرا بکە!"], "unacceptable_literal_examples": ["فاسوولیاکان بڕژێنە!"], "notes": "Revelation idiom."},
+  {"id": 19, "category": "idioms", "source": "You're barking up the wrong tree.", "context": "Mystery. Investigator pursuing the wrong lead.", "intended_meaning": "You are looking in the wrong place or accusing the wrong person.", "gold_sorani": "لە شوێنی هەڵەدا دەگەڕێیت.", "acceptable_alternatives": ["بەسەر ئاوی هەڵەدا دەچیت.", "ئاڕاستەکەت هەڵەیە."], "unacceptable_literal_examples": ["لە پای دارێکی هەڵەدا دەچیت."], "notes": "Wrong direction idiom."},
+  {"id": 20, "category": "idioms", "source": "I had to burn the midnight oil.", "context": "College drama. Student studying all night for an exam.", "intended_meaning": "I had to stay up very late working or studying.", "gold_sorani": "هەتا نیوەی شەو خەریکی خوێندن بووم.", "acceptable_alternatives": ["شەوانە بیدار بووم بۆ خوێندن.", "تا بەرەبەیان کارم کرد."], "unacceptable_literal_examples": ["نەوتی نیوەشەوم سووتاند."], "notes": "Hard work idiom."},
+
+  {"id": 21, "category": "emotional_register", "source": "I'm so scared I can't breathe.", "context": "Horror. Character trapped in a dark room.", "intended_meaning": "Extreme fear causing physical panic.", "gold_sorani": "ئەوەندە ترسیومە هەناسەم نایەتە دەرەوە.", "acceptable_alternatives": ["لە ترسم نایتوانم هەناسە بدەم."], "unacceptable_literal_examples": [], "notes": "Fear register."},
+  {"id": 22, "category": "emotional_register", "source": "You make me sick!", "context": "Divorce drama. Wife confronts husband about affair.", "intended_meaning": "You disgust me thoroughly.", "gold_sorani": "تۆ گڵاوم دەکەیت!", "acceptable_alternatives": ["قێزەوتم لێت!", "تۆ ڕقم لێت دەبێتەوە!"], "unacceptable_literal_examples": ["تۆ نەخۆشم دەکەیت."], "notes": "Disgust register."},
+  {"id": 23, "category": "emotional_register", "source": "I can't believe he's gone.", "context": "Funeral scene. Widow in shock.", "intended_meaning": "Deep grief and disbelief at someone's death.", "gold_sorani": "باوەڕم نایەت ئیتر نییە.", "acceptable_alternatives": ["ناتوانم بیبینم کە چووە.", "باوەڕم ناکرێت."], "unacceptable_literal_examples": [], "notes": "Grief register."},
+  {"id": 24, "category": "emotional_register", "source": "This is the happiest day of my life!", "context": "Wedding scene. Bride during her speech.", "intended_meaning": "Overwhelming joy.", "gold_sorani": "ئەمە خۆشترین ڕۆژی ژیانمە!", "acceptable_alternatives": ["دڵخۆشترین ڕۆژی ئەم ژیانەمە!"], "unacceptable_literal_examples": [], "notes": "Joy register."},
+  {"id": 25, "category": "emotional_register", "source": "How dare you speak to me like that!", "context": "Royal period drama. Queen addresses insolent courtier.", "intended_meaning": "Outraged indignation at disrespect.", "gold_sorani": "چۆن بوێری ئەوەت هەیە وا قسەم لەگەڵ بکەیت!", "acceptable_alternatives": ["وادانەنیت وا لەگەڵمدا قسە بکەیت!"], "unacceptable_literal_examples": [], "notes": "Indignation register."},
+  {"id": 26, "category": "emotional_register", "source": "Please... please don't leave me.", "context": "Romance. Character begging partner not to go.", "intended_meaning": "Desperate plea born from love and fear of abandonment.", "gold_sorani": "تکایە... تکایە مەچۆ بمهێڵە.", "acceptable_alternatives": ["خۆزگە مەچۆ... تکایە."], "unacceptable_literal_examples": [], "notes": "Desperation register."},
+  {"id": 27, "category": "emotional_register", "source": "Oh, how thoughtful of you.", "context": "Drama. Character receives a gift but is being sarcastic about it.", "intended_meaning": "Sarcasm — the person is NOT actually grateful.", "gold_sorani": "ئۆ، چەندە بیرکەرەوەیت تۆ.", "acceptable_alternatives": ["زۆر تایبەتیت... (بە گاڵتە)"], "unacceptable_literal_examples": ["زۆر سوپاست دەکەم بۆ بیرکردنەوەکەت."], "notes": "Sarcasm must be preserved, not flattened to genuine gratitude."},
+  {"id": 28, "category": "emotional_register", "source": "I will destroy everything you love.", "context": "Villain monologue in a revenge thriller.", "intended_meaning": "Extreme menacing threat.", "gold_sorani": "هەموو ئەو شتانەی حەزت لێیە لەناودەبەم.", "acceptable_alternatives": ["هەموو ئەو شتانەی خۆشتەوێت وێرانی دەکەم."], "unacceptable_literal_examples": [], "notes": "Threat register — must feel genuinely menacing in Kurdish."},
+  {"id": 29, "category": "emotional_register", "source": "I'm proud of you, son.", "context": "Family drama. Father's deathbed scene.", "intended_meaning": "Deep paternal pride and love.", "gold_sorani": "شانازی پێت دەکەم، کوڕم.", "acceptable_alternatives": ["سەربەرزم پێت، لاوە."], "unacceptable_literal_examples": [], "notes": "Pride register — warm, intimate Kurdish tone."},
+  {"id": 30, "category": "emotional_register", "source": "Get out of my house!", "context": "Domestic fight. Parent throws teenager out.", "intended_meaning": "Furious command to leave immediately.", "gold_sorani": "لە ماڵەکەم دەربچۆ!", "acceptable_alternatives": ["بڕۆ دەرەوە!", "ئێستا لێرە لابدە!"], "unacceptable_literal_examples": [], "notes": "Rage register."},
+  {"id": 31, "category": "emotional_register", "source": "I've never felt so alone.", "context": "Post-apocalyptic drama. Last survivor.", "intended_meaning": "Crushing loneliness.", "gold_sorani": "هەرگیز ئاوا تەنها نەبووم.", "acceptable_alternatives": ["هیچ کاتێک وەها تەنها نەبووم."], "unacceptable_literal_examples": [], "notes": "Loneliness register."},
+  {"id": 32, "category": "emotional_register", "source": "Don't you dare touch her.", "context": "Action. Protective father confronting kidnapper.", "intended_meaning": "Warning with barely controlled fury.", "gold_sorani": "بوێری ئەوەت نییە دەستی لێ بدەیت.", "acceptable_alternatives": ["جوربە لێی مەکە!"], "unacceptable_literal_examples": [], "notes": "Protective fury register."},
+  {"id": 33, "category": "emotional_register", "source": "We did it! We actually did it!", "context": "Sports drama. Team wins championship.", "intended_meaning": "Euphoric disbelief at success.", "gold_sorani": "سەرکەوتین! بە ڕاستی سەرکەوتین!", "acceptable_alternatives": ["کردمانە! ڕاستی ڕاستی کردمانە!"], "unacceptable_literal_examples": [], "notes": "Euphoria register."},
+  {"id": 34, "category": "emotional_register", "source": "I'm sorry. I'm so, so sorry.", "context": "Tearful apology. Character confesses mistake to friend.", "intended_meaning": "Deep, genuine remorse.", "gold_sorani": "ببوورە. زۆر زۆر ببوورە.", "acceptable_alternatives": ["داوات لێ دەکەم ببوورە."], "unacceptable_literal_examples": [], "notes": "Remorse register."},
+  {"id": 35, "category": "emotional_register", "source": "I trusted you with my life.", "context": "Spy film. Agent discovers partner is a double agent.", "intended_meaning": "Profound sense of betrayal.", "gold_sorani": "متمانەم بە ژیانم پێت کرد.", "acceptable_alternatives": ["پشتم بە تۆ بەست بۆ ژیانم."], "unacceptable_literal_examples": [], "notes": "Betrayal + hurt register."},
+  {"id": 36, "category": "emotional_register", "source": "You're pathetic.", "context": "School bully scene.", "intended_meaning": "Contemptuous dismissal.", "gold_sorani": "تۆ بەزەییت.", "acceptable_alternatives": ["هیچیت نییە.", "نەختە کەسیت."], "unacceptable_literal_examples": [], "notes": "Contempt register."},
+  {"id": 37, "category": "emotional_register", "source": "Tell me everything is going to be okay.", "context": "Hospital. Child asking parent before surgery.", "intended_meaning": "Seeking comfort and reassurance.", "gold_sorani": "پێم بڵێ هەموو شتێک چاک دەبێت.", "acceptable_alternatives": ["بمڵێ هەموو شتێک باشە."], "unacceptable_literal_examples": [], "notes": "Vulnerability register."},
+  {"id": 38, "category": "emotional_register", "source": "You ungrateful little brat!", "context": "Comedy-drama. Exasperated parent to spoiled child.", "intended_meaning": "Frustrated outburst.", "gold_sorani": "ئەی ناسوپاس!", "acceptable_alternatives": ["ئەی منداڵی ناسپاس!"], "unacceptable_literal_examples": [], "notes": "Exasperation register."},
+  {"id": 39, "category": "emotional_register", "source": "I have nothing left to lose.", "context": "Thriller climax. Character makes desperate final gamble.", "intended_meaning": "Fatalistic acceptance of risk.", "gold_sorani": "هیچ شتێکم نەماوە بۆ لەدەستدان.", "acceptable_alternatives": ["شتێکم نەماوە."], "unacceptable_literal_examples": [], "notes": "Fatalism register."},
+  {"id": 40, "category": "emotional_register", "source": "Surprise! Happy birthday!", "context": "Comedy. Surprise birthday party.", "intended_meaning": "Joyful exclamation.", "gold_sorani": "سەرسوڕمان! ڕۆژی لەدایکبوونت پیرۆز!", "acceptable_alternatives": ["لادان! ڕۆژی لەدایکبوونت پیرۆز!"], "unacceptable_literal_examples": [], "notes": "Excitement register."},
+
+  {"id": 41, "category": "formal_colloquial", "source": "The court finds the defendant guilty.", "context": "Courtroom drama. Judge delivering verdict.", "intended_meaning": "Formal legal pronouncement.", "gold_sorani": "دادگا بڕیاری تاوانباربوونی تاوانبار دەدات.", "acceptable_alternatives": ["دادگا بڕیار دەدات تاوانبار تاوانبارە."], "unacceptable_literal_examples": [], "notes": "Formal judicial register."},
+  {"id": 42, "category": "formal_colloquial", "source": "Dude, that was totally sick!", "context": "Teen comedy. Teenager reacting to skateboard trick.", "intended_meaning": "Enthusiastic slang approval.", "gold_sorani": "برا، ئەوە واقعەن خۆش بوو!", "acceptable_alternatives": ["هاوڕێ، زۆر جوان بوو!"], "unacceptable_literal_examples": ["پیاو، ئەوە تەواو نەخۆش بوو."], "notes": "Slang — 'sick' means great, not ill."},
+  {"id": 43, "category": "formal_colloquial", "source": "We need to talk. In private.", "context": "Office drama. Boss calls employee to closed-door meeting.", "intended_meaning": "Serious, formal tone requesting private conversation.", "gold_sorani": "پێویستە قسە بکەین. تەنها.", "acceptable_alternatives": ["دەبێت قسە بکەین. بەتەنها."], "unacceptable_literal_examples": [], "notes": "Formal but ominous."},
+  {"id": 44, "category": "formal_colloquial", "source": "Your Majesty, your people await.", "context": "Period drama. Advisor to queen.", "intended_meaning": "Extremely formal royal address.", "gold_sorani": "گەورەییت، خەڵکەکەت چاوەڕوانتن.", "acceptable_alternatives": ["شاژنم، گەلەکەت چاوەڕوانتن."], "unacceptable_literal_examples": [], "notes": "Royal formal register."},
+  {"id": 45, "category": "formal_colloquial", "source": "Yo, what's good fam?", "context": "Urban comedy. Friends greeting each other.", "intended_meaning": "Casual street greeting.", "gold_sorani": "چۆنیت برا، باشیت؟", "acceptable_alternatives": ["چۆنی هاوڕێ؟", "سڵاو برا!"], "unacceptable_literal_examples": [], "notes": "Casual street slang."},
+  {"id": 46, "category": "formal_colloquial", "source": "Ladies and gentlemen, welcome aboard.", "context": "Airline announcement.", "intended_meaning": "Formal public address.", "gold_sorani": "خاتوو و ئاغایان، بەخێربێن.", "acceptable_alternatives": ["خاتوو و بەڕێزان، بەخێربێن."], "unacceptable_literal_examples": [], "notes": "Formal public address."},
+  {"id": 47, "category": "formal_colloquial", "source": "Wanna grab a beer?", "context": "Workplace comedy. Colleague invites another after work.", "intended_meaning": "Casual invitation to drink.", "gold_sorani": "دەتەوێت بچین شتێک بخۆینەوە؟", "acceptable_alternatives": ["با بچین شتێک بخۆینەوە؟"], "unacceptable_literal_examples": [], "notes": "Casual register — 'beer' adapted culturally."},
+  {"id": 48, "category": "formal_colloquial", "source": "I hereby sentence you to life imprisonment.", "context": "Courtroom. Judge sentencing.", "intended_meaning": "Formal legal sentencing.", "gold_sorani": "بەم بڕیارە سزات دەدەم بە زیندان بۆ هەمیشە.", "acceptable_alternatives": ["حوکمت دەکەم بە حەبسی ئەبەد."], "unacceptable_literal_examples": [], "notes": "Formal legal register."},
+  {"id": 49, "category": "formal_colloquial", "source": "Shut up and listen to me!", "context": "Action. Leader barking orders under fire.", "intended_meaning": "Aggressive command.", "gold_sorani": "بێدەنگ بە و گوێم لێ بگرە!", "acceptable_alternatives": ["دەمت بگرە و گوێ بگرە!"], "unacceptable_literal_examples": [], "notes": "Aggressive colloquial command."},
+  {"id": 50, "category": "formal_colloquial", "source": "On behalf of the board, we accept your resignation.", "context": "Corporate drama. Chairman addressing departing CEO.", "intended_meaning": "Formal corporate language.", "gold_sorani": "لە ناوی ئەنجوومەنەوە، دەستلێکشانەکەت قبووڵ دەکەین.", "acceptable_alternatives": ["لەلایەن ئەنجوومەنەوە ئیستیفاکەت وەرگیراوە."], "unacceptable_literal_examples": [], "notes": "Corporate formal register."},
+  {"id": 51, "category": "formal_colloquial", "source": "Chill out, man. It's not that serious.", "context": "Comedy. Friend calming someone overreacting.", "intended_meaning": "Casual dismissal, telling someone to relax.", "gold_sorani": "ئارام بە، باوکە. ئەوەندەش نییە.", "acceptable_alternatives": ["هێواش ببە، ئەوەندە گرنگ نییە."], "unacceptable_literal_examples": [], "notes": "Casual dismissive register."},
+  {"id": 52, "category": "formal_colloquial", "source": "In accordance with company policy, your access has been revoked.", "context": "Corporate thriller. IT notification.", "intended_meaning": "Bureaucratic formal notification.", "gold_sorani": "بەپێی سیاسەتی کۆمپانیا، دەسترەسیت هەڵپەسێردراوە.", "acceptable_alternatives": ["بەگوێرەی یاسای کۆمپانیا دەسترەسیت لابراوە."], "unacceptable_literal_examples": [], "notes": "Bureaucratic register."},
+  {"id": 53, "category": "formal_colloquial", "source": "What's the 411?", "context": "Workplace gossip. Someone asking for the latest news.", "intended_meaning": "Slang for 'what's the news/gossip?'", "gold_sorani": "نوێترینەکان چییە؟", "acceptable_alternatives": ["چی تازەیە؟", "چی هەیە؟"], "unacceptable_literal_examples": ["چی ئەو ٤١١ ە؟"], "notes": "American slang — 411 means information."},
+  {"id": 54, "category": "formal_colloquial", "source": "Do you solemnly swear to tell the truth?", "context": "Courtroom. Witness being sworn in.", "intended_meaning": "Formal legal oath.", "gold_sorani": "ئایا سوێند دەخۆیت ڕاستییەکە بڵێیت؟", "acceptable_alternatives": ["سوێند دەخۆیت تەنها ڕاستی بڵێیت؟"], "unacceptable_literal_examples": [], "notes": "Formal oath register."},
+  {"id": 55, "category": "formal_colloquial", "source": "Nah, I'm good. Thanks though.", "context": "Casual conversation. Declining an offer.", "intended_meaning": "Casual polite refusal.", "gold_sorani": "نا، باشم. سوپاس.", "acceptable_alternatives": ["نەخێر، ئاخ سوپاس."], "unacceptable_literal_examples": [], "notes": "Casual polite register."},
+  {"id": 56, "category": "formal_colloquial", "source": "We the people of the United States...", "context": "Historical drama. Constitution being read.", "intended_meaning": "Extremely formal constitutional language.", "gold_sorani": "ئێمە خەڵکی ویلایەتە یەکگرتووەکان...", "acceptable_alternatives": ["ئێمە گەلی ئەمریکا..."], "unacceptable_literal_examples": [], "notes": "Constitutional formal register."},
+  {"id": 57, "category": "formal_colloquial", "source": "Bruh, that's cap.", "context": "Teen drama. Teenager calling someone a liar.", "intended_meaning": "Gen-Z slang meaning 'that's a lie.'", "gold_sorani": "برا، ئەوە درۆیە.", "acceptable_alternatives": ["هاوڕێ، ئەوە ڕاست نییە."], "unacceptable_literal_examples": ["ئەوە کڵاوە."], "notes": "Gen-Z slang — 'cap' means lie."},
+  {"id": 58, "category": "formal_colloquial", "source": "It is with deep regret that I announce my departure.", "context": "Political speech. Leader resigning.", "intended_meaning": "Formal public resignation.", "gold_sorani": "بە داخەوە ڕایدەگەیەنم کە بڕیاری چوونم داوە.", "acceptable_alternatives": ["بە خەمەوە ڕایدەگەیەنم بڕیاری ڕۆیشتنم داوە."], "unacceptable_literal_examples": [], "notes": "Formal resignation register."},
+  {"id": 59, "category": "formal_colloquial", "source": "Bless you, my child.", "context": "Religious drama. Priest addressing young parishioner.", "intended_meaning": "Gentle religious blessing.", "gold_sorani": "خوات لەگەڵ بێت، منداڵم.", "acceptable_alternatives": ["بەرەکەت بۆ تۆ، کوڕم."], "unacceptable_literal_examples": [], "notes": "Religious gentle register."},
+  {"id": 60, "category": "formal_colloquial", "source": "Look, I ain't got time for this.", "context": "Street crime drama. Impatient character.", "intended_meaning": "Blunt dismissal, non-standard grammar intentional.", "gold_sorani": "گوێ بگرە، کاتم بۆ ئەمە نییە.", "acceptable_alternatives": ["ببینە، ئەم کاتەم نییە."], "unacceptable_literal_examples": [], "notes": "Street colloquial register."},
+
+  {"id": 61, "category": "questions_negation", "source": "Don't you think that's strange?", "context": "Mystery. Detective questioning partner.", "intended_meaning": "Rhetorical question implying something IS strange.", "gold_sorani": "وا بیر ناکەیتەوە ئەوە سەیرە؟", "acceptable_alternatives": ["پێت وانییە سەیرە؟"], "unacceptable_literal_examples": ["بیر ناکەیتەوە ئەوە سەیرە؟"], "notes": "Negative question — must preserve negation."},
+  {"id": 62, "category": "questions_negation", "source": "What's the point of even trying?", "context": "Depression arc. Character giving up.", "intended_meaning": "Rhetorical question expressing hopelessness.", "gold_sorani": "مانای هەوڵدان چییە ئاخر؟", "acceptable_alternatives": ["بۆچی هەوڵ بدەم؟"], "unacceptable_literal_examples": [], "notes": "Rhetorical despair question."},
+  {"id": 63, "category": "questions_negation", "source": "I never said I didn't love you.", "context": "Romance. Clarification during argument.", "intended_meaning": "Double negative — affirming love.", "gold_sorani": "من هەرگیز نەمگوت حەزم لێت نییە.", "acceptable_alternatives": ["من نەمگوت خۆشم ناەوێت."], "unacceptable_literal_examples": ["من نەمگوت حەزم لێتە."], "notes": "Double negative must be preserved — NOT flattened to positive."},
+  {"id": 64, "category": "questions_negation", "source": "Who do you think you are?", "context": "Confrontation. Authority figure challenging upstart.", "intended_meaning": "Aggressive rhetorical question challenging someone's presumption.", "gold_sorani": "تۆ خۆت کێ دەزانیت؟", "acceptable_alternatives": ["خۆت بە کێ دادەنێیت؟"], "unacceptable_literal_examples": [], "notes": "Confrontational rhetorical question."},
+  {"id": 65, "category": "questions_negation", "source": "Isn't it obvious?", "context": "Comedy. Character stating something should be clear.", "intended_meaning": "Sarcastic rhetorical question.", "gold_sorani": "ئایا دیار نییە؟", "acceptable_alternatives": ["ئاشکرا نییە؟"], "unacceptable_literal_examples": [], "notes": "Sarcastic rhetorical."},
+  {"id": 66, "category": "questions_negation", "source": "You didn't see anything, did you?", "context": "Crime. Intimidating a witness.", "intended_meaning": "Threatening tag question.", "gold_sorani": "تۆ هیچت نەبینی، وانییە؟", "acceptable_alternatives": ["هیچت نەبینی، ها؟"], "unacceptable_literal_examples": [], "notes": "Threatening tag question."},
+  {"id": 67, "category": "questions_negation", "source": "Why would I lie to you?", "context": "Trust scene. Suspect pleading innocence.", "intended_meaning": "Rhetorical — implying no reason to lie.", "gold_sorani": "بۆچی درۆت لێ بکەم؟", "acceptable_alternatives": ["چ هۆکارێکم هەیە درۆت لێ بکەم؟"], "unacceptable_literal_examples": [], "notes": "Defensive rhetorical question."},
+  {"id": 68, "category": "questions_negation", "source": "Nobody ever listens to me.", "context": "Family comedy. Frustrated parent.", "intended_meaning": "Complaint with double emphasis (nobody + ever).", "gold_sorani": "هەرگیز کەس گوێم لێ ناگرێت.", "acceptable_alternatives": ["کەس قەت گوێم لێ ناگرێت."], "unacceptable_literal_examples": ["هەموو کەس گوێم لێ دەگرێت."], "notes": "Double emphasis negation."},
+  {"id": 69, "category": "questions_negation", "source": "Have you no shame?", "context": "Period drama. Mother scolding daughter.", "intended_meaning": "Rhetorical — expressing disbelief at shamelessness.", "gold_sorani": "شەرمت نییە؟", "acceptable_alternatives": ["ئایا ئابڕووت نییە؟"], "unacceptable_literal_examples": [], "notes": "Rhetorical shame question."},
+  {"id": 70, "category": "questions_negation", "source": "Where were you when I needed you?", "context": "Emotional confrontation between siblings.", "intended_meaning": "Accusatory question about abandonment.", "gold_sorani": "کاتێک پێویستم پێت بوو تۆ لە کوێ بویت؟", "acceptable_alternatives": ["لە کوێ بویت کاتێک پێویستم بە تۆ بوو؟"], "unacceptable_literal_examples": [], "notes": "Accusatory emotional question."},
+  {"id": 71, "category": "questions_negation", "source": "Can't you see I'm busy?", "context": "Office comedy. Annoyed worker interrupted.", "intended_meaning": "Irritated rhetorical question.", "gold_sorani": "نابینیت سەرقاڵم؟", "acceptable_alternatives": ["ئایا نابینیت خەریکم؟"], "unacceptable_literal_examples": [], "notes": "Irritated rhetorical."},
+  {"id": 72, "category": "questions_negation", "source": "He said nothing. Absolutely nothing.", "context": "Interrogation scene. Report on suspect's silence.", "intended_meaning": "Emphatic total silence.", "gold_sorani": "هیچی نەگوت. تەواو هیچ.", "acceptable_alternatives": ["هیچ شتێکی نەگوت. هەر هیچ."], "unacceptable_literal_examples": ["شتێکی گوت."], "notes": "Emphatic negation."},
+  {"id": 73, "category": "questions_negation", "source": "What if we're wrong about everything?", "context": "Philosophical drama. Characters questioning their beliefs.", "intended_meaning": "Existential uncertainty question.", "gold_sorani": "ئەگەر لە هەموو شتێکدا هەڵەین؟", "acceptable_alternatives": ["چی دەبێت ئەگەر هەموو شتێکمان هەڵەبێت؟"], "unacceptable_literal_examples": [], "notes": "Existential question."},
+  {"id": 74, "category": "questions_negation", "source": "You don't have to do this.", "context": "Hostage negotiation. Negotiator to gunman.", "intended_meaning": "Gentle plea — offering an alternative.", "gold_sorani": "پێویست ناکات ئەمە بکەیت.", "acceptable_alternatives": ["ناچاریت ئەمە بکەیت."], "unacceptable_literal_examples": ["پێویستە ئەمە بکەیت."], "notes": "Negation reversal would change meaning completely."},
+  {"id": 75, "category": "questions_negation", "source": "Neither of us is innocent.", "context": "War drama. Two soldiers reflecting on their actions.", "intended_meaning": "Shared guilt — neither person is blameless.", "gold_sorani": "هیچ یەکێکمان بێتاوان نییە.", "acceptable_alternatives": ["هەردووکمان تاوانبارین."], "unacceptable_literal_examples": [], "notes": "Neither/nor negation."},
+  {"id": 76, "category": "questions_negation", "source": "Are you out of your mind?", "context": "Action comedy. Reacting to a crazy plan.", "intended_meaning": "Rhetorical — are you insane?", "gold_sorani": "شێت بوویت؟", "acceptable_alternatives": ["مێشکت چووە؟", "ئاقڵت نەماوە؟"], "unacceptable_literal_examples": [], "notes": "Colloquial rhetorical question."},
+  {"id": 77, "category": "questions_negation", "source": "No one is coming to save us.", "context": "Disaster film. Characters trapped.", "intended_meaning": "Hopeless realization.", "gold_sorani": "کەس نایەت ڕزگارمان بکات.", "acceptable_alternatives": ["هیچ کەس نایەت بۆ ڕزگارکردنمان."], "unacceptable_literal_examples": ["کەسێک دێت ڕزگارمان بکات."], "notes": "Negation is critical — must not be omitted."},
+  {"id": 78, "category": "questions_negation", "source": "What are you waiting for?", "context": "Action. Commander ordering troops forward.", "intended_meaning": "Impatient command disguised as question.", "gold_sorani": "چاوەڕوانی چیت؟", "acceptable_alternatives": ["بۆچی وەستاویت؟"], "unacceptable_literal_examples": [], "notes": "Impatient command-question."},
+  {"id": 79, "category": "questions_negation", "source": "I wouldn't do that if I were you.", "context": "Thriller. Warning someone not to make a bad choice.", "intended_meaning": "Conditional warning.", "gold_sorani": "ئەگەر شوێنی تۆ بوایە ئەوەم نەدەکرد.", "acceptable_alternatives": ["لە شوێنی تۆ ئەوەم نەدەکرد."], "unacceptable_literal_examples": [], "notes": "Conditional negation warning."},
+  {"id": 80, "category": "questions_negation", "source": "How long have you known about this?", "context": "Betrayal reveal. Discovering a long-hidden secret.", "intended_meaning": "Accusatory timing question.", "gold_sorani": "چەند ماوەیە لەمە ئاگاداریت؟", "acceptable_alternatives": ["کەی زانیت لەمە؟"], "unacceptable_literal_examples": [], "notes": "Accusatory duration question."},
+
+  {"id": 81, "category": "numbers_dates", "source": "It's exactly 3:47 AM.", "context": "Thriller. Character checking the time during a crisis.", "intended_meaning": "Precise time statement.", "gold_sorani": "تەواو کاتژمێر ٣:٤٧ ی بەیانییە.", "acceptable_alternatives": ["ڕاست ٣:٤٧ ی بەیانییە."], "unacceptable_literal_examples": [], "notes": "Numbers must be preserved exactly."},
+  {"id": 82, "category": "numbers_dates", "source": "That'll be $14.99.", "context": "Store scene. Cashier totaling purchase.", "intended_meaning": "Price statement.", "gold_sorani": "دەبێتە ١٤.٩٩ دۆلار.", "acceptable_alternatives": ["١٤.٩٩ دۆلار دەبێت."], "unacceptable_literal_examples": [], "notes": "Currency + numbers preserved."},
+  {"id": 83, "category": "numbers_dates", "source": "She's turning 18 tomorrow.", "context": "Coming-of-age drama.", "intended_meaning": "Age statement.", "gold_sorani": "سبەینێ دەبێتە ١٨ ساڵ.", "acceptable_alternatives": ["سبەی تەمەنی دەبێتە ١٨."], "unacceptable_literal_examples": [], "notes": "Age number preserved."},
+  {"id": 84, "category": "numbers_dates", "source": "The temperature is minus 40 degrees.", "context": "Survival film. Arctic expedition.", "intended_meaning": "Extreme cold measurement.", "gold_sorani": "پلەی گەرمی ٤٠ لەژێر سفرە.", "acceptable_alternatives": ["گەرمییەکە ٤٠- پلەیە."], "unacceptable_literal_examples": [], "notes": "Negative temperature number."},
+  {"id": 85, "category": "numbers_dates", "source": "Call me at 555-0123.", "context": "Romance comedy. Exchanging numbers.", "intended_meaning": "Phone number exchange.", "gold_sorani": "پەیوەندیم پێوە بکە لە ٥٥٥-٠١٢٣.", "acceptable_alternatives": ["بۆ ٥٥٥-٠١٢٣ پەیوەندی بکە."], "unacceptable_literal_examples": [], "notes": "Phone number preserved exactly."},
+  {"id": 86, "category": "numbers_dates", "source": "December 25th, 1991.", "context": "Historical drama. Date of Soviet Union dissolution.", "intended_meaning": "Historical date.", "gold_sorani": "٢٥ ی کانوونی یەکەمی ١٩٩١.", "acceptable_alternatives": ["٢٥/١٢/١٩٩١."], "unacceptable_literal_examples": [], "notes": "Date numbers preserved."},
+  {"id": 87, "category": "numbers_dates", "source": "It's 200 kilometers to the border.", "context": "Road movie. Characters calculating distance.", "intended_meaning": "Distance measurement.", "gold_sorani": "٢٠٠ کیلۆمەتر دووری سنوورە.", "acceptable_alternatives": ["٢٠٠ کم دووری سنوورە."], "unacceptable_literal_examples": [], "notes": "Distance + unit preserved."},
+  {"id": 88, "category": "numbers_dates", "source": "You have 24 hours to comply.", "context": "Sci-fi. Robot delivering ultimatum.", "intended_meaning": "Time-limited ultimatum.", "gold_sorani": "٢٤ کاتژمێرت هەیە بۆ ئەنجامدانی.", "acceptable_alternatives": ["٢٤ سەعاتت هەیە."], "unacceptable_literal_examples": [], "notes": "Time number preserved."},
+  {"id": 89, "category": "numbers_dates", "source": "He weighs about 180 pounds.", "context": "Medical drama. Doctor noting patient weight.", "intended_meaning": "Weight measurement.", "gold_sorani": "کێشی نزیکەی ١٨٠ پاوندە.", "acceptable_alternatives": ["دەورەوبەری ١٨٠ پاوند کێشی هەیە."], "unacceptable_literal_examples": [], "notes": "Weight number preserved."},
+  {"id": 90, "category": "numbers_dates", "source": "Floor 13, apartment 4B.", "context": "Crime. Police giving address over radio.", "intended_meaning": "Address with numbers and letters.", "gold_sorani": "نهۆمی ١٣، شوقەی 4B.", "acceptable_alternatives": ["نهۆم ١٣، شوقە 4B."], "unacceptable_literal_examples": [], "notes": "Mixed alphanumeric address."},
+  {"id": 91, "category": "numbers_dates", "source": "We need exactly 2.5 liters.", "context": "Heist film. Precise chemical measurement.", "intended_meaning": "Exact decimal measurement.", "gold_sorani": "٢.٥ لیتری تەواو پێویستە.", "acceptable_alternatives": ["بە تەواوی ٢.٥ لیتر پێویستمانە."], "unacceptable_literal_examples": [], "notes": "Decimal number preserved."},
+  {"id": 92, "category": "numbers_dates", "source": "I'll give you a million dollars.", "context": "Comedy. Exaggerated promise.", "intended_meaning": "Large round number.", "gold_sorani": "ملیۆن دۆلارت دەدەمێ.", "acceptable_alternatives": ["١،٠٠٠،٠٠٠ دۆلارت دەدەمێ."], "unacceptable_literal_examples": [], "notes": "Large number."},
+  {"id": 93, "category": "numbers_dates", "source": "At exactly midnight.", "context": "Heist. Timing of operation.", "intended_meaning": "Precise time reference.", "gold_sorani": "لە تەواوی نیوەشەودا.", "acceptable_alternatives": ["ڕاست کاتژمێر ١٢ ی شەو."], "unacceptable_literal_examples": [], "notes": "Midnight time reference."},
+  {"id": 94, "category": "numbers_dates", "source": "Born on the 4th of July, 1962.", "context": "Biopic. Character introduction.", "intended_meaning": "Full birth date.", "gold_sorani": "لە ٤ ی تەمموزی ١٩٦٢ لەدایک بووە.", "acceptable_alternatives": ["لەدایکبوونی ٤/٧/١٩٦٢."], "unacceptable_literal_examples": [], "notes": "Full date statement."},
+  {"id": 95, "category": "numbers_dates", "source": "Three... two... one... go!", "context": "Action. Countdown before operation.", "intended_meaning": "Countdown sequence.", "gold_sorani": "سێ... دوو... یەک... بڕۆ!", "acceptable_alternatives": ["٣... ٢... ١... بڕۆ!"], "unacceptable_literal_examples": [], "notes": "Countdown — can be words or digits."},
+  {"id": 96, "category": "numbers_dates", "source": "Channel 7 News at six.", "context": "TV bumper. News broadcast teaser.", "intended_meaning": "Channel number + time.", "gold_sorani": "هەواڵی کەناڵی ٧ لە کاتژمێر ٦.", "acceptable_alternatives": ["هەواڵی کەناڵ ٧ لە شەش."], "unacceptable_literal_examples": [], "notes": "Channel + time numbers."},
+  {"id": 97, "category": "numbers_dates", "source": "That was the worst $50 I've ever spent.", "context": "Comedy. Regretting a bad purchase.", "intended_meaning": "Amount with emotional context.", "gold_sorani": "ئەوە خراپترین ٥٠ دۆلار بوو کە خەرجم کرد.", "acceptable_alternatives": ["خراپترین ٥٠ دۆلاری ژیانم بوو."], "unacceptable_literal_examples": [], "notes": "Currency in emotional context."},
+  {"id": 98, "category": "numbers_dates", "source": "ETA: fifteen minutes.", "context": "Military. Reporting arrival time.", "intended_meaning": "Estimated time of arrival.", "gold_sorani": "کاتی گەیشتن: پازدە خولەک.", "acceptable_alternatives": ["کاتی گەیشتن: ١٥ خولەک."], "unacceptable_literal_examples": [], "notes": "Military abbreviation + time."},
+  {"id": 99, "category": "numbers_dates", "source": "It happened on September 11th.", "context": "Historical drama reference.", "intended_meaning": "Historically significant date.", "gold_sorani": "لە ١١ ی ئەیلوولدا ڕوویدا.", "acceptable_alternatives": ["لە یازدەی ئەیلوول ڕوویدا."], "unacceptable_literal_examples": [], "notes": "Significant date."},
+  {"id": 100, "category": "numbers_dates", "source": "He ran the 100 meters in 9.58 seconds.", "context": "Sports drama. Record-breaking sprint.", "intended_meaning": "Athletic record with precise decimal.", "gold_sorani": "١٠٠ مەتری لە ٩.٥٨ چرکەدا ڕایکرد.", "acceptable_alternatives": ["سەد مەتری لە ٩.٥٨ چرکەدا بڕی."], "unacceptable_literal_examples": [], "notes": "Precise sports measurement."},
+
+  {"id": 101, "category": "proper_nouns", "source": "My name is James Bond.", "context": "Spy film. Iconic introduction.", "intended_meaning": "Character name — must be transliterated, not translated.", "gold_sorani": "ناوم جەیمس بۆندە.", "acceptable_alternatives": ["من جەیمس بۆندم."], "unacceptable_literal_examples": ["ناوم ئامرازی بەند."], "notes": "Name transliterated, not translated."},
+  {"id": 102, "category": "proper_nouns", "source": "Welcome to New York City.", "context": "Travel/drama. Arriving in NYC.", "intended_meaning": "City name preserved.", "gold_sorani": "بەخێربێیت بۆ نیویۆرک.", "acceptable_alternatives": ["بەخێربێن بۆ شاری نیویۆرک."], "unacceptable_literal_examples": ["بەخێربێیت بۆ شاری نوێی یۆرک."], "notes": "NYC is one proper noun — not 'New' + 'York' translated."},
+  {"id": 103, "category": "proper_nouns", "source": "She's from the FBI.", "context": "Crime thriller. Identifying federal agent.", "intended_meaning": "Organization abbreviation preserved.", "gold_sorani": "ئەو لە FBI یە.", "acceptable_alternatives": ["ئەو لە ئێف بی ئایە."], "unacceptable_literal_examples": ["ئەو لە بیورۆی لێکۆڵینەوەی فیدراڵییە."], "notes": "FBI kept as abbreviation."},
+  {"id": 104, "category": "proper_nouns", "source": "I work for Google.", "context": "Tech drama. Character stating employer.", "intended_meaning": "Company name preserved.", "gold_sorani": "لە گووگڵ کار دەکەم.", "acceptable_alternatives": ["من لە Google کار دەکەم."], "unacceptable_literal_examples": [], "notes": "Company name preserved."},
+  {"id": 105, "category": "proper_nouns", "source": "We're going to Buckingham Palace.", "context": "British drama. Visiting the Queen.", "intended_meaning": "Landmark name transliterated.", "gold_sorani": "دەچین بۆ کۆشکی باکینگهام.", "acceptable_alternatives": ["بەرەو کۆشکی باکینگهام دەچین."], "unacceptable_literal_examples": [], "notes": "Palace name transliterated."},
+  {"id": 106, "category": "proper_nouns", "source": "Dr. Sarah Chen will see you now.", "context": "Medical drama. Nurse calling patient.", "intended_meaning": "Title + full name preserved.", "gold_sorani": "دکتۆر سارا چێن ئێستا دەتبینێت.", "acceptable_alternatives": ["د. سارا چێن ئێستا ئامادەیە."], "unacceptable_literal_examples": [], "notes": "Title + name transliterated."},
+  {"id": 107, "category": "proper_nouns", "source": "The Thames is beautiful tonight.", "context": "Romance. Walking along London's river.", "intended_meaning": "River name preserved.", "gold_sorani": "ڕووباری تەیمز ئەمشەو جوانە.", "acceptable_alternatives": ["تەیمز ئەمشەو جوانە."], "unacceptable_literal_examples": [], "notes": "River proper noun."},
+  {"id": 108, "category": "proper_nouns", "source": "I graduated from Harvard.", "context": "Legal drama. Lawyer stating credentials.", "intended_meaning": "University name preserved.", "gold_sorani": "لە هارڤارد دەرچووم.", "acceptable_alternatives": ["لە زانکۆی هارڤارد دەرچووم."], "unacceptable_literal_examples": [], "notes": "University name transliterated."},
+  {"id": 109, "category": "proper_nouns", "source": "Turn on CNN.", "context": "Political thriller. Character wanting news.", "intended_meaning": "TV network abbreviation preserved.", "gold_sorani": "CNN بکەرەوە.", "acceptable_alternatives": ["سی ئێن ئێن بکەرەوە."], "unacceptable_literal_examples": [], "notes": "Network abbreviation."},
+  {"id": 110, "category": "proper_nouns", "source": "He's driving a Mercedes-Benz.", "context": "Crime film. Describing suspect's car.", "intended_meaning": "Car brand preserved.", "gold_sorani": "مەرسیدس بێنز لێ دەخوڕێت.", "acceptable_alternatives": ["مەرسیدسێک لێ دەخوڕێت."], "unacceptable_literal_examples": [], "notes": "Car brand transliterated."},
+  {"id": 111, "category": "proper_nouns", "source": "Download it from the App Store.", "context": "Modern comedy. Tech reference.", "intended_meaning": "Platform name preserved.", "gold_sorani": "لە ئاپ ستۆرەوە دایبگرە.", "acceptable_alternatives": ["لە App Store داگرە."], "unacceptable_literal_examples": [], "notes": "Platform name."},
+  {"id": 112, "category": "proper_nouns", "source": "That's a Picasso.", "context": "Heist film. Identifying a painting.", "intended_meaning": "Artist name as artwork identifier.", "gold_sorani": "ئەوە پیکاسۆیە.", "acceptable_alternatives": ["ئەوە تابلۆیەکی پیکاسۆیە."], "unacceptable_literal_examples": [], "notes": "Artist name as metonym."},
+  {"id": 113, "category": "proper_nouns", "source": "Meet me at Times Square.", "context": "Spy film. Setting rendezvous.", "intended_meaning": "Landmark name preserved.", "gold_sorani": "لە تایمز سکوێر چاوم پێ بکەوە.", "acceptable_alternatives": ["لە مەیدانی تایمز."], "unacceptable_literal_examples": ["لە گۆڕەپانی کاتەکان."], "notes": "Times Square is a proper noun — must NOT be translated."},
+  {"id": 114, "category": "proper_nouns", "source": "She's reading Shakespeare.", "context": "School drama. Literature class.", "intended_meaning": "Author name preserved.", "gold_sorani": "شکسپیر دەخوێنێتەوە.", "acceptable_alternatives": ["شێکسپیر دەخوێنێتەوە."], "unacceptable_literal_examples": [], "notes": "Author name."},
+  {"id": 115, "category": "proper_nouns", "source": "The United Nations has voted.", "context": "Political drama. International news.", "intended_meaning": "International organization name.", "gold_sorani": "نەتەوە یەکگرتووەکان دەنگیان داوە.", "acceptable_alternatives": ["ڕێکخراوی نەتەوە یەکگرتووەکان دەنگی داوە."], "unacceptable_literal_examples": [], "notes": "UN translated as known Kurdish equivalent."},
+  {"id": 116, "category": "proper_nouns", "source": "It's a Boeing 747.", "context": "Disaster film. Identifying aircraft.", "intended_meaning": "Aircraft manufacturer + model.", "gold_sorani": "ئەوە بۆینگ ٧٤٧ ە.", "acceptable_alternatives": ["فڕۆکەیەکی بۆینگ ٧٤٧ ە."], "unacceptable_literal_examples": [], "notes": "Brand + model number."},
+  {"id": 117, "category": "proper_nouns", "source": "Play some Mozart.", "context": "Drama. Character wanting classical music.", "intended_meaning": "Composer name.", "gold_sorani": "هەندێ مۆزارت لێ بدە.", "acceptable_alternatives": ["موسیقای مۆزارت لێ بدە."], "unacceptable_literal_examples": [], "notes": "Composer name."},
+  {"id": 118, "category": "proper_nouns", "source": "We crossed the Rio Grande.", "context": "Western. Border crossing.", "intended_meaning": "River name in Spanish — preserved.", "gold_sorani": "ڕووباری ڕیۆ گراندەمان بڕی.", "acceptable_alternatives": ["لە ڕیۆ گراندە پەڕینەوە."], "unacceptable_literal_examples": ["لە ڕووباری گەورەی ڕیۆ پەڕینەوە."], "notes": "Foreign proper noun — do not translate 'Grande'."},
+  {"id": 119, "category": "proper_nouns", "source": "He's the CEO of Amazon.", "context": "Business drama.", "intended_meaning": "Title + company name.", "gold_sorani": "ئەو بەڕێوەبەری گشتیی ئامازۆنە.", "acceptable_alternatives": ["ئەو CEO ی ئامازۆنە."], "unacceptable_literal_examples": [], "notes": "Company name transliterated."},
+  {"id": 120, "category": "proper_nouns", "source": "Put on some Adele.", "context": "Road trip scene. Music request.", "intended_meaning": "Singer name as music metonym.", "gold_sorani": "هەندێ ئادێل لێ بدە.", "acceptable_alternatives": ["گۆرانی ئادێل لێ بدە."], "unacceptable_literal_examples": [], "notes": "Singer name."},
+
+  {"id": 121, "category": "multiline_dialogue", "source": "I know you're scared.\nBut we have to keep moving.", "context": "War film. Leader encouraging frightened group.", "intended_meaning": "Two-line subtitle: acknowledgment + command.", "gold_sorani": "دەزانم ترسیویت.\nبەڵام دەبێت بەردەوام بین.", "acceptable_alternatives": ["دەزانم دەترسیت.\nبەڵام دەبێت بچین."], "unacceptable_literal_examples": [], "notes": "Two-line subtitle — must preserve line break."},
+  {"id": 122, "category": "multiline_dialogue", "source": "Listen to me very carefully.\nYour life depends on it.", "context": "Thriller. Critical instructions.", "intended_meaning": "Urgent two-line warning.", "gold_sorani": "باش گوێ لێم بگرە.\nژیانت پەیوەستە بەوەوە.", "acceptable_alternatives": ["بە وریاییەوە گوێم لێ بگرە.\nژیانت پێوە بەستراوە."], "unacceptable_literal_examples": [], "notes": "Two-line urgent subtitle."},
+  {"id": 123, "category": "multiline_dialogue", "source": "When I was young,\nmy father used to say...\neverything happens for a reason.", "context": "Drama. Character sharing childhood memory.", "intended_meaning": "Three-line nostalgic narration.", "gold_sorani": "کاتێک بچووک بووم،\nباوکم هەمیشە دەیگوت...\nهەموو شتێک بۆ هۆکارێک ڕوودەدات.", "acceptable_alternatives": [], "unacceptable_literal_examples": [], "notes": "Three-line subtitle — preserve all line breaks."},
+  {"id": 124, "category": "multiline_dialogue", "source": "The good news is, we survived.\nThe bad news is, we're lost.", "context": "Adventure comedy. After crash landing.", "intended_meaning": "Good news / bad news structure.", "gold_sorani": "هەواڵی باش ئەوەیە کە ڕزگارمان بوو.\nهەواڵی خراپ ئەوەیە کە وون بووین.", "acceptable_alternatives": [], "unacceptable_literal_examples": [], "notes": "Parallel structure must be preserved."},
+  {"id": 125, "category": "multiline_dialogue", "source": "I did what I had to do, and I would do it again in a heartbeat if it meant keeping my family safe.", "context": "Crime drama. Father defending extreme actions.", "intended_meaning": "Long single-line that needs line-breaking for CPS.", "gold_sorani": "ئەوەم کرد کە پێویست بوو بیکەم\nو دووبارەی دەکەمەوە\nئەگەر بەو مانایە خێزانم پارێزراوە.", "acceptable_alternatives": [], "unacceptable_literal_examples": [], "notes": "Long dialogue requiring intelligent line-breaking."},
+  {"id": 126, "category": "multiline_dialogue", "source": "First, we take the money.\nThen, we disappear.", "context": "Heist film. Plan summary.", "intended_meaning": "Sequential plan in two lines.", "gold_sorani": "یەکەم، پارەکە دەبەین.\nدواتر، ون دەبین.", "acceptable_alternatives": ["سەرەتا پارەکە دەبەین.\nپاشان لەناودەچین."], "unacceptable_literal_examples": [], "notes": "Sequential plan structure."},
+  {"id": 127, "category": "multiline_dialogue", "source": "You think this is a game?\nPeople are dying out there!", "context": "Political thriller. Angry confrontation.", "intended_meaning": "Accusatory question + emotional statement.", "gold_sorani": "وا بیرت دەکاتەوە ئەمە یارییە؟\nخەڵکی دەکوژرێت لەدەرەوە!", "acceptable_alternatives": [], "unacceptable_literal_examples": [], "notes": "Question + exclamation two-liner."},
+  {"id": 128, "category": "multiline_dialogue", "source": "Mom? Dad?\nIs anyone home?", "context": "Horror. Teenager returning to empty house.", "intended_meaning": "Calling out + question.", "gold_sorani": "دایە؟ باوکە؟\nکەس لە ماڵدایە؟", "acceptable_alternatives": ["دایک؟ باوک؟\nکەس لێرەیە؟"], "unacceptable_literal_examples": [], "notes": "Two-line calling out."},
+  {"id": 129, "category": "multiline_dialogue", "source": "I love you. I've always loved you.\nAnd I always will.", "context": "Romance climax. Declaration of love.", "intended_meaning": "Three-part love declaration.", "gold_sorani": "خۆشم دەوێت. هەمیشە خۆشم ویستووی.\nو هەمیشە خۆشت دەوێم.", "acceptable_alternatives": [], "unacceptable_literal_examples": [], "notes": "Three-part emotional declaration."},
+  {"id": 130, "category": "multiline_dialogue", "source": "On your left!\nWatch out!\nGet down!", "context": "Action. Three rapid commands in combat.", "intended_meaning": "Three rapid-fire commands.", "gold_sorani": "لە چەپتەوە!\nئاگادار بە!\nسەرت دابنێ!", "acceptable_alternatives": [], "unacceptable_literal_examples": [], "notes": "Three rapid commands — short and punchy."},
+  {"id": 131, "category": "multiline_dialogue", "source": "Ladies and gentlemen,\nplease remain seated.\nThis is not a drill.", "context": "Disaster film. Emergency announcement.", "intended_meaning": "Formal three-line emergency announcement.", "gold_sorani": "خاتوو و ئاغایان،\nتکایە لە جێگاکانتاندا بمێننەوە.\nئەمە ڕاهێنان نییە.", "acceptable_alternatives": [], "unacceptable_literal_examples": [], "notes": "Formal emergency three-liner."},
+  {"id": 132, "category": "multiline_dialogue", "source": "The suspect is a white male, approximately six feet tall, last seen wearing a blue jacket and jeans.", "context": "Police procedural. APB description.", "intended_meaning": "Long description requiring subtitle adaptation.", "gold_sorani": "گومانلێکراو پیاوێکی سپییە\nبەرزی نزیکەی ٦ پێ\nجلی شینی لەبەرە و جینزی لەبەرە.", "acceptable_alternatives": [], "unacceptable_literal_examples": [], "notes": "Long police description — needs line-breaking."},
+  {"id": 133, "category": "multiline_dialogue", "source": "What I'm about to tell you\nmust never leave this room.", "context": "Spy film. Top-secret briefing.", "intended_meaning": "Two-line secrecy warning.", "gold_sorani": "ئەوەی کە دەتڵێم\nnدەبێت لەم ژوورەیەدا بمێنێتەوە.", "acceptable_alternatives": ["ئەوەی پێت دەڵێم\nدەبێت نهێنی بمێنێت."], "unacceptable_literal_examples": [], "notes": "Two-line secrecy subtitle."},
+  {"id": 134, "category": "multiline_dialogue", "source": "Five years ago, I lost everything —\nmy home, my family, my identity.", "context": "Thriller. Character backstory.", "intended_meaning": "Two-line backstory with list.", "gold_sorani": "پێنج ساڵ لەمەوبەر هەموو شتێکم لەدەست دا —\nماڵم، خێزانم، ناسنامەم.", "acceptable_alternatives": [], "unacceptable_literal_examples": [], "notes": "Backstory with enumeration."},
+  {"id": 135, "category": "multiline_dialogue", "source": "If you're watching this,\nit means I'm already dead.", "context": "Thriller. Pre-recorded video message.", "intended_meaning": "Dramatic two-line conditional.", "gold_sorani": "ئەگەر ئەمە دەبینیت،\nمانای ئەوەیە من لە ئارادا نیم.", "acceptable_alternatives": ["ئەگەر ئەمە تەماشا دەکەیت\nئەوا من مردووم."], "unacceptable_literal_examples": [], "notes": "Dramatic conditional two-liner."},
+  {"id": 136, "category": "multiline_dialogue", "source": "Run. Now.\nDon't look back.", "context": "Horror. Final warning before monster appears.", "intended_meaning": "Three short urgent commands.", "gold_sorani": "بڕۆ. ئێستا.\nپاشەوە مەڕوانە.", "acceptable_alternatives": ["بڕۆ! ئێستا!\nمەڕوانە بەدواوە."], "unacceptable_literal_examples": [], "notes": "Ultra-short urgent commands."},
+  {"id": 137, "category": "multiline_dialogue", "source": "He said, and I quote,\n\"Over my dead body.\"", "context": "Legal drama. Quoting someone in testimony.", "intended_meaning": "Direct quotation within dialogue.", "gold_sorani": "گوتی، بە وشەی خۆی،\n«تەنها بەسەر تەرمەکەمدا.»", "acceptable_alternatives": [], "unacceptable_literal_examples": [], "notes": "Nested quotation marks."},
+  {"id": 138, "category": "multiline_dialogue", "source": "I want you to know\nthat whatever happens next,\nI chose this.", "context": "Drama. Character making a sacrifice.", "intended_meaning": "Three-line declaration of agency.", "gold_sorani": "دەمەوێت بزانیت\nهەرچییەک ڕووبدات،\nمن ئەمەم هەڵبژارد.", "acceptable_alternatives": [], "unacceptable_literal_examples": [], "notes": "Three-line declaration."},
+  {"id": 139, "category": "multiline_dialogue", "source": "The password is:\nalpha-tango-seven-niner.", "context": "Spy film. Communicating a code.", "intended_meaning": "Two-line code communication.", "gold_sorani": "وشەی نهێنییەکە:\nئالفا-تانگۆ-حەوت-نۆ.", "acceptable_alternatives": [], "unacceptable_literal_examples": [], "notes": "Code/password subtitle."},
+  {"id": 140, "category": "multiline_dialogue", "source": "To the left, there's a corridor.\nAt the end, you'll find a red door.\nThat's where they're keeping her.", "context": "Action. Giving directions for rescue.", "intended_meaning": "Three-line directional instructions.", "gold_sorani": "بەلای چەپەوە، ڕێگایەک هەیە.\nلە کۆتایی، دەرگایەکی سوور دەبینیت.\nئەوێیە بەندیانکردووە.", "acceptable_alternatives": [], "unacceptable_literal_examples": [], "notes": "Three-line directions."},
+
+  {"id": 141, "category": "foreign_dialogue", "source": "[Speaking Spanish] Mi amor, te quiero.", "context": "Romance. Latin character speaking native language.", "intended_meaning": "Foreign dialogue with language indicator.", "gold_sorani": "[ئیسپانی] خۆشەویستەکەم، خۆشم دەوێت.", "acceptable_alternatives": ["[بە ئیسپانی دەدوێت] خۆشەویستەکەم."], "unacceptable_literal_examples": [], "notes": "Foreign dialogue — language indicator + translation."},
+  {"id": 142, "category": "foreign_dialogue", "source": "C'est la vie.", "context": "French phrase used in English dialogue.", "intended_meaning": "Common French expression meaning 'that's life.'", "gold_sorani": "ئەوە ژیانە.", "acceptable_alternatives": ["وایە ژیان.", "ژیان ئاوایە."], "unacceptable_literal_examples": ["سێ لا ڤی."], "notes": "Translate meaning, don't transliterate French."},
+  {"id": 143, "category": "foreign_dialogue", "source": "Gracias, señor.", "context": "Western. Character thanking Mexican host.", "intended_meaning": "Spanish 'thank you, sir.'", "gold_sorani": "سوپاس، ئاغا.", "acceptable_alternatives": ["زۆر سوپاس."], "unacceptable_literal_examples": ["گراسیاس سینیۆر."], "notes": "Translate, don't transliterate."},
+  {"id": 144, "category": "foreign_dialogue", "source": "[In Russian] Поехали!", "context": "Space drama. Russian cosmonaut's launch command.", "intended_meaning": "Russian — 'Let's go!' (Gagarin's famous word).", "gold_sorani": "[بە ڕووسی] با بچین!", "acceptable_alternatives": ["[ڕووسی] بڕۆین!"], "unacceptable_literal_examples": [], "notes": "Russian with language tag."},
+  {"id": 145, "category": "foreign_dialogue", "source": "Sayonara, my friend.", "context": "War film. Japanese officer's farewell.", "intended_meaning": "Japanese farewell + English.", "gold_sorani": "خوات لەگەڵ بێت، هاوڕێم.", "acceptable_alternatives": ["بەخێربیت، هاوڕێ."], "unacceptable_literal_examples": ["سایۆنارا، هاوڕێم."], "notes": "Translate farewell meaning."},
+  {"id": 146, "category": "foreign_dialogue", "source": "In bocca al lupo!", "context": "Italian setting. Wishing good luck.", "intended_meaning": "Italian idiom meaning 'good luck.'", "gold_sorani": "بەختت باشبێت!", "acceptable_alternatives": ["سەرکەوتوو بیت!"], "unacceptable_literal_examples": ["لە دەمی گورگدا!"], "notes": "Italian idiom — translate meaning."},
+  {"id": 147, "category": "foreign_dialogue", "source": "[Arabic] بسم الله الرحمن الرحیم", "context": "Drama set in Middle East. Character beginning a prayer.", "intended_meaning": "Islamic prayer opening — familiar to Kurdish audience.", "gold_sorani": "بسم الله الرحمن الرحیم", "acceptable_alternatives": ["بەناوی خوای بەخشندە و میهرەبان"], "unacceptable_literal_examples": [], "notes": "Arabic religious phrase — can be kept as-is or translated."},
+  {"id": 148, "category": "foreign_dialogue", "source": "Gesundheit!", "context": "Comedy. Someone sneezes.", "intended_meaning": "German — 'bless you' after a sneeze.", "gold_sorani": "خوات لەگەڵ بێت!", "acceptable_alternatives": ["بەسەلامەتی!"], "unacceptable_literal_examples": ["گەزوندهایت!"], "notes": "Translate meaning, not transliterate."},
+  {"id": 149, "category": "foreign_dialogue", "source": "Hasta la vista, baby.", "context": "Action. Iconic one-liner.", "intended_meaning": "Spanish farewell — iconic pop culture reference.", "gold_sorani": "خوات لەگەڵ بێت، برا.", "acceptable_alternatives": ["تا دیداری دووبارە."], "unacceptable_literal_examples": [], "notes": "Pop culture reference — translate meaning."},
+  {"id": 150, "category": "foreign_dialogue", "source": "[Singing in Italian]", "context": "Opera scene. Character performing aria.", "intended_meaning": "Non-verbal music indicator.", "gold_sorani": "[بە ئیتالی گۆرانی دەڵێت]", "acceptable_alternatives": ["[گۆرانی ئیتالی]"], "unacceptable_literal_examples": [], "notes": "Non-verbal indicator."},
+  {"id": 151, "category": "foreign_dialogue", "source": "Bon appétit!", "context": "Cooking show drama. Serving food.", "intended_meaning": "French — enjoy your meal.", "gold_sorani": "بەخێر بخۆیت!", "acceptable_alternatives": ["نۆشی گیانت!"], "unacceptable_literal_examples": ["بۆن ئاپێتی!"], "notes": "French culinary phrase — translate."},
+  {"id": 152, "category": "foreign_dialogue", "source": "He just said 'namaste' and walked away.", "context": "Drama. Describing someone's behavior.", "intended_meaning": "Hindi greeting embedded in English narration.", "gold_sorani": "تەنها گوتی «سڵاو» و ڕۆیشت.", "acceptable_alternatives": ["سڵاوی کرد و چوو."], "unacceptable_literal_examples": [], "notes": "Translate embedded foreign word meaning."},
+  {"id": 153, "category": "foreign_dialogue", "source": "[Speaking Mandarin]", "context": "Subtitle for inaudible foreign dialogue.", "intended_meaning": "Language indicator only.", "gold_sorani": "[بە چینی دەدوێت]", "acceptable_alternatives": ["[قسەی چینی]"], "unacceptable_literal_examples": [], "notes": "Language indicator tag."},
+  {"id": 154, "category": "foreign_dialogue", "source": "Allons-y!", "context": "Adventure. French character rallying group.", "intended_meaning": "French — 'Let's go!'", "gold_sorani": "با بچین!", "acceptable_alternatives": ["بچین!"], "unacceptable_literal_examples": ["ئالۆنزی!"], "notes": "French exclamation — translate."},
+  {"id": 155, "category": "foreign_dialogue", "source": "As they say in Italian, dolce far niente.", "context": "Travel drama. Character quoting Italian phrase.", "intended_meaning": "Italian — 'the sweetness of doing nothing.'", "gold_sorani": "وەکو ئیتالییەکان دەڵێن، شیرینی هیچ نەکردنە.", "acceptable_alternatives": ["وەکو لە ئیتالی دەڵێن، خۆشی لە هیچ نەکردنە."], "unacceptable_literal_examples": [], "notes": "Embedded Italian quote with translation."},
+  {"id": 156, "category": "foreign_dialogue", "source": "Adios, amigo.", "context": "Western. Farewell between characters.", "intended_meaning": "Spanish farewell.", "gold_sorani": "خوات لەگەڵ بێت، هاوڕێ.", "acceptable_alternatives": ["بەخێربیت، برا."], "unacceptable_literal_examples": ["ئادیۆس ئامیگۆ."], "notes": "Spanish farewell — translate."},
+  {"id": 157, "category": "foreign_dialogue", "source": "[Praying in Hebrew]", "context": "Religious drama. Synagogue scene.", "intended_meaning": "Language indicator for prayer.", "gold_sorani": "[بە عیبری نوێژ دەکات]", "acceptable_alternatives": ["[نوێژی عیبری]"], "unacceptable_literal_examples": [], "notes": "Religious language indicator."},
+  {"id": 158, "category": "foreign_dialogue", "source": "Merci beaucoup, monsieur.", "context": "European drama. Thanking a French person.", "intended_meaning": "French — 'thank you very much, sir.'", "gold_sorani": "زۆر سوپاس، ئاغا.", "acceptable_alternatives": ["سوپاسی زۆر."], "unacceptable_literal_examples": ["مەرسی بۆکوو."], "notes": "French courtesy — translate."},
+  {"id": 159, "category": "foreign_dialogue", "source": "He yelled 'Allahu Akbar' and ran.", "context": "Action drama. Describing an event.", "intended_meaning": "Arabic phrase familiar to Kurdish audience.", "gold_sorani": "هاواری «الله ئەکبەر» کرد و ڕای کرد.", "acceptable_alternatives": ["هاواری الله ئەکبەری کرد و ڕایکرد."], "unacceptable_literal_examples": [], "notes": "Arabic religious phrase — familiar to audience."},
+  {"id": 160, "category": "foreign_dialogue", "source": "As we say, carpe diem.", "context": "Inspirational teacher. Dead Poets Society reference.", "intended_meaning": "Latin — 'seize the day.'", "gold_sorani": "وەکو دەڵێین، ڕۆژەکە بگرە.", "acceptable_alternatives": ["هەر ئەم ڕۆژەیە."], "unacceptable_literal_examples": ["کارپە دیئەم."], "notes": "Latin phrase — translate meaning."},
+
+  {"id": 161, "category": "technical_domain", "source": "The defendant is charged with first-degree murder.", "context": "Legal drama. Prosecution opening statement.", "intended_meaning": "Legal terminology — first-degree murder.", "gold_sorani": "تاوانبار تاوانبارکراوە بە بکوژە لە پلەی یەکەم.", "acceptable_alternatives": ["تاوانبار بە قەتڵی عەمد تاوانبارکراوە."], "unacceptable_literal_examples": [], "notes": "Legal term — degree of murder."},
+  {"id": 162, "category": "technical_domain", "source": "His blood pressure is 180 over 120. We're losing him!", "context": "Medical emergency. ER scene.", "intended_meaning": "Medical vital signs + urgency.", "gold_sorani": "فشاری خوێنی ١٨٠ لەسەر ١٢٠. لەدەستمان دەچێت!", "acceptable_alternatives": ["پێستانی خوێنی ١٨٠/١٢٠ ە. لەدەست دەیدەین!"], "unacceptable_literal_examples": [], "notes": "Medical numbers + urgency."},
+  {"id": 163, "category": "technical_domain", "source": "Target acquired. Permission to engage.", "context": "Military. Sniper requesting authorization.", "intended_meaning": "Military communication protocol.", "gold_sorani": "ئامانج دەستکەوت. مۆڵەت بۆ هێرشکردن.", "acceptable_alternatives": ["ئامانج هاتە بەرچاو. ڕێگەم بدە هێرش بکەم."], "unacceptable_literal_examples": [], "notes": "Military protocol language."},
+  {"id": 164, "category": "technical_domain", "source": "The tumor is malignant. We need to operate immediately.", "context": "Medical drama. Doctor delivering diagnosis.", "intended_meaning": "Medical diagnosis + recommendation.", "gold_sorani": "بابەشۆکەکە خێراکارە. دەبێت دەستبەجێ نەشتەرگەری بکەین.", "acceptable_alternatives": ["بابەشۆکەکە خراپە. پێویستە ئێستا نەشتەرگەری بکرێت."], "unacceptable_literal_examples": [], "notes": "Medical terminology."},
+  {"id": 165, "category": "technical_domain", "source": "We have a Code Blue in room 412.", "context": "Hospital. Emergency code announcement.", "intended_meaning": "Medical emergency code.", "gold_sorani": "کۆدی شین لە ژوری ٤١٢.", "acceptable_alternatives": ["حاڵەتی ئیمەرجنسی لە ژوری ٤١٢."], "unacceptable_literal_examples": [], "notes": "Medical code + room number."},
+  {"id": 166, "category": "technical_domain", "source": "Object is in a decaying orbit.", "context": "Sci-fi. Space station losing altitude.", "intended_meaning": "Space/orbital mechanics terminology.", "gold_sorani": "ئۆبجێکتەکە لە هێلکارەیەکی تێکچوودایە.", "acceptable_alternatives": ["جسمەکە لە ئۆربیتێکی داکشانداییدایە."], "unacceptable_literal_examples": [], "notes": "Space terminology."},
+  {"id": 167, "category": "technical_domain", "source": "Your Honor, I'd like to call my next witness.", "context": "Courtroom. Lawyer addressing judge.", "intended_meaning": "Legal procedure language.", "gold_sorani": "ڕێز لە دادگا، دەمەوێت شایەتی داهاتووم بانگ بکەم.", "acceptable_alternatives": ["بەڕێزم، دەمەوێت شایەتی دووەم بانگ بکەم."], "unacceptable_literal_examples": [], "notes": "Courtroom protocol."},
+  {"id": 168, "category": "technical_domain", "source": "The reactor core temperature has exceeded safe limits.", "context": "Nuclear thriller. Control room crisis.", "intended_meaning": "Nuclear engineering terminology.", "gold_sorani": "پلەی گەرمی ناوەندی ڕیاکتەرەکە لە ئاستی سەلامەت تێپەڕیوە.", "acceptable_alternatives": ["گەرمی ناوکی ڕیاکتەرەکە لە سنوورە سەلامەتەکان بازیداوە."], "unacceptable_literal_examples": [], "notes": "Nuclear terminology."},
+  {"id": 169, "category": "technical_domain", "source": "I need 10 milligrams of morphine, stat.", "context": "ER. Doctor ordering medication.", "intended_meaning": "Medical dosage order.", "gold_sorani": "١٠ ملیگرام مۆرفینم پێویستە، دەستبەجێ.", "acceptable_alternatives": ["١٠ ملغ مۆرفین، ئێستا."], "unacceptable_literal_examples": [], "notes": "Medical dosage + urgency."},
+  {"id": 170, "category": "technical_domain", "source": "The firewall has been breached. They're in the system.", "context": "Cyber thriller. Hacking scene.", "intended_meaning": "Cybersecurity terminology.", "gold_sorani": "دیوارە ئاگرینەکە تێکشکاوە. چوونەتە ناو سیستەمەکە.", "acceptable_alternatives": ["فایەروۆڵەکە شکاوە. لە سیستەمەکەدان."], "unacceptable_literal_examples": [], "notes": "Cybersecurity terminology."},
+  {"id": 171, "category": "technical_domain", "source": "Objection, Your Honor! Hearsay.", "context": "Courtroom. Lawyer objecting to testimony.", "intended_meaning": "Legal objection with grounds.", "gold_sorani": "ناڕەزایی، ڕێزم! ئەوە بیستنی تەنها یەکلاییە.", "acceptable_alternatives": ["ناڕەزایی! قسەی بیستراوە."], "unacceptable_literal_examples": [], "notes": "Legal objection terminology."},
+  {"id": 172, "category": "technical_domain", "source": "Prepare for emergency landing. Brace positions, everyone!", "context": "Disaster film. Pilot to passengers.", "intended_meaning": "Aviation emergency procedure.", "gold_sorani": "ئامادە بن بۆ دابەزینی لەناکاو. هەموو کەس شوێنی پاراستنەوە بگرن!", "acceptable_alternatives": ["ئامادەبن بۆ نیشتنەوەی ئیمەرجنسی!"], "unacceptable_literal_examples": [], "notes": "Aviation emergency terminology."},
+  {"id": 173, "category": "technical_domain", "source": "The patient is coding!", "context": "Medical ER. Cardiac arrest.", "intended_meaning": "Medical slang — patient's heart has stopped.", "gold_sorani": "دڵی نەخۆشەکە وەستاوە!", "acceptable_alternatives": ["نەخۆشەکە دڵی وەستاوە!"], "unacceptable_literal_examples": ["نەخۆشەکە کۆد دەکات!"], "notes": "Medical slang translated to meaning."},
+  {"id": 174, "category": "technical_domain", "source": "We need to perform a tracheotomy.", "context": "Medical emergency. Airway blocked.", "intended_meaning": "Medical procedure name.", "gold_sorani": "دەبێت نەشتەرگەری ترەکیۆتۆمی بکەین.", "acceptable_alternatives": ["پێویستە نەشتەرگەری بۆنی هەناسەدان بکەین."], "unacceptable_literal_examples": [], "notes": "Medical procedure — can transliterate or explain."},
+  {"id": 175, "category": "technical_domain", "source": "Launch the torpedo. Fire at will.", "context": "Naval warfare. Captain's order.", "intended_meaning": "Military naval command.", "gold_sorani": "تۆرپیدۆکە بنێرە. بە ئارەزووی خۆت تەقە بکە.", "acceptable_alternatives": ["تۆرپیدۆ بنێرن. ئاگر!"], "unacceptable_literal_examples": [], "notes": "Naval military command."},
+  {"id": 176, "category": "technical_domain", "source": "Motion to dismiss is denied.", "context": "Courtroom. Judge ruling.", "intended_meaning": "Legal ruling.", "gold_sorani": "داواکاری لابردن ڕەتکراوەتەوە.", "acceptable_alternatives": ["داوای ڕەتکردنەوە قبووڵ نەکرا."], "unacceptable_literal_examples": [], "notes": "Legal ruling terminology."},
+  {"id": 177, "category": "technical_domain", "source": "All systems nominal. Ready for launch.", "context": "Sci-fi. Spacecraft pre-launch check.", "intended_meaning": "Space launch procedure.", "gold_sorani": "هەموو سیستەمەکان ئاسایین. ئامادەی هەڵپەڕینن.", "acceptable_alternatives": ["هەموو شتێک باشە. ئامادەین بۆ هەڵپەڕین."], "unacceptable_literal_examples": [], "notes": "Space launch checklist."},
+  {"id": 178, "category": "technical_domain", "source": "The DNA results came back positive.", "context": "Forensic drama. Lab results.", "intended_meaning": "Forensic science result.", "gold_sorani": "ئەنجامەکانی DNA ئەرێنی گەڕایەوە.", "acceptable_alternatives": ["تاقیکردنەوەکانی DNA ئەرێنی بوو."], "unacceptable_literal_examples": [], "notes": "Forensic DNA terminology."},
+  {"id": 179, "category": "technical_domain", "source": "Set course for the Alpha Quadrant, warp factor 9.", "context": "Sci-fi. Star Trek-style navigation.", "intended_meaning": "Sci-fi navigation command.", "gold_sorani": "ئاراستەکە بکەرەوە بۆ بەشی ئالفا، خێرایی وارپ ٩.", "acceptable_alternatives": ["ڕووی ئالفا، وارپ ٩."], "unacceptable_literal_examples": [], "notes": "Sci-fi navigation — proper nouns preserved."},
+  {"id": 180, "category": "technical_domain", "source": "Administer 5 CCs of adrenaline to the heart.", "context": "Medical emergency. Pulp Fiction-style revival.", "intended_meaning": "Medical emergency injection order.", "gold_sorani": "٥ سی سی ئادرینالین بدە بۆ دڵەکە.", "acceptable_alternatives": ["٥ سی سی ئادرینالین لەناو دڵ بدەرێ."], "unacceptable_literal_examples": [], "notes": "Medical dosage to specific organ."},
+
+  {"id": 181, "category": "cultural_sensitivity", "source": "Merry Christmas!", "context": "Holiday film. Family celebration.", "intended_meaning": "Christmas greeting.", "gold_sorani": "جەژنی کریسمست پیرۆز!", "acceptable_alternatives": ["کریسمست پیرۆزبێت!"], "unacceptable_literal_examples": [], "notes": "Keep as Christmas — Kurdish audiences know the holiday."},
+  {"id": 182, "category": "cultural_sensitivity", "source": "Let's say grace before dinner.", "context": "Family drama. Religious tradition.", "intended_meaning": "Christian pre-meal prayer tradition.", "gold_sorani": "با سوپاسی خوا بکەین پێش نان.", "acceptable_alternatives": ["با دوعا بکەین پێش نان."], "unacceptable_literal_examples": [], "notes": "Christian custom adapted to familiar concept."},
+  {"id": 183, "category": "cultural_sensitivity", "source": "He's been hitting the bottle again.", "context": "Drama. Discussing alcoholism.", "intended_meaning": "Euphemism for alcohol abuse.", "gold_sorani": "دووبارە خواردنەوەی گرتووەتەوە.", "acceptable_alternatives": ["دووبارە ئاڵکۆحۆلی زۆر دەخواتەوە."], "unacceptable_literal_examples": ["دووبارە لە بوتڵەکەدا دەدات."], "notes": "Alcoholism euphemism — translate meaning."},
+  {"id": 184, "category": "cultural_sensitivity", "source": "I swear to God, I didn't do it.", "context": "Crime. Suspect pleading innocence.", "intended_meaning": "Religious oath in casual speech.", "gold_sorani": "بە خوا سوێند من نەمکردووە.", "acceptable_alternatives": ["سوێند بە خوا من نەمکردووە.", "واڵڵا من نەمکردووە."], "unacceptable_literal_examples": [], "notes": "Oath — use Islamic oath form natural to Kurdish."},
+  {"id": 185, "category": "cultural_sensitivity", "source": "He went to rehab.", "context": "Drama. Discussing addiction recovery.", "intended_meaning": "Rehabilitation for addiction.", "gold_sorani": "چووە چارەسەری نەشەی.", "acceptable_alternatives": ["چووە بۆ چارەسەرکردنی خۆی."], "unacceptable_literal_examples": [], "notes": "Addiction/rehab adapted."},
+  {"id": 186, "category": "cultural_sensitivity", "source": "They got married at city hall.", "context": "Romance. Civil wedding.", "intended_meaning": "Civil (non-religious) marriage.", "gold_sorani": "لە شارەوانی هاوسەریان کرد.", "acceptable_alternatives": ["لە تۆمارگاکە هاوسەرییان تۆمار کرد."], "unacceptable_literal_examples": [], "notes": "Civil marriage concept."},
+  {"id": 187, "category": "cultural_sensitivity", "source": "That joke is so inappropriate.", "context": "Office comedy. Someone told an offensive joke.", "intended_meaning": "Social sensitivity judgment.", "gold_sorani": "ئەو گاڵتەیە زۆر لە جێگای خۆی نییە.", "acceptable_alternatives": ["ئەو گاڵتەیە لەبار نابێت."], "unacceptable_literal_examples": [], "notes": "Social appropriateness."},
+  {"id": 188, "category": "cultural_sensitivity", "source": "What doesn't kill you makes you stronger.", "context": "Motivational scene. Coach to team.", "intended_meaning": "Resilience proverb.", "gold_sorani": "ئەوەی نەتکوژێت بەهێزترت دەکات.", "acceptable_alternatives": ["ئەوەی لێت نەمرد بەهێزتر دەبیتەوە."], "unacceptable_literal_examples": [], "notes": "Proverb — translate meaning, natural Kurdish equivalent."},
+  {"id": 189, "category": "cultural_sensitivity", "source": "Keep the change.", "context": "Taxi scene. Generous tip.", "intended_meaning": "Tipping culture reference.", "gold_sorani": "پارەکەت لای خۆت بێت.", "acceptable_alternatives": ["وردەکە بۆ تۆ."], "unacceptable_literal_examples": [], "notes": "Tipping concept — understandable in Kurdish culture."},
+  {"id": 190, "category": "cultural_sensitivity", "source": "He came out to his parents last night.", "context": "Drama. LGBTQ+ storyline.", "intended_meaning": "Revealing sexual orientation to family.", "gold_sorani": "دوێنێ شەو ڕاستی خۆی بە دایک و باوکی گوت.", "acceptable_alternatives": ["دوێنێ شەو لەگەڵ خێزانەکەی کراوە بوو."], "unacceptable_literal_examples": [], "notes": "Sensitive topic — convey meaning naturally."},
+  {"id": 191, "category": "cultural_sensitivity", "source": "Rest in peace, old friend.", "context": "Funeral. Final farewell.", "intended_meaning": "Funeral farewell.", "gold_sorani": "ڕەحمەت لێبێت، هاوڕێی کۆن.", "acceptable_alternatives": ["خاکت سووک بێت، هاوڕێ."], "unacceptable_literal_examples": [], "notes": "Funeral — use Kurdish funeral phrases."},
+  {"id": 192, "category": "cultural_sensitivity", "source": "Trick or treat!", "context": "Halloween scene.", "intended_meaning": "Halloween tradition.", "gold_sorani": "هەڵۆوین پیرۆز! شیرینی یان خەڵتانی!", "acceptable_alternatives": ["شیرینی بدە یان خەڵت!"], "unacceptable_literal_examples": [], "notes": "Halloween — may need contextual adaptation."},
+  {"id": 193, "category": "cultural_sensitivity", "source": "Happy Thanksgiving, everyone.", "context": "Family holiday gathering.", "intended_meaning": "American holiday greeting.", "gold_sorani": "جەژنی سوپاسگوزاری پیرۆز بۆ هەموانتان.", "acceptable_alternatives": ["ڕۆژی سوپاسگوزاری پیرۆز!"], "unacceptable_literal_examples": [], "notes": "American holiday — translate concept."},
+  {"id": 194, "category": "cultural_sensitivity", "source": "Are you sure you want to play God?", "context": "Sci-fi ethics. Scientist questioned about experiment.", "intended_meaning": "Ethical question about overreach.", "gold_sorani": "دڵنیایت دەتەوێت یاری خوایی بکەیت؟", "acceptable_alternatives": ["دڵنیایت دەتەوێت خۆت بخەیتە شوێنی خوا؟"], "unacceptable_literal_examples": [], "notes": "Religious metaphor in ethical context."},
+  {"id": 195, "category": "cultural_sensitivity", "source": "Cheers, mate!", "context": "British pub scene. Toast.", "intended_meaning": "British casual toast.", "gold_sorani": "بەسەلامەتی، برا!", "acceptable_alternatives": ["نۆشیگیان!"], "unacceptable_literal_examples": [], "notes": "British casual toast adapted."},
+  {"id": 196, "category": "cultural_sensitivity", "source": "She's living the American Dream.", "context": "Immigration drama. Success story.", "intended_meaning": "Concept of achieving success in America.", "gold_sorani": "خەونی ئەمریکیی بە ڕاستی بینیوەتەوە.", "acceptable_alternatives": ["ژیانی خەونی ئەمریکی دەژیێت."], "unacceptable_literal_examples": [], "notes": "American cultural concept."},
+  {"id": 197, "category": "cultural_sensitivity", "source": "Cross my heart and hope to die.", "context": "Children's drama. Child making a promise.", "intended_meaning": "Childhood promise oath.", "gold_sorani": "سوێند دەخۆم بمبێت.", "acceptable_alternatives": ["بەللێن!"], "unacceptable_literal_examples": ["خاچی لەسەر دڵم بکێشە."], "notes": "Childhood oath — do NOT translate 'cross'."},
+  {"id": 198, "category": "cultural_sensitivity", "source": "He's gone to a better place.", "context": "Consoling someone after a death.", "intended_meaning": "Death euphemism — afterlife.", "gold_sorani": "چووەتە بەهەشت.", "acceptable_alternatives": ["چووە لای خوا.", "خواوەندی بەردیلی هەبێت."], "unacceptable_literal_examples": ["چووە بۆ شوێنێکی باشتر."], "notes": "Afterlife euphemism — use Kurdish/Islamic equivalent."},
+  {"id": 199, "category": "cultural_sensitivity", "source": "In God we trust.", "context": "Political drama. American motto reference.", "intended_meaning": "American national motto.", "gold_sorani": "پشتمان بە خوایە.", "acceptable_alternatives": ["متمانەمان بە خوایە."], "unacceptable_literal_examples": [], "notes": "Religious national motto — natural Kurdish equivalent."},
+  {"id": 200, "category": "cultural_sensitivity", "source": "Karma is going to get you.", "context": "Revenge drama. Warning about consequences.", "intended_meaning": "Concept of cosmic justice.", "gold_sorani": "ڕۆژگارت سزا دەداتەوە.", "acceptable_alternatives": ["کردەوەکانت دەگەڕێتەوە سەرت."], "unacceptable_literal_examples": ["کارمات دەتگرێتەوە."], "notes": "Karma concept adapted to Kurdish worldview."}
 ]

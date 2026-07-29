@@ -1,13 +1,46 @@
+# Git
 .git
 .gitignore
-.venv
-venv
+
+# Python
 __pycache__
 *.pyc
-*.hawsub.db
-.hawsub_cache
-output
-tmp
+*.pyo
+*.egg-info
+.eggs
+dist
+build
+
+# Virtual environments
+.venv
+venv
+env
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# Testing artifacts
 .pytest_cache
-htmlcov
 .coverage
+htmlcov
+.tox
+
+# Development files
+*.md
+!README.md
+.env
+.env.*
+!.env.example
+
+# Output (mounted as volume)
+output/
+
+# Cache
+.hawsub_cache
+
+# OS files
+.DS_Store
+Thumbs.db
