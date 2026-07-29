@@ -41,11 +41,31 @@ class GenericAPIModel(SemanticModel):
         api_key: Optional[str] = None,
         base_url: Optional[str] = None,
         temperature: float = 0.2,
+        prompt_dir: str = "prompts",
     ):
         super().__init__(provider_name, model_name, temperature)
         self.api_key = api_key or os.environ.get(f"{provider_name.upper()}_API_KEY", "")
         self.base_url = base_url or self._default_base_url(provider_name)
         self.normalizer = SoraniNormalizer()
+        self.prompt_dir = prompt_dir
+        self._translation_prompt = self._load_prompt("translation_v2.txt", "translation_v1.txt")
+        self._semantic_prompt = self._load_prompt("semantic_v2.txt", "semantic_v1.txt")
+        self._verifier_prompt = self._load_prompt("verifier_v1.txt")
+
+    def _load_prompt(self, *filenames: str) -> str:
+        """Load the first available prompt file from the prompt directory."""
+        for fname in filenames:
+            path = os.path.join(self.prompt_dir, fname)
+            if os.path.exists(path):
+                try:
+                    with open(path, "r", encoding="utf-8") as f:
+                        content = f.read().strip()
+                    if content:
+                        logger.info(f"Loaded prompt file: {path}")
+                        return content
+                except (IOError, UnicodeDecodeError) as e:
+                    logger.warning(f"Failed to read prompt {path}: {e}")
+        return ""
 
     def _default_base_url(self, provider: str) -> str:
         urls = {
@@ -232,10 +252,13 @@ class GenericAPIModel(SemanticModel):
         self, scene_id: str, cues_data: List[Dict[str, Any]], context_data: Dict[str, Any]
     ) -> SemanticInterpretationResponse:
         """Analyze narrative meaning and subtext before translating using the LLM."""
-        system_prompt = (
-            "You are a master narrative analyst for cinematic subtitle localization into Central Kurdish (Sorani, ckb). "
-            "Analyze intended meaning, tone, register, subtext, and ambiguity. Do not translate. Return JSON only."
-        )
+        if self._semantic_prompt:
+            system_prompt = self._semantic_prompt
+        else:
+            system_prompt = (
+                "You are a master narrative analyst for cinematic subtitle localization into Central Kurdish (Sorani, ckb). "
+                "Analyze intended meaning, tone, register, subtext, and ambiguity. Do not translate. Return JSON only."
+            )
 
         user_prompt = (
             f"Scene ID: {scene_id}\n"
@@ -293,14 +316,23 @@ class GenericAPIModel(SemanticModel):
         cues_data: List[Dict[str, Any]],
         interpretations: Optional[List[SemanticInterpretationItem]],
         context_data: Dict[str, Any],
+        glossary_terms: Optional[str] = None,
     ) -> TranslationResponse:
         """Translate meaning-first into Central Kurdish / Sorani (ckb) using the LLM."""
-        system_prompt = (
-            "You are a master subtitle translator specializing in English to Central Kurdish (Sorani, ckb). "
-            "Use Arabic-based Central Kurdish script (ک، ی، ۆ، ێ، ە، ڵ، ڕ). "
-            "Translate meaning, not words. Localize idioms naturally. Keep concise for subtitles. "
-            "NO Kurmanji. Return valid JSON only."
-        )
+        if self._translation_prompt:
+            system_prompt = self._translation_prompt
+            # Inject glossary terms into the prompt template
+            if glossary_terms:
+                system_prompt = system_prompt.replace("{glossary_terms}", glossary_terms)
+            else:
+                system_prompt = system_prompt.replace("{glossary_terms}", "(No project-specific glossary terms)")
+        else:
+            system_prompt = (
+                "You are a master subtitle translator specializing in English to Central Kurdish (Sorani, ckb). "
+                "Use Arabic-based Central Kurdish script (ک، ی، ۆ، ێ، ە، ڵ، ڕ). "
+                "Translate meaning, not words. Localize idioms naturally. Keep concise for subtitles. "
+                "NO Kurmanji. Return valid JSON only."
+            )
 
         interp_info = ""
         if interpretations:
@@ -366,12 +398,15 @@ class GenericAPIModel(SemanticModel):
         context_data: Dict[str, Any],
     ) -> VerificationResponse:
         """Verify an existing Sorani translation using a second-model check."""
-        system_prompt = (
-            "You are an expert Kurdish subtitle quality verifier. "
-            "Audit a proposed Sorani translation against the English source. "
-            "Check semantic fidelity, naturalness, Kurmanji contamination, literal translation failures. "
-            "Return JSON only."
-        )
+        if self._verifier_prompt:
+            system_prompt = self._verifier_prompt
+        else:
+            system_prompt = (
+                "You are an expert Kurdish subtitle quality verifier. "
+                "Audit a proposed Sorani translation against the English source. "
+                "Check semantic fidelity, naturalness, Kurmanji contamination, literal translation failures. "
+                "Return JSON only."
+            )
 
         user_prompt = (
             f"Source English: {source_text}\n"

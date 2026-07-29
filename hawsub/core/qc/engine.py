@@ -4,6 +4,7 @@ Evaluates Semantic, Linguistic, and Technical quality dimensions for Hawsub.
 """
 
 import re
+import unicodedata
 from typing import List, Optional, Dict, Any, Tuple
 from pydantic import BaseModel, Field
 from hawsub.core.ingest.parser import SubtitleCueModel
@@ -48,6 +49,7 @@ class QCEngine:
         cue: SubtitleCueModel,
         next_cue: Optional[SubtitleCueModel] = None,
         context_names: Optional[List[str]] = None,
+        prev_translation: Optional[str] = None,
     ) -> QCEvaluationResult:
         issues: List[QCIssue] = []
         
@@ -66,7 +68,7 @@ class QCEngine:
         # 3. Semantic Checks
         sem_score = 1.0
         if self.qc_config.semantic:
-            sem_issues, sem_score = self._run_semantic_checks(cue, context_names)
+            sem_issues, sem_score = self._run_semantic_checks(cue, context_names, prev_translation)
             issues.extend(sem_issues)
 
         # Overall confidence calculation
@@ -189,14 +191,15 @@ class QCEngine:
         return issues, max(0.0, score)
 
     def _run_semantic_checks(
-        self, cue: SubtitleCueModel, context_names: Optional[List[str]]
+        self, cue: SubtitleCueModel, context_names: Optional[List[str]],
+        prev_translation: Optional[str] = None,
     ) -> Tuple[List[QCIssue], float]:
         issues = []
         score = 1.0
         source = cue.clean_source_text
         target = cue.target_text or ""
 
-        # Check number consistency (e.g. 5 in source vs target)
+        # Check 1: Number consistency (e.g. 5 in source vs target)
         src_numbers = set(re.findall(r"\b\d+\b", source))
         trg_numbers = set(re.findall(r"\b\d+\b", self.normalizer.normalize_digits(target)))
         
@@ -214,7 +217,7 @@ class QCEngine:
             )
             score -= 0.35
 
-        # Check negation reversal check (e.g. "not" in source)
+        # Check 2: Negation reversal check (e.g. "not" in source)
         has_src_negation = bool(re.search(r"\b(not|n't|never|no)\b", source, re.IGNORECASE))
         has_trg_negation = bool(re.search(r"(نە|نا|مە|نیت|نییە)", target))
         if has_src_negation and not has_trg_negation:
@@ -229,5 +232,101 @@ class QCEngine:
                 )
             )
             score -= 0.45
+
+        # Check 3: Question mark consistency
+        src_has_question = "?" in source
+        trg_has_question = "\u061F" in target or "?" in target  # ؟ or ?
+        if src_has_question and not trg_has_question and len(target) > 2:
+            issues.append(
+                QCIssue(
+                    cue_id=cue.id,
+                    category="semantic",
+                    rule="question_mark_missing",
+                    severity="minor",
+                    score_impact=0.10,
+                    message="Source contains question mark but target translation is missing it",
+                )
+            )
+            score -= 0.10
+
+        # Check 4: Empty/placeholder/mock fallback detection
+        if target.startswith("تەرجەمەی:") or target.startswith("تەرجەمەی :"):
+            issues.append(
+                QCIssue(
+                    cue_id=cue.id,
+                    category="semantic",
+                    rule="mock_fallback_detected",
+                    severity="critical",
+                    score_impact=0.50,
+                    message="Translation is a mock/fallback placeholder, not a real translation",
+                )
+            )
+            score -= 0.50
+
+        # Check 5: Length ratio anomaly
+        if source and target and len(target) > 2:
+            # Count actual characters (not whitespace/punctuation) for ratio
+            src_alpha = len(re.findall(r'\w', source))
+            trg_alpha = len([c for c in target if unicodedata.category(c).startswith('L')])
+            if src_alpha > 3 and trg_alpha > 0:
+                ratio = trg_alpha / src_alpha
+                # Sorani is typically 0.5x to 2.0x English character count
+                if ratio < 0.3:
+                    issues.append(
+                        QCIssue(
+                            cue_id=cue.id,
+                            category="semantic",
+                            rule="length_ratio_too_short",
+                            severity="major",
+                            score_impact=0.20,
+                            message=f"Translation suspiciously short (ratio: {ratio:.2f}). Possible omission.",
+                        )
+                    )
+                    score -= 0.20
+                elif ratio > 3.0:
+                    issues.append(
+                        QCIssue(
+                            cue_id=cue.id,
+                            category="semantic",
+                            rule="length_ratio_too_long",
+                            severity="minor",
+                            score_impact=0.10,
+                            message=f"Translation suspiciously long (ratio: {ratio:.2f}). Possible over-explanation.",
+                        )
+                    )
+                    score -= 0.10
+
+        # Check 6: Duplicate translation detection (same as previous cue)
+        if prev_translation and target and target == prev_translation and len(target) > 5:
+            issues.append(
+                QCIssue(
+                    cue_id=cue.id,
+                    category="semantic",
+                    rule="duplicate_translation",
+                    severity="major",
+                    score_impact=0.20,
+                    message="Translation is identical to previous cue — possible copy error",
+                )
+            )
+            score -= 0.20
+
+        # Check 7: Proper noun preservation (names should appear transliterated)
+        if context_names:
+            for name in context_names:
+                if name.lower() in source.lower() and len(name) > 2:
+                    # Check if any transliteration of the name exists in target
+                    # At minimum, the target should contain SOME non-generic text
+                    if not target or len(target.strip()) < 3:
+                        issues.append(
+                            QCIssue(
+                                cue_id=cue.id,
+                                category="semantic",
+                                rule="proper_noun_missing",
+                                severity="major",
+                                score_impact=0.15,
+                                message=f"Character name '{name}' in source but target appears empty/truncated",
+                            )
+                        )
+                        score -= 0.15
 
         return issues, max(0.0, score)

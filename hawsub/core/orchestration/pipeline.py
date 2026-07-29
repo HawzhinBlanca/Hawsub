@@ -22,6 +22,8 @@ from hawsub.core.qc.engine import QCEngine, QCEvaluationResult
 from hawsub.core.qc.verifier import SecondModelVerifier, VerificationAuditRecord
 from hawsub.core.review.queue import ReviewQueue
 from hawsub.core.export.exporters import SubtitleExporter
+from hawsub.core.translation.memory import TranslationMemory
+from hawsub.core.context.glossary import GlossaryEngine
 from hawsub.utils.logging import setup_logger
 
 logger = setup_logger("hawsub.orchestrator")
@@ -63,6 +65,14 @@ class DurablePipeline:
         self.qc_engine = QCEngine(self.config.qc, self.config.profiles.get("house_standard"))
         self.verifier = SecondModelVerifier(self.verifier_provider, self.config.verification.trigger_threshold)
         self.review_queue = ReviewQueue()
+        self.translation_memory = TranslationMemory(
+            db_path=os.path.join(os.path.dirname(self.db_path), f"{project_id}.tm.db")
+        )
+        self.glossary = GlossaryEngine()
+
+        # TM hit-rate tracking
+        self._tm_hits = 0
+        self._tm_lookups = 0
 
         self._init_sqlite()
 
@@ -205,24 +215,55 @@ class DurablePipeline:
                 interpreter = SemanticInterpreter(self.provider)
                 interp_result = interpreter.analyze_batch(batch.scene_id, batch.cues, batch.context)
 
-                # Translate unrouted cues
+                # Check Translation Memory before calling LLM
                 untranslated_cues = [c for c in batch.cues if not c.target_text]
-                if untranslated_cues:
-                    untr_data = [{"id": c.id, "source_text": c.clean_source_text} for c in untranslated_cues]
+                tm_resolved_cues = []
+                still_untranslated = []
+
+                for cue in untranslated_cues:
+                    self._tm_lookups += 1
+                    tm_match = self.translation_memory.find_fuzzy_match(cue.clean_source_text, threshold=0.92)
+                    if tm_match:
+                        cue.target_text = tm_match.target_text
+                        tm_resolved_cues.append(cue)
+                        self._tm_hits += 1
+                        logger.info(f"TM hit for cue {cue.id}: score={tm_match.similarity_score}")
+                    else:
+                        still_untranslated.append(cue)
+
+                if tm_resolved_cues:
+                    logger.info(f"TM resolved {len(tm_resolved_cues)}/{len(untranslated_cues)} cues in scene {batch.scene_id}")
+
+                # Prepare glossary terms string for prompt injection
+                glossary_lines = []
+                for key, term in self.glossary.terms.items():
+                    glossary_lines.append(f"  {term.source_term} → {term.target_sorani} ({term.category})")
+                glossary_str = "\n".join(glossary_lines) if glossary_lines else None
+
+                # Translate remaining unresolved cues via LLM
+                if still_untranslated:
+                    untr_data = [{"id": c.id, "source_text": c.clean_source_text} for c in still_untranslated]
                     tr_resp = self.provider.translate_scene(
                         scene_id=batch.scene_id,
                         cues_data=untr_data,
                         interpretations=interp_result.items if interp_result else None,
                         context_data=batch.context.model_dump(),
+                        glossary_terms=glossary_str,
                     )
                     tr_dict = {item.cue_ids[0]: item.translation for item in tr_resp.translations if item.cue_ids}
-                    for cue in untranslated_cues:
+                    for cue in still_untranslated:
                         if cue.id in tr_dict:
                             cue.target_text = tr_dict[cue.id]
+
+                # Apply glossary enforcement post-translation
+                for cue in batch.cues:
+                    if cue.target_text:
+                        cue.target_text = self.glossary.apply_glossary(cue.clean_source_text, cue.target_text)
 
                 # Adaptation, QC & Verification
                 scene_qc_results = []
                 scene_translations_data = []
+                prev_translation = None
 
                 for idx, cue in enumerate(batch.cues):
                     next_c = batch.cues[idx + 1] if idx < len(batch.cues) - 1 else None
@@ -231,7 +272,8 @@ class DurablePipeline:
                     if cue.target_text:
                         cue.target_text = self.adaptation_engine.format_semantic_line_breaks(cue.target_text)
 
-                    qc_res = self.qc_engine.evaluate_cue(cue, next_c)
+                    qc_res = self.qc_engine.evaluate_cue(cue, next_c, prev_translation=prev_translation)
+                    prev_translation = cue.target_text
                     scene_qc_results.append(qc_res)
                     all_qc_results.append(qc_res)
 
@@ -250,6 +292,14 @@ class DurablePipeline:
                         self.review_queue.add_cue_for_review(cue, qc_res, batch.scene_id, audit)
 
                     scene_translations_data.append({"cue_id": cue.id, "translation": cue.target_text or ""})
+
+                    # Store approved translations in Translation Memory
+                    if qc_res.passed and cue.target_text and cue.clean_source_text:
+                        self.translation_memory.store_translation(
+                            source_text=cue.clean_source_text,
+                            target_text=cue.target_text,
+                            context_notes=f"scene:{batch.scene_id} project:{self.project_id}",
+                        )
 
                 self.save_scene_checkpoint(
                     scene_id=batch.scene_id,
@@ -288,6 +338,10 @@ class DurablePipeline:
         SubtitleExporter.export_qc_report(self.project_id, all_qc_results, qc_report_path)
 
         self.set_stage_status("EXPORT", "completed")
+
+        # Log TM hit-rate
+        tm_hit_rate = round(self._tm_hits / self._tm_lookups * 100, 1) if self._tm_lookups > 0 else 0.0
+        logger.info(f"TM hit rate: {self._tm_hits}/{self._tm_lookups} ({tm_hit_rate}%)")
         logger.info(f"Hawsub pipeline finished successfully for project {self.project_id}")
 
         return {
@@ -296,4 +350,5 @@ class DurablePipeline:
             "vtt": vtt_path,
             "bilingual_html": html_path,
             "qc_report": qc_report_path,
+            "tm_hit_rate": tm_hit_rate,
         }
