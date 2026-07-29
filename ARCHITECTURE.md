@@ -110,11 +110,18 @@ Infrastructure
 - confidence scoring;
 - second-model verification.
 
+### `core/cost`
+- token budget tracking;
+- per-model pricing rates;
+- cost estimation (`hawsub estimate`);
+- expenditure enforcement.
+
 ### `core/review`
 - issue queue;
 - reviewer decisions;
 - alternatives;
-- glossary updates.
+- feedback store (`hawsub feedback`);
+- training data export.
 
 ### `core/export`
 - SRT;
