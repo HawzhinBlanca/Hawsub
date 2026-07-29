@@ -8,7 +8,8 @@ import sqlite3
 import json
 import time
 from pathlib import Path
-from typing import List, Dict, Optional, Any
+from typing import List, Dict, Optional, Any, Callable
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from hawsub.config.schema import HawsubConfig
 from hawsub.config.loader import load_config
 from hawsub.core.ingest.parser import SubtitleParser, SubtitleCueModel
@@ -175,7 +176,11 @@ class DurablePipeline:
             conn.close()
 
     def process_file(
-        self, input_subtitle_path: str, output_dir: str = "output"
+        self,
+        input_subtitle_path: str,
+        output_dir: str = "output",
+        progress_callback: Optional[Callable[[Dict[str, Any]], None]] = None,
+        max_workers: int = 1,
     ) -> Dict[str, str]:
         """Execute full end-to-end subtitle localization pipeline."""
         logger.info(f"Starting Hawsub pipeline for project {self.project_id}")
@@ -219,7 +224,17 @@ class DurablePipeline:
         self.set_stage_status("TRANSLATION_QC", "in_progress")
         all_qc_results: List[QCEvaluationResult] = []
 
-        for batch in scene_batches:
+        for idx, batch in enumerate(scene_batches):
+            if progress_callback:
+                progress_callback({
+                    "stage": "TRANSLATION_QC",
+                    "current_scene": idx + 1,
+                    "total_scenes": len(scene_batches),
+                    "scene_id": batch.scene_id,
+                    "cue_count": len(batch.cues),
+                    "percent": round(((idx + 1) / len(scene_batches)) * 100, 1),
+                })
+
             try:
                 checkpoint = self.get_scene_checkpoint(batch.scene_id)
                 if checkpoint:

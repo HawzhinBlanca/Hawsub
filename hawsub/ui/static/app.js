@@ -113,6 +113,8 @@ async function uploadFile(file) {
 }
 
 // === Pipeline Processing ===
+let progressTimer = null;
+
 async function processProject() {
   if (!State.projectId || State.processing) return;
 
@@ -120,8 +122,28 @@ async function processProject() {
   renderToolbar();
   showToast('Running localization pipeline...', 'info', 10000);
 
+  // Start progress polling
+  progressTimer = setInterval(async () => {
+    if (!State.projectId) return;
+    try {
+      const pResp = await fetch(`/api/progress/${State.projectId}`);
+      if (pResp.ok) {
+        const pData = await pResp.json();
+        const p = pData.progress;
+        if (p && p.percent !== undefined) {
+          const statusText = $('.status-text');
+          if (statusText) {
+            statusText.textContent = `Translating: ${p.percent}% (Scene ${p.current_scene || 0}/${p.total_scenes || 0})`;
+          }
+        }
+      }
+    } catch (e) { /* ignore */ }
+  }, 500);
+
   try {
     const resp = await fetch(`/api/process/${State.projectId}`, { method: 'POST' });
+    clearInterval(progressTimer);
+
     if (!resp.ok) {
       const err = await resp.json();
       throw new Error(err.detail || 'Processing failed');
@@ -134,8 +156,9 @@ async function processProject() {
     renderWorkspace();
     showToast(`Pipeline complete! ${data.total_cues} cues translated.`, 'success');
   } catch (e) {
+    clearInterval(progressTimer);
     State.processing = false;
-    renderToolbar();
+    renderWorkspace();
     showToast(`Pipeline error: ${e.message}`, 'error');
   }
 }

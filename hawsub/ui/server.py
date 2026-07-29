@@ -240,9 +240,17 @@ async def api_process_project(project_id: str):
     os.makedirs(output_dir, exist_ok=True)
     db_path = os.path.join(output_dir, f"{project_id}.hawsub.db")
 
+    def on_progress(data: dict):
+        if project_id in active_projects:
+            active_projects[project_id]["progress"] = data
+
     try:
         pipeline = DurablePipeline(project_id=project_id, db_path=db_path)
-        results = pipeline.process_file(proj["input_path"], output_dir=output_dir)
+        results = pipeline.process_file(
+            proj["input_path"],
+            output_dir=output_dir,
+            progress_callback=on_progress,
+        )
     except (FileNotFoundError, ValueError) as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
@@ -280,6 +288,19 @@ async def api_process_project(project_id: str):
             for c in cues
         ],
     }
+
+
+@app.get("/api/progress/{project_id}")
+def api_get_progress(project_id: str):
+    """Retrieve current processing progress for a project."""
+    _validate_project_id(project_id)
+    proj = active_projects.get(project_id)
+    if not proj:
+        raise HTTPException(status_code=404, detail="Project not found")
+
+    progress = proj.get("progress", {"stage": "idle", "percent": 0.0})
+    return {"project_id": project_id, "progress": progress}
+
 
 
 # === Normalize ===
