@@ -53,14 +53,24 @@ cp .env.example .env
 # Full pipeline: English SRT → Sorani localized SRT/ASS/VTT + QC report
 hawsub process -i movie.en.srt -p my_film -o output/
 
+# Estimate cost before running
+hawsub estimate -i movie.en.srt --model gemini-2.5-flash --budget 5.0
+
 # Inspect subtitle statistics (cue count, duration, word count, reading speed)
 hawsub inspect -i movie.en.srt
+
+# Validate an existing Sorani subtitle file for quality issues
+hawsub validate -i output/movie.ckb.srt
 
 # Normalize Sorani text to canonical Central Kurdish orthography
 hawsub normalize -t "سڵاو كوردستان"
 
 # Run gold benchmark evaluation suite
 hawsub benchmark --provider mock --model gemini-2.5-pro
+
+# Manage human correction feedback
+hawsub feedback --glossary-candidates
+hawsub feedback --export corrections.jsonl
 ```
 
 ### GUI — Interactive Workstation
@@ -133,7 +143,7 @@ pytest tests/unit/ -v
 pytest tests/ --cov=hawsub --cov-report=term-missing
 ```
 
-**Current status**: 140 tests passing, 96.7% benchmark score.
+**Current status**: 288 tests passing, 96.7% benchmark score.
 
 ## Important Model Policy
 
