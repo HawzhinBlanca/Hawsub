@@ -4,6 +4,7 @@ Includes exponential backoff, rate-limit handling, and structured output parsing
 """
 
 import os
+import re
 import json
 import time
 import logging
@@ -192,10 +193,9 @@ class GenericAPIModel(SemanticModel):
         return "/chat/completions"
 
     def _safe_parse_json(self, content: str) -> Dict[str, Any]:
-        """Robustly extract JSON from LLM response, handling markdown fences and partial text."""
+        """Robustly extract JSON from LLM response, handling markdown fences, arrays, and partial text."""
         content = content.strip()
         # Handle markdown code blocks gracefully
-        import re
         if "```" in content:
             match = re.search(r"```(?:json)?\s*([\s\S]*?)\s*```", content, re.IGNORECASE)
             if match:
@@ -204,18 +204,48 @@ class GenericAPIModel(SemanticModel):
                 lines = [l for l in content.split("\n") if not l.strip().startswith("```")]
                 content = "\n".join(lines).strip()
         try:
-            return json.loads(content)
+            parsed = json.loads(content)
+            # If LLM returned a bare array, wrap it
+            if isinstance(parsed, list):
+                return {"translations": parsed, "items": parsed}
+            return parsed
         except json.JSONDecodeError:
             pass
 
+        # Try to locate JSON substring — check which delimiter appears first
+        obj_start = content.find("{")
+        arr_start = content.find("[")
+
+        # Determine order: if array starts before object, try array first
+        if arr_start >= 0 and (obj_start < 0 or arr_start < obj_start):
+            arr_end = content.rfind("]") + 1
+            if arr_end > arr_start:
+                try:
+                    arr = json.loads(content[arr_start:arr_end])
+                    if isinstance(arr, list):
+                        return {"translations": arr, "items": arr}
+                except json.JSONDecodeError:
+                    pass
+
         # Try to locate JSON object substring
-        start = content.find("{")
-        end = content.rfind("}") + 1
-        if start >= 0 and end > start:
-            try:
-                return json.loads(content[start:end])
-            except json.JSONDecodeError:
-                pass
+        if obj_start >= 0:
+            obj_end = content.rfind("}") + 1
+            if obj_end > obj_start:
+                try:
+                    return json.loads(content[obj_start:obj_end])
+                except json.JSONDecodeError:
+                    pass
+
+        # Fallback: try array if we haven't yet
+        if arr_start >= 0 and (obj_start >= 0 and obj_start <= arr_start):
+            arr_end = content.rfind("]") + 1
+            if arr_end > arr_start:
+                try:
+                    arr = json.loads(content[arr_start:arr_end])
+                    if isinstance(arr, list):
+                        return {"translations": arr, "items": arr}
+                except json.JSONDecodeError:
+                    pass
 
         logger.warning(f"Failed to parse JSON from model response: {content[:200]}")
         return {}

@@ -280,7 +280,8 @@ def _parse_ass_timestamp(ts_str: str) -> int:
     ts_str = ts_str.strip()
     match = re.match(r"(\d+):(\d+):(\d+)\.(\d+)", ts_str)
     if not match:
-        return 0
+        raise ValueError(f"Invalid ASS timestamp format: '{ts_str}'")
     hours, minutes, seconds, centiseconds = map(int, match.groups())
     return (hours * 3600 + minutes * 60 + seconds) * 1000 + centiseconds * 10
+
 

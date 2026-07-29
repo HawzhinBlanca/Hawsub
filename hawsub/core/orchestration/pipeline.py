@@ -6,6 +6,7 @@ Manages stage transitions, SQLite project state, scene checkpoints, and crash re
 import os
 import sqlite3
 import json
+import time
 from pathlib import Path
 from typing import List, Dict, Optional, Any
 from hawsub.config.schema import HawsubConfig
@@ -81,12 +82,23 @@ class DurablePipeline:
         conn = sqlite3.connect(self.db_path)
         try:
             cursor = conn.cursor()
+            # Check if project_state table exists with old single-PK schema and migrate
+            cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='project_state'")
+            if cursor.fetchone():
+                cursor.execute("PRAGMA table_info(project_state)")
+                columns = {row[1]: row[5] for row in cursor.fetchall()}  # name -> pk_index
+                # Old schema had project_id as only PK (pk=1), current_stage as non-PK (pk=0)
+                if columns.get("current_stage", 0) == 0:
+                    cursor.execute("DROP TABLE project_state")
+                    logger.info("Migrated project_state table to composite primary key schema")
+
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS project_state (
-                    project_id TEXT PRIMARY KEY,
+                    project_id TEXT NOT NULL,
+                    current_stage TEXT NOT NULL,
                     status TEXT,
-                    current_stage TEXT,
-                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    PRIMARY KEY (project_id, current_stage)
                 );
             """)
             cursor.execute("""
@@ -325,7 +337,6 @@ class DurablePipeline:
 
             except Exception as e:
                 # Per-scene retry with exponential backoff
-                import time
                 MAX_SCENE_RETRIES = 2
                 retry_success = False
 
