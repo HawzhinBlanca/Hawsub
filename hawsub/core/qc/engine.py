@@ -188,6 +188,36 @@ class QCEngine:
             )
             score -= 0.25
 
+        # LLM error pattern detection (markdown, stuttering, parenthesis pollution)
+        llm_errors = self.normalizer.detect_common_llm_errors(target)
+        if llm_errors:
+            issues.append(
+                QCIssue(
+                    cue_id=cue.id,
+                    category="linguistic",
+                    rule="llm_error_pattern",
+                    severity="major",
+                    score_impact=0.20,
+                    message=f"LLM error patterns: {'; '.join(llm_errors[:3])}",
+                )
+            )
+            score -= 0.20
+
+        # Excessive ezafe chain detection
+        ezafe_issues = self.normalizer.detect_excessive_ezafe_chains(target)
+        if ezafe_issues:
+            issues.append(
+                QCIssue(
+                    cue_id=cue.id,
+                    category="linguistic",
+                    rule="excessive_ezafe_chain",
+                    severity="minor",
+                    score_impact=0.10,
+                    message=f"Ezafe chain issues: {'; '.join(ezafe_issues[:2])}",
+                )
+            )
+            score -= 0.10
+
         return issues, max(0.0, score)
 
     def _run_semantic_checks(

@@ -163,3 +163,84 @@ class SoraniNormalizer:
         # Find words of 2+ characters
         words = re.findall(r"\b[A-Za-z]{2,}\b", text)
         return [w for w in words if w.lower() not in ALLOWED_WORDS]
+
+    def detect_excessive_ezafe_chains(self, text: str) -> List[str]:
+        """Detect suspiciously long chains of ezafe particle ی between words.
+        
+        In Sorani, ezafe (ی) connects nouns/adjectives. More than 3 consecutive
+        ezafe-linked words often indicates malformed or machine-generated text.
+        """
+        issues = []
+        # Find sequences of Arabic-script words connected by ی
+        # Pattern: word + ی + word + ی + word + ی + word (4+ chain)
+        # Match words (Arabic script clusters) separated by ی with optional space
+        words = re.findall(r'[\u0600-\u06FF]+', text)
+        
+        chain_len = 0
+        for i, word in enumerate(words):
+            if word.endswith('ی') or word == 'ی':
+                chain_len += 1
+            else:
+                if chain_len >= 4:
+                    chain_start = max(0, i - chain_len - 1)
+                    chain_words = words[chain_start:i+1]
+                    issues.append(f"Excessive ezafe chain ({chain_len}+): {'‌'.join(chain_words)}")
+                chain_len = 0
+        
+        # Check final chain
+        if chain_len >= 4:
+            issues.append(f"Excessive ezafe chain ({chain_len}+) at end of text")
+        
+        return issues
+
+    def detect_common_llm_errors(self, text: str) -> List[str]:
+        """Detect common patterns that LLMs produce incorrectly in Sorani.
+        
+        These are patterns observed from real LLM translation failures.
+        """
+        issues = []
+        
+        # 1. Mixed script detection (Arabic + Sorani characters in same word)
+        # ك (Arabic kaf) mixed with ی (Kurdish yeh) in same word
+        mixed_words = re.findall(r'[\u0600-\u06FF]+', text)
+        for word in mixed_words:
+            has_arabic_kaf = '\u0643' in word  # ك
+            has_kurdish_yeh = '\u06CC' in word  # ی
+            has_arabic_yeh = '\u064A' in word   # ي
+            if has_arabic_kaf and has_kurdish_yeh:
+                issues.append(f"Mixed script in word '{word}': Arabic kaf with Kurdish yeh")
+            if has_arabic_yeh:
+                issues.append(f"Arabic yeh (ي) found in word '{word}', should be Kurdish yeh (ی)")
+        
+        # 2. Repeated words (LLM stuttering)
+        word_list = text.split()
+        for i in range(len(word_list) - 2):
+            if word_list[i] == word_list[i+1] == word_list[i+2] and len(word_list[i]) > 1:
+                issues.append(f"Triple word repetition: '{word_list[i]}' × 3")
+        
+        # 3. Bracket/parenthesis pollution (LLM adding explanatory notes)
+        if re.search(r'\([^)]*[A-Za-z]{3,}[^)]*\)', text):
+            issues.append("English explanation in parentheses — LLM note pollution")
+        
+        # 4. Asterisk/markdown formatting leaked from LLM
+        if '**' in text or '__' in text:
+            issues.append("Markdown formatting leaked into subtitle text")
+        
+        # 5. Numbered list format (LLMs sometimes format as lists)
+        if re.match(r'^\d+[\.\)]\s', text):
+            issues.append("Numbered list format detected — not subtitle style")
+        
+        return issues
+
+    def validate_sorani_text(self, text: str) -> Dict[str, List[str]]:
+        """Run all Sorani linguistic validations and return categorized issues.
+        
+        Returns a dict with keys: 'kurmanji', 'untranslated', 'ezafe', 'llm_errors'
+        """
+        return {
+            "kurmanji": self.detect_kurmanji_contamination(text),
+            "untranslated": self.detect_untranslated_english(text),
+            "ezafe": self.detect_excessive_ezafe_chains(text),
+            "llm_errors": self.detect_common_llm_errors(text),
+        }
+
